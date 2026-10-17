@@ -7,6 +7,7 @@
 | 名称 | 类型 | 技术栈 | 文件 |
 | --- | --- | --- | --- |
 | 浅海 Ocean Shallows | 交互网页 / 3D 海洋模拟 | Three.js r128 · WebGL · 单文件 HTML | [prompts/ocean-shallows.md](prompts/ocean-shallows.md) |
+| 毛绒鸽子 Plush Pigeon | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · 布料 | [prompts/plush-pigeon.md](prompts/plush-pigeon.md) |
 
 ## 使用方式
 
