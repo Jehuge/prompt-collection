@@ -4,50 +4,50 @@
 
 ## 索引
 
-| 名称 | 类型 | 技术栈 | 文件 |
-| --- | --- | --- | --- |
-| 浅海 Ocean Shallows | 交互网页 / 3D 海洋模拟 | Three.js r128 · WebGL · 单文件 HTML | [prompts/ocean-shallows.md](prompts/ocean-shallows.md) |
-| 毛绒鸽子 Plush Pigeon | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · 布料 | [prompts/plush-pigeon.md](prompts/plush-pigeon.md) |
-| 别墅果冻 Villa Jelly | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · 刚体浮力 · 单文件 HTML | [prompts/villa-jelly.md](prompts/villa-jelly.md) |
-| 毛绒鲨鱼 Plush Shark | 交互网页 / 软体物理玩具 | WebGPU · 软体物理 · 单文件 HTML | [prompts/plush-shark.md](prompts/plush-shark.md) |
-| 毛绒鲸鱼 Plush Whale | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · surface nets | [prompts/plush-whale.md](prompts/plush-whale.md) |
-| 环礁果冻 Atoll Jelly | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · boids · 单文件 HTML | [prompts/atoll-jelly.md](prompts/atoll-jelly.md) |
-| 毛绒螃蟹 Plush Crab | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · surface nets | [prompts/plush-crab.md](prompts/plush-crab.md) |
-| 果冻锦鲤池 Jelly Koi Pond | 交互网页 / 果冻软体场景 | 3D（未指定库）· 程序化几何 · 单文件 HTML | [prompts/jelly-koi-pond.md](prompts/jelly-koi-pond.md) |
-| 海盗果冻 Pirate Jelly | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · 刚体 · 粒子系统 | [prompts/pirate-jelly.md](prompts/pirate-jelly.md) |
-| 毛绒双髻鲨 Plush Hammerhead | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · surface nets | [prompts/plush-hammerhead.md](prompts/plush-hammerhead.md) |
-| 毛绒奶牛 Plush Cow | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · WebAudio | [prompts/plush-cow.md](prompts/plush-cow.md) |
-| 城堡果冻 Castle Jelly | 交互网页 / 果冻微缩场景 | WebGPU · 浅水模拟 · SDF · 粒子烟花 | [prompts/castle-jelly.md](prompts/castle-jelly.md) |
-| 毛绒枪鱼 Plush Marlin | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · surface nets | [prompts/plush-marlin.md](prompts/plush-marlin.md) |
-| 锦鲤池 Koi Pond | 交互网页 / 俯视水面模拟 | Three.js · WebGL · Web Audio | [prompts/koi-pond.md](prompts/koi-pond.md) |
-| 潮池果冻 Tidepool Jelly | 交互网页 / 果冻海岸生态 | Three.js · 自定义着色器 · 正交相机 | [prompts/tidepool-jelly.md](prompts/tidepool-jelly.md) |
-| 西瓜果冻 Melon Jelly | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 单文件 HTML | [prompts/melon-jelly.md](prompts/melon-jelly.md) |
-| 毛绒企鹅 Plush Penguin | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · 粒子布料 | [prompts/plush-penguin.md](prompts/plush-penguin.md) |
-| 水块里的热带海湾 Tropical Cove | 交互网页 / 3D 水体微缩场景 | Three.js r160 · WebGL · GPU 波动方程 · 单文件 HTML | [prompts/tropical-cove-water-block.md](prompts/tropical-cove-water-block.md) |
-| 柑橘果冻 Citrus Jelly | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 单文件 HTML | [prompts/citrus-jelly.md](prompts/citrus-jelly.md) |
-| 螃蟹果冻 Crab Jelly | 交互网页 / 果冻生物 | WebGPU · XPBD 软体 | [prompts/crab-jelly.md](prompts/crab-jelly.md) |
-| 柑橘果冻切割器 Citrus Jelly Cutters | 交互网页 / 可切割软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · SDF 布尔切割 | [prompts/citrus-jelly-cutters.md](prompts/citrus-jelly-cutters.md) |
-| 港口果冻 Harbor Jelly | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · boids · WebAudio | [prompts/harbor-jelly.md](prompts/harbor-jelly.md) |
-| 猕猴桃果冻楔块 Kiwi Jelly Wedge | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 单文件 HTML | [prompts/kiwi-jelly-wedge.md](prompts/kiwi-jelly-wedge.md) |
-| 涨潮时的鸟居 Torii at High Tide | 交互网页 / 3D 水体微缩场景 | Three.js r160 · WebGL · SSR · GPU 波动方程 | [prompts/torii-at-high-tide.md](prompts/torii-at-high-tide.md) |
-| 瓶中船（体素） Voxel Ship in a Bottle | 交互网页 / 体素艺术场景 | WebGL（库不限）· 单文件 HTML | [prompts/voxel-ship-in-a-bottle.md](prompts/voxel-ship-in-a-bottle.md) |
-| 船闸果冻 Lock Jelly | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 多水体浅水模拟 · 角色动画 | [prompts/lock-jelly.md](prompts/lock-jelly.md) |
-| 万圣节幽灵海盗船 Halloween Pirate Ship | 交互网页 / 3D 电影感场景 | Three.js · 单文件离线 HTML | [prompts/halloween-pirate-ship.md](prompts/halloween-pirate-ship.md) |
-| 南瓜果冻 Pumpkin Jelly | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 单文件 HTML | [prompts/pumpkin-jelly.md](prompts/pumpkin-jelly.md) |
-| 冰山果冻 Iceberg Jelly | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · 刚体冰块 · WebAudio | [prompts/iceberg-jelly.md](prompts/iceberg-jelly.md) |
-| 整颗橙子果冻 Whole Orange Jelly | 交互网页 / 可切割软体果冻 | WebGPU · WGSL · XPBD 软体 · SDF 切割 · 体积渲染 | [prompts/whole-orange-jelly.md](prompts/whole-orange-jelly.md) |
-| 菠萝果冻 Pineapple Jelly | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 单文件 HTML | [prompts/pineapple-jelly.md](prompts/pineapple-jelly.md) |
-| 果冻沙袋 Jelly Bag | 交互网页 / 软体物理玩具 | three.js r160 · WebGL2 · 形状匹配软体 · WebAudio | [prompts/jelly-bag.md](prompts/jelly-bag.md) |
-| 南瓜测试 The Pumpkin Test | 交互网页 / 物理小游戏 | Three.js（内联打包）· 刚体碎裂 · Web Audio | [prompts/the-pumpkin-test.md](prompts/the-pumpkin-test.md) |
-| 雾中喀斯特 Karst in the Mist | 交互网页 / 3D 水体微缩场景 | Three.js r160 · WebGL · SSR · 体积雾层 | [prompts/karst-in-the-mist.md](prompts/karst-in-the-mist.md) |
-| 毛绒西瓜 Plush Watermelon | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · 布料四肢 | [prompts/plush-watermelon.md](prompts/plush-watermelon.md) |
-| 毛茸茸西瓜 Fluffy Watermelon | 交互网页 / 3D 毛发渲染 | three.js r147 · WebGL · 壳层毛发 + 针毛 | [prompts/fluffy-watermelon.md](prompts/fluffy-watermelon.md) |
-| 花池 Bloom Pool | 交互网页 / 3D 泳池与漂浮花朵 | Three.js · WebGL · 自定义着色器 · Web Audio | [prompts/bloom-pool.md](prompts/bloom-pool.md) |
-| 章鱼果冻 Octopus Jelly | 交互网页 / 果冻生物 | WebGPU · XPBD 软体 · 粒子链腕足 | [prompts/octopus-jelly.md](prompts/octopus-jelly.md) |
-| 毛茸茸西瓜游乐场 Fluffy Watermelon Playground | 交互网页 / 可切割毛绒玩具 | three.js r147 · 壳层毛发 + 针毛 · 刚体物理 | [prompts/fluffy-watermelon-playground.md](prompts/fluffy-watermelon-playground.md) |
-| 珊瑚泻湖 Reef Lagoon | 交互网页 / 俯视海洋模拟 | Three.js r128 · WebGL · 单文件 HTML | [prompts/reef-lagoon.md](prompts/reef-lagoon.md) |
-| 春风站 Harukaze Station | 交互网页 / 低多边形微缩场景 | Three.js · MeshToonMaterial · OutlineEffect | [prompts/harukaze-station.md](prompts/harukaze-station.md) |
-| 牛油果果冻 Avocado Jelly | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 刚体果核 | [prompts/avocado-jelly.md](prompts/avocado-jelly.md) |
+| 名称 | 效果 | 类型 | 技术栈 | 文件 |
+| --- | --- | --- | --- | --- |
+| 浅海 Ocean Shallows | ![ocean-shallows](assets/ocean-shallows.jpg) | 交互网页 / 3D 海洋模拟 | Three.js r128 · WebGL · 单文件 HTML | [prompts/ocean-shallows.md](prompts/ocean-shallows.md) |
+| 毛绒鸽子 Plush Pigeon | ![plush-pigeon](assets/plush-pigeon.jpg) | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · 布料 | [prompts/plush-pigeon.md](prompts/plush-pigeon.md) |
+| 别墅果冻 Villa Jelly | ![villa-jelly](assets/villa-jelly.jpg) | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · 刚体浮力 · 单文件 HTML | [prompts/villa-jelly.md](prompts/villa-jelly.md) |
+| 毛绒鲨鱼 Plush Shark | ![plush-shark](assets/plush-shark.jpg) | 交互网页 / 软体物理玩具 | WebGPU · 软体物理 · 单文件 HTML | [prompts/plush-shark.md](prompts/plush-shark.md) |
+| 毛绒鲸鱼 Plush Whale | ![plush-whale](assets/plush-whale.jpg) | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · surface nets | [prompts/plush-whale.md](prompts/plush-whale.md) |
+| 环礁果冻 Atoll Jelly | ![atoll-jelly](assets/atoll-jelly.jpg) | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · boids · 单文件 HTML | [prompts/atoll-jelly.md](prompts/atoll-jelly.md) |
+| 毛绒螃蟹 Plush Crab | ![plush-crab](assets/plush-crab.jpg) | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · surface nets | [prompts/plush-crab.md](prompts/plush-crab.md) |
+| 果冻锦鲤池 Jelly Koi Pond | ![jelly-koi-pond](assets/jelly-koi-pond.jpg) | 交互网页 / 果冻软体场景 | 3D（未指定库）· 程序化几何 · 单文件 HTML | [prompts/jelly-koi-pond.md](prompts/jelly-koi-pond.md) |
+| 海盗果冻 Pirate Jelly | ![pirate-jelly](assets/pirate-jelly.jpg) | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · 刚体 · 粒子系统 | [prompts/pirate-jelly.md](prompts/pirate-jelly.md) |
+| 毛绒双髻鲨 Plush Hammerhead | ![plush-hammerhead](assets/plush-hammerhead.jpg) | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · surface nets | [prompts/plush-hammerhead.md](prompts/plush-hammerhead.md) |
+| 毛绒奶牛 Plush Cow | ![plush-cow](assets/plush-cow.jpg) | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · WebAudio | [prompts/plush-cow.md](prompts/plush-cow.md) |
+| 城堡果冻 Castle Jelly | ![castle-jelly](assets/castle-jelly.jpg) | 交互网页 / 果冻微缩场景 | WebGPU · 浅水模拟 · SDF · 粒子烟花 | [prompts/castle-jelly.md](prompts/castle-jelly.md) |
+| 毛绒枪鱼 Plush Marlin | ![plush-marlin](assets/plush-marlin.jpg) | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · surface nets | [prompts/plush-marlin.md](prompts/plush-marlin.md) |
+| 锦鲤池 Koi Pond | ![koi-pond](assets/koi-pond.jpg) | 交互网页 / 俯视水面模拟 | Three.js · WebGL · Web Audio | [prompts/koi-pond.md](prompts/koi-pond.md) |
+| 潮池果冻 Tidepool Jelly | ![tidepool-jelly](assets/tidepool-jelly.jpg) | 交互网页 / 果冻海岸生态 | Three.js · 自定义着色器 · 正交相机 | [prompts/tidepool-jelly.md](prompts/tidepool-jelly.md) |
+| 西瓜果冻 Melon Jelly | ![melon-jelly](assets/melon-jelly.jpg) | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 单文件 HTML | [prompts/melon-jelly.md](prompts/melon-jelly.md) |
+| 毛绒企鹅 Plush Penguin | ![plush-penguin](assets/plush-penguin.jpg) | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · 粒子布料 | [prompts/plush-penguin.md](prompts/plush-penguin.md) |
+| 水块里的热带海湾 Tropical Cove | ![tropical-cove-water-block](assets/tropical-cove-water-block.jpg) | 交互网页 / 3D 水体微缩场景 | Three.js r160 · WebGL · GPU 波动方程 · 单文件 HTML | [prompts/tropical-cove-water-block.md](prompts/tropical-cove-water-block.md) |
+| 柑橘果冻 Citrus Jelly | ![citrus-jelly](assets/citrus-jelly.jpg) | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 单文件 HTML | [prompts/citrus-jelly.md](prompts/citrus-jelly.md) |
+| 螃蟹果冻 Crab Jelly | ![crab-jelly](assets/crab-jelly.jpg) | 交互网页 / 果冻生物 | WebGPU · XPBD 软体 | [prompts/crab-jelly.md](prompts/crab-jelly.md) |
+| 柑橘果冻切割器 Citrus Jelly Cutters | ![citrus-jelly-cutters](assets/citrus-jelly-cutters.jpg) | 交互网页 / 可切割软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · SDF 布尔切割 | [prompts/citrus-jelly-cutters.md](prompts/citrus-jelly-cutters.md) |
+| 港口果冻 Harbor Jelly | ![harbor-jelly](assets/harbor-jelly.jpg) | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · boids · WebAudio | [prompts/harbor-jelly.md](prompts/harbor-jelly.md) |
+| 猕猴桃果冻楔块 Kiwi Jelly Wedge | ![kiwi-jelly-wedge](assets/kiwi-jelly-wedge.jpg) | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 单文件 HTML | [prompts/kiwi-jelly-wedge.md](prompts/kiwi-jelly-wedge.md) |
+| 涨潮时的鸟居 Torii at High Tide | ![torii-at-high-tide](assets/torii-at-high-tide.jpg) | 交互网页 / 3D 水体微缩场景 | Three.js r160 · WebGL · SSR · GPU 波动方程 | [prompts/torii-at-high-tide.md](prompts/torii-at-high-tide.md) |
+| 瓶中船（体素） Voxel Ship in a Bottle | ![voxel-ship-in-a-bottle](assets/voxel-ship-in-a-bottle.jpg) | 交互网页 / 体素艺术场景 | WebGL（库不限）· 单文件 HTML | [prompts/voxel-ship-in-a-bottle.md](prompts/voxel-ship-in-a-bottle.md) |
+| 船闸果冻 Lock Jelly | ![lock-jelly](assets/lock-jelly.jpg) | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 多水体浅水模拟 · 角色动画 | [prompts/lock-jelly.md](prompts/lock-jelly.md) |
+| 万圣节幽灵海盗船 Halloween Pirate Ship | ![halloween-pirate-ship](assets/halloween-pirate-ship.jpg) | 交互网页 / 3D 电影感场景 | Three.js · 单文件离线 HTML | [prompts/halloween-pirate-ship.md](prompts/halloween-pirate-ship.md) |
+| 南瓜果冻 Pumpkin Jelly | ![pumpkin-jelly](assets/pumpkin-jelly.jpg) | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 单文件 HTML | [prompts/pumpkin-jelly.md](prompts/pumpkin-jelly.md) |
+| 冰山果冻 Iceberg Jelly | ![iceberg-jelly](assets/iceberg-jelly.jpg) | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · 刚体冰块 · WebAudio | [prompts/iceberg-jelly.md](prompts/iceberg-jelly.md) |
+| 整颗橙子果冻 Whole Orange Jelly | ![whole-orange-jelly](assets/whole-orange-jelly.jpg) | 交互网页 / 可切割软体果冻 | WebGPU · WGSL · XPBD 软体 · SDF 切割 · 体积渲染 | [prompts/whole-orange-jelly.md](prompts/whole-orange-jelly.md) |
+| 菠萝果冻 Pineapple Jelly | ![pineapple-jelly](assets/pineapple-jelly.jpg) | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 单文件 HTML | [prompts/pineapple-jelly.md](prompts/pineapple-jelly.md) |
+| 果冻沙袋 Jelly Bag | ![jelly-bag](assets/jelly-bag.jpg) | 交互网页 / 软体物理玩具 | three.js r160 · WebGL2 · 形状匹配软体 · WebAudio | [prompts/jelly-bag.md](prompts/jelly-bag.md) |
+| 南瓜测试 The Pumpkin Test | ![the-pumpkin-test](assets/the-pumpkin-test.jpg) | 交互网页 / 物理小游戏 | Three.js（内联打包）· 刚体碎裂 · Web Audio | [prompts/the-pumpkin-test.md](prompts/the-pumpkin-test.md) |
+| 雾中喀斯特 Karst in the Mist | ![karst-in-the-mist](assets/karst-in-the-mist.jpg) | 交互网页 / 3D 水体微缩场景 | Three.js r160 · WebGL · SSR · 体积雾层 | [prompts/karst-in-the-mist.md](prompts/karst-in-the-mist.md) |
+| 毛绒西瓜 Plush Watermelon | ![plush-watermelon](assets/plush-watermelon.jpg) | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · 布料四肢 | [prompts/plush-watermelon.md](prompts/plush-watermelon.md) |
+| 毛茸茸西瓜 Fluffy Watermelon | ![fluffy-watermelon](assets/fluffy-watermelon.jpg) | 交互网页 / 3D 毛发渲染 | three.js r147 · WebGL · 壳层毛发 + 针毛 | [prompts/fluffy-watermelon.md](prompts/fluffy-watermelon.md) |
+| 花池 Bloom Pool | ![bloom-pool](assets/bloom-pool.jpg) | 交互网页 / 3D 泳池与漂浮花朵 | Three.js · WebGL · 自定义着色器 · Web Audio | [prompts/bloom-pool.md](prompts/bloom-pool.md) |
+| 章鱼果冻 Octopus Jelly | ![octopus-jelly](assets/octopus-jelly.jpg) | 交互网页 / 果冻生物 | WebGPU · XPBD 软体 · 粒子链腕足 | [prompts/octopus-jelly.md](prompts/octopus-jelly.md) |
+| 毛茸茸西瓜游乐场 Fluffy Watermelon Playground | ![fluffy-watermelon-playground](assets/fluffy-watermelon-playground.jpg) | 交互网页 / 可切割毛绒玩具 | three.js r147 · 壳层毛发 + 针毛 · 刚体物理 | [prompts/fluffy-watermelon-playground.md](prompts/fluffy-watermelon-playground.md) |
+| 珊瑚泻湖 Reef Lagoon | ![reef-lagoon](assets/reef-lagoon.jpg) | 交互网页 / 俯视海洋模拟 | Three.js r128 · WebGL · 单文件 HTML | [prompts/reef-lagoon.md](prompts/reef-lagoon.md) |
+| 春风站 Harukaze Station | ![harukaze-station](assets/harukaze-station.jpg) | 交互网页 / 低多边形微缩场景 | Three.js · MeshToonMaterial · OutlineEffect | [prompts/harukaze-station.md](prompts/harukaze-station.md) |
+| 牛油果果冻 Avocado Jelly | ![avocado-jelly](assets/avocado-jelly.jpg) | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 刚体果核 | [prompts/avocado-jelly.md](prompts/avocado-jelly.md) |
 
 ## 使用方式
 
