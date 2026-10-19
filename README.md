@@ -4,7 +4,9 @@
 
 ## 声明
 
-本仓库内容整理自公开帖子（尤其是 @vib3coded 等），仅供学习与分享。如有侵权，请联系下架。
+本仓库内容整理自公开帖子（尤其是 [@vib3coded](https://x.com/vib3coded) 等），仅供学习与分享。如有侵权，请联系下架。
+
+大神/作者主页：[@vib3coded](https://x.com/vib3coded)
 
 ## 索引
 
