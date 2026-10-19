@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![果冻锦鲤池 Jelly Koi Pond](../assets/jelly-koi-pond.jpg)
+
 ## 提示词（中文）
 
 在一个自包含 HTML 文件中构建一个交互式 3D "Jelly Koi Pond"（果冻锦鲤池）。

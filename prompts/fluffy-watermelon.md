@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![毛茸茸西瓜 Fluffy Watermelon](../assets/fluffy-watermelon.jpg)
+
 ## 提示词（中文）
 
 构建一个单文件自包含 HTML 页面（无构建步骤），展示一个覆盖着长毛的交互式 3D "Fluffy Watermelon"（毛茸茸西瓜），使用 three.js r147 以 WebGL 渲染（UMD 版本：https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js）。所有界面文字为英文。

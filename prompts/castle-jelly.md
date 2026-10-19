@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![城堡果冻 Castle Jelly](../assets/castle-jelly.jpg)
+
 ## 提示词（中文）
 
 构建一个名为 "Castle Jelly"（城堡果冻）的单文件 WebGPU "material study" 页面，延续我的果冻微缩场景系列（Pirate Jelly / Island Jelly）的风格：纸质摄影棚中桌上的一块会晃动的方形果冻湖，切面露出糖果地层，斜体衬线刊头 "Castle / Jelly."，右侧玻璃控制面板，左下 "How to play" 一行，界面为英文，移动端用底部抽屉布局。

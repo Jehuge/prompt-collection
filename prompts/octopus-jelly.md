@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![章鱼果冻 Octopus Jelly](../assets/octopus-jelly.jpg)
+
 ## 提示词（中文）
 
 构建一个名为 "Octopus Jelly"（章鱼果冻）的单文件 WebGPU "material study" 页面，延续我的果冻生物系列（Crab Jelly / Turtle Jelly）的风格：编辑式布局，大号斜体衬线标题 "Octopus / Jelly."，眉标 "Material Studies / Cephalopoda"，一句简短而有诗意的说明（"Eight arms, no bones. Every one of them wobbles."），显示当前行为的实时状态标签，右侧玻璃控制面板（手机上为底部抽屉），统计行（Volume、Arms down、Curl、Frame），可折叠的 "Inside the experiment" 说明。界面为英文，支持移动端，60 fps。

@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![柑橘果冻 Citrus Jelly](../assets/citrus-jelly.jpg)
+
 ## 提示词（中文）
 
 构建 "Citrus Jelly"（柑橘果冻）——一个单文件自包含 HTML（内联 JS/CSS，无第三方库），包含一个实时 WebGPU 软体果冻，形状像半月形柑橘切片，用户可以抓住、拉伸再松开。

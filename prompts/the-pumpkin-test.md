@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![南瓜测试 The Pumpkin Test](../assets/the-pumpkin-test.jpg)
+
 ## 提示词（中文）
 
 构建 "The Pumpkin Test"（南瓜测试）——西瓜橡皮筋挑战的万圣节版本。一个自包含 HTML 文件：Three.js 内联打包（运行时不用 CDN），界面为英文。

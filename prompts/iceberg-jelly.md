@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![冰山果冻 Iceberg Jelly](../assets/iceberg-jelly.jpg)
+
 ## 提示词（中文）
 
 构建 "Iceberg Jelly"（冰山果冻）——我的 "Material Studies" 果冻微缩场景系列的下一件作品：一个使用 WebGPU（WGSL）的单文件自包含 HTML，无外部库，界面为英文。

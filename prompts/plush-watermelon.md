@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![毛绒西瓜 Plush Watermelon](../assets/plush-watermelon.jpg)
+
 ## 提示词（中文）
 
 在 Plush Penguin WebGPU 引擎上制作 "Plush Watermelon"（毛绒西瓜，Material Studies No. 032）：XPBD 软体晶格、壳层毛发、布料四肢、由姿态驱动的步态，以及 Hand / Finger / Comb 工具。

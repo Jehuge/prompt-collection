@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![春风站 Harukaze Station](../assets/harukaze-station.jpg)
+
 ## 提示词（中文）
 
 构建一个单文件自包含 HTML：一个春天里日本乡村火车站的交互式低多边形 3D 微缩场景，使用 Three.js（从 CDN 引入 ES 模块）。不使用外部模型或图片——所有几何体都在代码中由基本体生成，纹理（草地、标牌）在 <canvas> 上绘制。

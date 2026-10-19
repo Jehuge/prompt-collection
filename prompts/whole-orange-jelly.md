@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![整颗橙子果冻 Whole Orange Jelly](../assets/whole-orange-jelly.jpg)
+
 ## 提示词（中文）
 
 构建 "Whole Orange Jelly"（整颗橙子果冻）——一个单文件自包含 HTML（内联 JS/CSS，无第三方库）：一颗由果冻做成的实时 WebGPU 软体完整橙子。用户可以抓住并拉伸它，还能用刀把它切成圆片、楔块和小块。每一块都是独立晃动的物体。

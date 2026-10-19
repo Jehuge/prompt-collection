@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![菠萝果冻 Pineapple Jelly](../assets/pineapple-jelly.jpg)
+
 ## 提示词（中文）
 
 构建 "Pineapple Jelly"（菠萝果冻）——一个单文件自包含 HTML（内联 JS/CSS，无第三方库）：一个带真实中孔的实时 WebGPU 软体软糖菠萝圈。用户可以抓住它的外缘或内缘，拉伸它，把它翻面，让它晃动。

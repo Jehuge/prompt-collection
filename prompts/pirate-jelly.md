@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![海盗果冻 Pirate Jelly](../assets/pirate-jelly.jpg)
+
 ## 提示词（中文）
 
 创建一个自包含的交互式 WebGPU/WGSL 页面 "Pirate Jelly"——属于 "Material Studies" 果冻微缩场景系列。单个 HTML 文件，不用外部模型、纹理、字体或库；一切都是程序化生成。界面为英文。

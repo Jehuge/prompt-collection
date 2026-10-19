@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![船闸果冻 Lock Jelly](../assets/lock-jelly.jpg)
+
 ## 提示词（中文）
 
 构建 "Lock Jelly."（船闸果冻）——一个单文件自包含 HTML（WebGPU + WGSL，无第三方库，无网络请求，可从 file:// 运行），属于 "Material Studies" 果冻微缩场景系列。如果缺少 WebGPU 或 adapter 失败，显示一张干净的降级卡片来代替场景。

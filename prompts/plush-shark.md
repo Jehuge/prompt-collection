@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![毛绒鲨鱼 Plush Shark](../assets/plush-shark.jpg)
+
 ## 提示词（中文）
 
 构建一个单文件 WebGPU 交互体验，主角是一只柔软、可以捏的毛绒鲨鱼。

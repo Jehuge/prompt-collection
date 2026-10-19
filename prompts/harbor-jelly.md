@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![港口果冻 Harbor Jelly](../assets/harbor-jelly.jpg)
+
 ## 提示词（中文）
 
 构建 "Harbor Jelly"（港口果冻）——一个单文件自包含 HTML（无外部请求、无第三方库），用 WebGPU/WGSL 渲染一个交互式 3D 微缩场景：一座小型的、正在运转的集装箱港口，置于一块会晃动的半透明方形果冻海中，放在纸质摄影棚背景上。它属于名为 "Material Studies" 的系列，所以要匹配该系列的外观：暖色纸张背景，衬线斜体展示标题（"Harbor Jelly."），小号大写眉标 "MATERIAL STUDIES"，右上角状态胶囊（"WebGPU · Live"），右侧磨砂控制面板，左下 "How to play" 一行。界面为英文。仅亮色主题，这是有意为之。

@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![水块里的热带海湾 Tropical Cove](../assets/tropical-cove-water-block.jpg)
+
 ## 提示词（中文）
 
 构建一个单文件交互式 WebGL 微缩场景（一个 index.html，无构建步骤），通过 import map 从 cdn.jsdelivr.net 加载 Three.js r160，并从 three/examples/jsm 引入 OrbitControls 和 BufferGeometryUtils。

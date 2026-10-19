@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![螃蟹果冻 Crab Jelly](../assets/crab-jelly.jpg)
+
 ## 提示词（中文）
 
 构建一个名为 "Crab Jelly"（螃蟹果冻）的单文件 WebGPU "material study" 页面，延续我的果冻生物系列（Octo Jelly / Squid Jelly / Fugu Jelly）的风格：编辑式布局，大号斜体衬线标题 "Crab / Jelly."，眉标 "Material Studies"，一句简短而有诗意的说明，实时状态标签，右侧玻璃控制面板，统计行，可折叠的 "Inside the experiment" 说明。界面为英文，支持移动端，60 fps。

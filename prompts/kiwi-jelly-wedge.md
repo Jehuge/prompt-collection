@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![猕猴桃果冻楔块 Kiwi Jelly Wedge](../assets/kiwi-jelly-wedge.jpg)
+
 ## 提示词（中文）
 
 构建 "Kiwi Jelly Wedge"（猕猴桃果冻楔块）——一个单文件自包含 HTML（内联 JS/CSS，无第三方库）：一块实时 WebGPU 软体软糖猕猴桃楔块，你可以抓住、拉伸、抬起和扭转它。

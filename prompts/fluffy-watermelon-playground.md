@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![毛茸茸西瓜游乐场 Fluffy Watermelon Playground](../assets/fluffy-watermelon-playground.jpg)
+
 ## 提示词（中文）
 
 构建一个名为 "Fluffy Watermelon Playground"（毛茸茸西瓜游乐场）的单文件自包含 HTML 页面（无构建步骤）：一个交互式 3D 玩具，一个毛茸茸的大西瓜可以被一把可见的刀切成任意多块毛茸茸的碎块，这些碎块可以像有弹性的毛绒玩具一样被抓住、拖动和扔来扔去。使用 three.js r147（UMD：https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js）配合自定义 ShaderMaterial。所有界面文字为英文。字体：Onest（Google Fonts），配系统字体回退。

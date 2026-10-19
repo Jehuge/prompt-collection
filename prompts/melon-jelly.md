@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![西瓜果冻 Melon Jelly](../assets/melon-jelly.jpg)
+
 ## 提示词（中文）
 
 创建 "Melon Jelly"（西瓜果冻）——一块精致的交互式 3D 西瓜果冻切片，使用真正的 WebGPU 和 WGSL 着色器直接在浏览器中运行。交付一个单文件自包含 HTML，内嵌 JavaScript 和 CSS。这必须是真正的交互式 3D 模拟，而不是静态渲染、视频或 2D 仿制。

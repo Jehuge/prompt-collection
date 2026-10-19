@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![珊瑚泻湖 Reef Lagoon](../assets/reef-lagoon.jpg)
+
 ## 提示词（中文）
 
 构建一个名为 "Reef Lagoon"（珊瑚泻湖）的单文件自包含 HTML（内联 CSS 和 JS；唯一的外部脚本是来自 https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js 的 Three.js r128）：一个阳光照耀的马尔代夫风格泻湖的交互式俯视视图，用户把海洋生物扔进水里，看它们游动。输出完整文件，不要占位符，不要省略任何部分。

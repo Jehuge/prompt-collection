@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![毛绒螃蟹 Plush Crab](../assets/plush-crab.jpg)
+
 ## 提示词（中文）
 
 创建一个自包含的交互式 WebGPU 页面 "Plush Crab"（毛绒螃蟹），属于现有的 Material Studies 毛绒系列（No. 020，fig. 20），匹配该系列的编辑式布局：衬线刊头、标本控制面板、实时读数、可折叠的 "Inside the experiment" 说明，界面为英文，支持移动端，没有 WebGPU 时优雅降级。

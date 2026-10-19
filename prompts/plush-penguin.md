@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![毛绒企鹅 Plush Penguin](../assets/plush-penguin.jpg)
+
 ## 提示词（中文）
 
 构建一个名为 "Plush Penguin"（毛绒企鹅）的单文件 WebGPU "material study" 页面：编辑式摄影棚布局，大号斜体衬线标题 "Plush / Penguin."，眉标 "Material Studies / No. 016"，说明文字 "A fluffy egg on two felt feet. It waddles, it toboggans, it falls over — and always gets back up."，实时状态标签，右侧标本面板，统计行（Mass、Volume、Steps、Slide in cm），可折叠的 "Inside the experiment" 说明。界面为英文，支持移动端。

@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![牛油果果冻 Avocado Jelly](../assets/avocado-jelly.jpg)
+
 ## 提示词（中文）
 
 构建一个单文件 WebGPU 页面 "Avocado Jelly"（牛油果果冻），采用 "Material Studies" 标本页的风格（浅色摄影棚背景 #E2DFDA，斜体衬线标题，右侧标本控制面板，左下实时读数，可折叠的 "Inside the experiment" 说明；完全响应式，手机上为堆叠布局，没有 WebGPU 时显示降级卡片）。

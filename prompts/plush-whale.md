@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![毛绒鲸鱼 Plush Whale](../assets/plush-whale.jpg)
+
 ## 提示词（中文）
 
 构建一个单文件 WebGPU 交互式 "Plush Whale"（毛绒鲸鱼），与我其他毛绒研究保持同样的摄影棚风格：浅色无缝背景（cyclorama），衬线刊头 "Material Studies / No. 019"，右侧是标本控制面板，左下是实时读数，并有 "Inside the experiment" 说明。

@@ -9,6 +9,10 @@
 
 ---
 
+## 效果
+
+![毛绒鸽子 Plush Pigeon](../assets/plush-pigeon.jpg)
+
 ## 提示词（中文）
 
 在 Plush Penguin WebGPU 引擎上制作 "Plush Pigeon"（Material Studies No. 031）：XPBD 软体晶格（XPBD soft-body lattice）、壳层毛发（shell fur）、布料翅膀（cloth wings）、由姿态驱动的步态（posture-driven gait），以及三种工具 Hand（手）/ Finger（手指）/ Comb（梳子）。

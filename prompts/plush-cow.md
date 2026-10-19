@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![毛绒奶牛 Plush Cow](../assets/plush-cow.jpg)
+
 ## 提示词（中文）
 
 构建一个名为 "Plush Cow"（毛绒奶牛）的单文件 WebGPU "material study" 页面，与我之前的毛绒玩具（plush goat / crab / shark / penguin）保持相同的摄影棚风格：编辑式布局，大号斜体衬线标题 "Plush / Cow."，眉标 "Material Studies / No. 029"，实时状态标签，带工具和滑块的标本面板，统计行（Mass、Volume、Steps、Moos），可折叠的 "Inside the experiment" 说明。界面为英文，支持移动端（无横向滚动）。

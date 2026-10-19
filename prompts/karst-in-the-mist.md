@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![雾中喀斯特 Karst in the Mist](../assets/karst-in-the-mist.jpg)
+
 ## 提示词（中文）
 
 构建一个单文件交互式 WebGL 微缩场景（一个 index.html，无构建步骤），通过 import map 从 cdn.jsdelivr.net 加载 Three.js r160，并从 three/examples/jsm 引入 OrbitControls 和 BufferGeometryUtils（mergeVertices、mergeGeometries）。一切都是程序化的——不使用外部模型或纹理。界面为英文。

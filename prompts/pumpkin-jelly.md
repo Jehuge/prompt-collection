@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![南瓜果冻 Pumpkin Jelly](../assets/pumpkin-jelly.jpg)
+
 ## 提示词（中文）
 
 构建 "Pumpkin Jelly"（南瓜果冻）——一个单文件自包含 HTML（内联 JS/CSS，无第三方库）：一块万圣节主题的实时 WebGPU 软体软糖南瓜楔块，由一支摇曳的蜡烛照亮，你可以抓住、拉伸、抬起和扭转它。

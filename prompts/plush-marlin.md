@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![毛绒枪鱼 Plush Marlin](../assets/plush-marlin.jpg)
+
 ## 提示词（中文）
 
 构建一个名为 "Plush Marlin"（毛绒枪鱼）的单文件 WebGPU "material study" 页面，与我的 plush hammerhead / plush shark 保持相同的摄影棚风格：编辑式布局，斜体衬线标题 "Plush / Marlin."，眉标 "Material Studies / No. 030"，实时状态标签，标本面板（工具、毛色配色、滑块、动作按钮），统计行（Mass、Volume、Beat、Fish eaten），可折叠的 "Inside the experiment" 说明。界面为英文，支持移动端。

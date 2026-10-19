@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![毛绒双髻鲨 Plush Hammerhead](../assets/plush-hammerhead.jpg)
+
 ## 提示词（中文）
 
 构建一个名为 "Plush Hammerhead"（毛绒双髻鲨）的单文件交互式 WebGPU 页面。

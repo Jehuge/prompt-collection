@@ -10,6 +10,10 @@
 
 ---
 
+## 效果
+
+![潮池果冻 Tidepool Jelly](../assets/tidepool-jelly.jpg)
+
 ## 提示词（中文）
 
 创建 "Tidepool Jelly"（潮池果冻）——一个交互式 3D 微缩海岸生态系统，其中一切都显得柔软、有弹性，由半透明果冻构成。
