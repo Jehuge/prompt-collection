@@ -8,6 +8,10 @@
 
 ---
 
+## 效果
+
+![浅海 Ocean Shallows](../assets/ocean-shallows.jpg)
+
 ## 提示词（中文）
 
 用 Three.js r128（通过 cdnjs 引入）构建一个单文件 WebGL 页面，标题为 "Ocean Shallows"：以俯视视角呈现一片铺满整个屏幕的热带海域，左上角有一小段弯曲的沙滩。
