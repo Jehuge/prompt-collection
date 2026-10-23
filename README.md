@@ -18,6 +18,15 @@
 
 | 名称 | 效果 | 类型 | 技术栈 | 文件 |
 | --- | --- | --- | --- | --- |
+| 离岸果冻 Offshore Jelly | ![offshore-jelly](assets/offshore-jelly.jpg) | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · 单文件 HTML | [prompts/offshore-jelly.md](prompts/offshore-jelly.md) |
+| 海滩二号 Beach Two | ![beach-two](assets/beach-two.jpg) | 交互网页 / 3D 海滩场景 | WebGL / 单页网页玩具 | [prompts/beach-two.md](prompts/beach-two.md) |
+| 像素冰场 Pixel Ice Rink | ![pixel-ice-rink](assets/pixel-ice-rink.jpg) | 交互网页 / 像素风场景 | WebGL · 单文件 HTML | [prompts/pixel-ice-rink.md](prompts/pixel-ice-rink.md) |
+| 百香果果冻 Passion Fruit Jelly | ![passion-fruit-jelly](assets/passion-fruit-jelly.jpg) | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 单文件 HTML | [prompts/passion-fruit-jelly.md](prompts/passion-fruit-jelly.md) |
+| 街角球场 Corner Court | ![corner-court](assets/corner-court.jpg) | 交互网页 / 3D 场景 | WebGL · 单文件 HTML | [prompts/corner-court.md](prompts/corner-court.md) |
+| 毛绒龙虾 Plush Lobster | ![plush-lobster](assets/plush-lobster.jpg) | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 | [prompts/plush-lobster.md](prompts/plush-lobster.md) |
+| 西瓜果冻切割 Melon Jelly Cutters | ![melon-jelly-cutters](assets/melon-jelly-cutters.jpg) | 交互网页 / 可切割软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 刀具切割 | [prompts/melon-jelly-cutters.md](prompts/melon-jelly-cutters.md) |
+| 喷泉果冻 Geyser Jelly | ![geyser-jelly](assets/geyser-jelly.jpg) | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · 单文件 HTML | [prompts/geyser-jelly.md](prompts/geyser-jelly.md) |
+| 桃子果冻 Peach Jelly | ![peach-jelly](assets/peach-jelly.jpg) | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 刚体果核 · 单文件 HTML | [prompts/peach-jelly.md](prompts/peach-jelly.md) |
 | 浅海 Ocean Shallows | ![ocean-shallows](assets/ocean-shallows.jpg) | 交互网页 / 3D 海洋模拟 | Three.js r128 · WebGL · 单文件 HTML | [prompts/ocean-shallows.md](prompts/ocean-shallows.md) |
 | 毛绒鸽子 Plush Pigeon | ![plush-pigeon](assets/plush-pigeon.jpg) | 交互网页 / 软体物理玩具 | WebGPU · XPBD 软体 · 壳层毛发 · 布料 | [prompts/plush-pigeon.md](prompts/plush-pigeon.md) |
 | 别墅果冻 Villa Jelly | ![villa-jelly](assets/villa-jelly.jpg) | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · 刚体浮力 · 单文件 HTML | [prompts/villa-jelly.md](prompts/villa-jelly.md) |
