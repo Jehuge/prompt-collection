@@ -4,15 +4,15 @@
 
 ## 声明
 
-本仓库由粉丝整理，收集大神 [@vib3coded](https://x.com/vib3coded) 公开分享的 vibe coding / AI 测试提示词与效果展示。
+本仓库由粉丝整理，收集大神 [@vib3coded](https://x.com/vib3coded) 公开分享的 vibe coding / AI 测试提示词与效果展示，以及 [@0xwhrrari](https://x.com/0xwhrrari)（rari）公开分享的 Opus 5.5 motion 短片 Prompt Pack。
 
-大神作品非常多，分散在时间线上，一篇一篇找起来很费劲，所以整理成库，方便自己和大家学习、对照、复现。这里收录的提示词与效果图，都尽量对应到原帖，方便溯源。
+两位作者的作品都很多，分散在时间线上，一篇一篇找起来很费劲，所以整理成库，方便自己和大家学习、对照、复现。这里收录的提示词、效果图与 PDF，都尽量对应到原帖，方便溯源。
 
-提示词、效果图均来自公开帖子，版权归原作者所有。本仓库为非官方粉丝合集，不营利、不声称代表作者本人。
+提示词、效果图与 PDF 均来自公开帖子或作者附上的公开网盘链接，版权归原作者所有。本仓库为非官方粉丝合集，不营利、不声称代表 [@vib3coded](https://x.com/vib3coded) 或 [@0xwhrrari](https://x.com/0xwhrrari) 本人。
 
 我们尊重原作者。若作者或权利人认为本仓库收录内容构成侵权，请联系我们，我们会尽快下架相关内容。
 
-大神/作者主页：[@vib3coded](https://x.com/vib3coded)
+作者主页：[@vib3coded](https://x.com/vib3coded) · [@0xwhrrari](https://x.com/0xwhrrari)
 
 ## 索引
 
@@ -61,10 +61,25 @@
 | 春风站 Harukaze Station | ![harukaze-station](assets/harukaze-station.jpg) | 交互网页 / 低多边形微缩场景 | Three.js · MeshToonMaterial · OutlineEffect | [prompts/harukaze-station.md](prompts/harukaze-station.md) |
 | 牛油果果冻 Avocado Jelly | ![avocado-jelly](assets/avocado-jelly.jpg) | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 刚体果核 | [prompts/avocado-jelly.md](prompts/avocado-jelly.md) |
 
+## @0xwhrrari · Motion Prompt Packs
+
+[@0xwhrrari](https://x.com/0xwhrrari)（rari）的 Clawd Motion Lab 短片提示词，四条都带原 PDF。系列方法见 [Motion Engineering: Build a Video Studio Around Opus 5.5](https://x.com/i/article/2105626165704572928)（[原帖](https://x.com/0xwhrrari/status/2105643919119696297)）。文件在 [`authors/0xwhrrari/motion-prompt-packs/`](authors/0xwhrrari/motion-prompt-packs/)。
+
+| 名称 | 效果 | 类型 | 技术栈 | 文件 |
+| --- | --- | --- | --- | --- |
+| Clawd 版皮克斯片头 Pixar to Clawd | ![clawd-pixar](authors/0xwhrrari/motion-prompt-packs/clawd-pixar.jpg) | motion / character film | Blender Cycles · Opus 5.5 · 12s · 24fps · 1440p | [clawd-pixar.md](authors/0xwhrrari/motion-prompt-packs/clawd-pixar.md) |
+| 没有 After Effects No After Effects | ![clawd-no-after-effects](authors/0xwhrrari/motion-prompt-packs/clawd-no-after-effects.jpg) | motion / character film | HTML UI · Blender Cycles · Opus 5.5 · 12s · 30fps | [clawd-no-after-effects.md](authors/0xwhrrari/motion-prompt-packs/clawd-no-after-effects.md) |
+| 霓虹跳跃 Neon Jump | ![clawd-neon-jump](authors/0xwhrrari/motion-prompt-packs/clawd-neon-jump.jpg) | motion / character film loop | Blender Cycles · Opus 5.5 · 14s 循环 · 30fps | [clawd-neon-jump.md](authors/0xwhrrari/motion-prompt-packs/clawd-neon-jump.md) |
+| Clawd 做 FL Studio 打拍子 Cooks a Beat | ![clawd-fl-studio](authors/0xwhrrari/motion-prompt-packs/clawd-fl-studio.jpg) | motion / music production UI film | HTML UI · Blender Cycles · Opus 5.5 · 32s · 30fps | [clawd-fl-studio.md](authors/0xwhrrari/motion-prompt-packs/clawd-fl-studio.md) |
+
 ## 使用方式
 
 1. 打开对应的提示词文件，复制「提示词」部分（中文或英文原文均可）。
 2. 粘贴给你常用的 AI 编程工具（Cursor、Claude、ChatGPT、Grok 等）。
 3. 生成后用浏览器直接打开 HTML 文件即可预览。
+
+上面三步对应 [@vib3coded](https://x.com/vib3coded) 的交互网页提示词。
+
+[@0xwhrrari](https://x.com/0xwhrrari) 的 motion Prompt Pack 在 [`authors/0xwhrrari/motion-prompt-packs/`](authors/0xwhrrari/motion-prompt-packs/)：复制英文提示词，贴给跑着 Opus 5.5 的 Claude Code（需要提示词里写明的 Blender、Python 或 ffmpeg）。同目录 PDF 是原件。系列说明见 [Motion Engineering](https://x.com/i/article/2105626165704572928)。
 
 欢迎 Star，后续会持续更新更多提示词。
