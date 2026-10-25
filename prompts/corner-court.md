@@ -6,13 +6,67 @@
 - **测试模型**：未注明
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2112989996366102944) · [提示词帖](https://x.com/vib3coded/status/2112990235453985198) · 2026-10-21（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 公开分享的提示词（具体测试模型未注明）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 公开分享的提示词（具体测试模型未注明）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![街角球场 Corner Court](../assets/corner-court.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build "Corner Court" — a single-file, real-time three.js (r160, ES module via import map from jsDelivr) page: an isometric diorama of an original street basketball half court on a floating city block, rendered as crisp pixel art. UI text in English.
+
+RENDER PIPELINE
+- Orthographic camera at ~31° elevation, azimuth 45° + 90° steps (animated; drag sideways or buttons), wheel/pinch zoom; fit the whole slab into the free screen area.
+- Render into a small target (screen / pixel size) with no anti-aliasing; snap the camera to whole pixels.
+- Post pass:
+  - depth outlines (darken a pixel >0.55 m in front of a neighbour);
+  - nearest colour of a fixed ~54-colour city palette in OKLab (concrete/asphalt greys, sky and night blues, court teal, terracotta/orange, reds, yellows, leaf greens, skin/wood, dusk purples, neon pink); optional 4×4 Bayer dither;
+  - whole-pixel upscale via texelFetch; the background (depth = 1) is the page colour.
+- Hard shadows (BasicShadowMap); flat-shaded Lambert low-poly.
+- Puddle reflections: render the scene mirrored about the ground (scene.scale.y = -1, ground meshes and rain hidden) into a second target, sampled at gl_FragCoord in the ground shader.
+- "Raw 3D" mode: the same scene at full resolution with MSAA.
+
+SCENE
+- A ragged-edged slab: grass over soil over rock.
+- An asphalt pad painted texel-by-texel at 10 px/m: teal inside the 6 m arc (straight corner lines), terracotta key, white lines, free-throw and restricted circles, cracks, worn paint, a stencilled "COURT 7".
+- Hoop: padded navy pole, arm, backboard with its square, orange torus rim, and a line-segment net that sways when the ball goes through.
+- Chain-link fence behind the hoop (alpha-tested diamond texture).
+- A brick corner shop with an awning, lit windows, a pink "OPEN" neon sign and a vending machine.
+- A long wall with an original sunset-city mural.
+- A sidewalk with a bench and two seated spectators.
+- Floodlights, a streetlight, low-poly trees, hedges, a dumpster, a fountain, a bike rack with two bikes, a hydrant.
+- Pigeons that peck and fly off when players or the ball come near.
+
+PLAYERS — procedural rigs of ~17 boxes
+- Two-bone IK for legs (running stride, defensive slide, tucked jumps) and arms: dribble hand following the ball, jump-shot set point with release and gooseneck follow-through, layup reach, two-hand dunk, chest pass, rebound/contest reach, celebration.
+- Spectators sit, cheer on makes and open umbrellas in the rain.
+
+GAME — streetball 2v2 half court
+- Make it take it; 1s inside the arc, 2s beyond; first to 11; win counter.
+- Check ball at the top (pass to the defender and back). A change of possession must be cleared beyond the arc.
+- Offence AI: dribble to spots, drive when the lane is open, pull-up jumpers when open, layups/dunks at the rim, passes when pressured; the off-ball player spots up or cuts. Man-to-man defence with stance, gap control, steals and contested jumps (blocks).
+- Ball physics with substeps: bounces on asphalt, sphere vs torus rim and backboard box, net drag, pole, fences, wall, slab edge.
+  - Jumpers aimed on a ballistic arc (~50°) with speed/aim noise growing with distance and contest.
+  - Layups lofted to a peak above the rim so they drop in.
+  - Rebounds with jumps; out of bounds goes to the other team.
+- Score, possession and status messages ("SWISH", "BLOCKED!", "TAKE IT BACK", …) on a lit scoreboard.
+- Clicks: the ball handler shoots, his teammate gets a pass, the court sends the handler there. Shoot/Pass buttons.
+
+WEATHER AND TIME
+- Day / Dusk / Night lighting presets blended over ~1.6 s; floodlights, streetlight, neon and windows at night.
+- Dry / Drizzle / Downpour: rain as short line streaks with splashes. A wetness value rises and slowly dries: the asphalt darkens, puddles spread from low spots in a precomputed depth map and mirror the scene, rain rings flicker in them; feet and the ball splash.
+
+UI
+- Pixel display font (Silkscreen) and a clean body font; light/dark themes via tokens.
+- Controls: Time, Weather (with a court wetness bar), Shoot, Pass, New game, Pause, Turn left/right, Pixel art/Raw 3D, Pixel size, Palette/Dither/Outlines.
+- A "How it's drawn" panel; a stacked mobile layout with no horizontal scroll.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -69,60 +123,3 @@
 - 像素显示字体用 Silkscreen，正文用一套干净的字体。浅色和深色主题用 token 切换。
 - 控制：Time、Weather（带一条球场湿润度）、Shoot、Pass、New game、Pause、Turn left / right、Pixel art / Raw 3D、像素尺寸、Palette / Dither / Outlines。
 - 一块 "How it's drawn" 面板。手机上改成上下堆叠，不要出现横向滚动。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build "Corner Court" — a single-file, real-time three.js (r160, ES module via import map from jsDelivr) page: an isometric diorama of an original street basketball half court on a floating city block, rendered as crisp pixel art. UI text in English.
-
-RENDER PIPELINE
-- Orthographic camera at ~31° elevation, azimuth 45° + 90° steps (animated; drag sideways or buttons), wheel/pinch zoom; fit the whole slab into the free screen area.
-- Render into a small target (screen / pixel size) with no anti-aliasing; snap the camera to whole pixels.
-- Post pass:
-  - depth outlines (darken a pixel >0.55 m in front of a neighbour);
-  - nearest colour of a fixed ~54-colour city palette in OKLab (concrete/asphalt greys, sky and night blues, court teal, terracotta/orange, reds, yellows, leaf greens, skin/wood, dusk purples, neon pink); optional 4×4 Bayer dither;
-  - whole-pixel upscale via texelFetch; the background (depth = 1) is the page colour.
-- Hard shadows (BasicShadowMap); flat-shaded Lambert low-poly.
-- Puddle reflections: render the scene mirrored about the ground (scene.scale.y = -1, ground meshes and rain hidden) into a second target, sampled at gl_FragCoord in the ground shader.
-- "Raw 3D" mode: the same scene at full resolution with MSAA.
-
-SCENE
-- A ragged-edged slab: grass over soil over rock.
-- An asphalt pad painted texel-by-texel at 10 px/m: teal inside the 6 m arc (straight corner lines), terracotta key, white lines, free-throw and restricted circles, cracks, worn paint, a stencilled "COURT 7".
-- Hoop: padded navy pole, arm, backboard with its square, orange torus rim, and a line-segment net that sways when the ball goes through.
-- Chain-link fence behind the hoop (alpha-tested diamond texture).
-- A brick corner shop with an awning, lit windows, a pink "OPEN" neon sign and a vending machine.
-- A long wall with an original sunset-city mural.
-- A sidewalk with a bench and two seated spectators.
-- Floodlights, a streetlight, low-poly trees, hedges, a dumpster, a fountain, a bike rack with two bikes, a hydrant.
-- Pigeons that peck and fly off when players or the ball come near.
-
-PLAYERS — procedural rigs of ~17 boxes
-- Two-bone IK for legs (running stride, defensive slide, tucked jumps) and arms: dribble hand following the ball, jump-shot set point with release and gooseneck follow-through, layup reach, two-hand dunk, chest pass, rebound/contest reach, celebration.
-- Spectators sit, cheer on makes and open umbrellas in the rain.
-
-GAME — streetball 2v2 half court
-- Make it take it; 1s inside the arc, 2s beyond; first to 11; win counter.
-- Check ball at the top (pass to the defender and back). A change of possession must be cleared beyond the arc.
-- Offence AI: dribble to spots, drive when the lane is open, pull-up jumpers when open, layups/dunks at the rim, passes when pressured; the off-ball player spots up or cuts. Man-to-man defence with stance, gap control, steals and contested jumps (blocks).
-- Ball physics with substeps: bounces on asphalt, sphere vs torus rim and backboard box, net drag, pole, fences, wall, slab edge.
-  - Jumpers aimed on a ballistic arc (~50°) with speed/aim noise growing with distance and contest.
-  - Layups lofted to a peak above the rim so they drop in.
-  - Rebounds with jumps; out of bounds goes to the other team.
-- Score, possession and status messages ("SWISH", "BLOCKED!", "TAKE IT BACK", …) on a lit scoreboard.
-- Clicks: the ball handler shoots, his teammate gets a pass, the court sends the handler there. Shoot/Pass buttons.
-
-WEATHER AND TIME
-- Day / Dusk / Night lighting presets blended over ~1.6 s; floodlights, streetlight, neon and windows at night.
-- Dry / Drizzle / Downpour: rain as short line streaks with splashes. A wetness value rises and slowly dries: the asphalt darkens, puddles spread from low spots in a precomputed depth map and mirror the scene, rain rings flicker in them; feet and the ball splash.
-
-UI
-- Pixel display font (Silkscreen) and a clean body font; light/dark themes via tokens.
-- Controls: Time, Weather (with a court wetness bar), Shoot, Pass, New game, Pause, Turn left/right, Pixel art/Raw 3D, Pixel size, Palette/Dither/Outlines.
-- A "How it's drawn" panel; a stacked mobile layout with no horizontal scroll.
-```
-
-</details>

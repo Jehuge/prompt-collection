@@ -6,13 +6,27 @@
 - **测试模型**：ChatGPT-6 Astra vs Claude Opus 5.5
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2109288662319919127) · [提示词帖](https://x.com/vib3coded/status/2109288858701455535) · 2026-10-11（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 ChatGPT-6 Astra vs Claude Opus 5.5）。这就是 [毛绒鸽子 Plush Pigeon](plush-pigeon.md)、[毛绒西瓜 Plush Watermelon](plush-watermelon.md) 所基于的 "Plush Penguin" 引擎的原始提示词。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 ChatGPT-6 Astra vs Claude Opus 5.5）。这就是 [毛绒鸽子 Plush Pigeon](plush-pigeon.md)、[毛绒西瓜 Plush Watermelon](plush-watermelon.md) 所基于的 "Plush Penguin" 引擎的原始提示词。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![毛绒企鹅 Plush Penguin](../assets/plush-penguin.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a single-file WebGPU "material study" page called "Plush Penguin": editorial studio layout, large italic serif title "Plush / Penguin.", kicker "Material Studies / No. 016", caption "A fluffy egg on two felt feet. It waddles, it toboggans, it falls over — and always gets back up.", live status chip, specimen panel on the right, stats row (Mass, Volume, Steps, Slide in cm), collapsible "Inside the experiment" notes. UI in English, works on mobile.
+
+The toy: a round plush penguin chick — an egg-shaped stuffed body as one SDF meshed with surface nets, a dark cap and back, a pale fluffy face and belly, big glossy safety-glass eyes, a small felt beak, pink cheeks, two flat felt feet. Its flippers are separate cloth pieces (particle cloth sewn to points embedded in the body) that flop, flap and stretch.
+
+Physics: XPBD soft body on a hex lattice (shape-matched cells + tetrahedral volume preservation, live volume readout), skinned to the mesh, standing on a table with Coulomb friction. Locomotion by posture: a weak pull of the whole body toward its rest shape turned to an orientation and carried with its centre of mass, so the stuffing does the moving. Behaviours: Waddle (rocks side to side, lifting each foot and setting it down ahead), Belly slide (a little hop, flops forward onto its tummy and toboggans across the table, then rocks back up), Flap (happy flapping and a couple of hops), Topple (falls onto its back, belly or side and rocks itself upright with an overshoot), Smooth fur, Reset. Finger: it waddles over to your finger; push it and it falls over. Hand: pick it up, squash it, pull a flipper and it comes along.
+
+Fur: real-time shell fur with alpha-to-coverage — long fluffy down on the body, short on the face, combable with a Comb tool (against the grain darker, with it shinier). Sliders: Stuffing, Pile (mm), Table (felt ↔ ice friction, so it slides further on ice). Palettes: Chick, Classic, Little blue. ¼ speed and mesh toggles, Pause. 60 fps.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -39,20 +53,3 @@
 ### 毛发
 
 带 alpha-to-coverage 的实时壳层毛发——身体上是长而蓬松的绒毛，脸上是短毛，可以用 Comb 工具梳理（逆毛方向更暗，顺毛更亮）。滑块：Stuffing、Pile（mm）、Table（桌面：毛毡 ↔ 冰面摩擦，在冰面上滑得更远）。配色：Chick（雏鸟）、Classic（经典）、Little blue（小蓝企鹅）。¼ speed 和 mesh 开关、Pause。60 fps。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a single-file WebGPU "material study" page called "Plush Penguin": editorial studio layout, large italic serif title "Plush / Penguin.", kicker "Material Studies / No. 016", caption "A fluffy egg on two felt feet. It waddles, it toboggans, it falls over — and always gets back up.", live status chip, specimen panel on the right, stats row (Mass, Volume, Steps, Slide in cm), collapsible "Inside the experiment" notes. UI in English, works on mobile.
-
-The toy: a round plush penguin chick — an egg-shaped stuffed body as one SDF meshed with surface nets, a dark cap and back, a pale fluffy face and belly, big glossy safety-glass eyes, a small felt beak, pink cheeks, two flat felt feet. Its flippers are separate cloth pieces (particle cloth sewn to points embedded in the body) that flop, flap and stretch.
-
-Physics: XPBD soft body on a hex lattice (shape-matched cells + tetrahedral volume preservation, live volume readout), skinned to the mesh, standing on a table with Coulomb friction. Locomotion by posture: a weak pull of the whole body toward its rest shape turned to an orientation and carried with its centre of mass, so the stuffing does the moving. Behaviours: Waddle (rocks side to side, lifting each foot and setting it down ahead), Belly slide (a little hop, flops forward onto its tummy and toboggans across the table, then rocks back up), Flap (happy flapping and a couple of hops), Topple (falls onto its back, belly or side and rocks itself upright with an overshoot), Smooth fur, Reset. Finger: it waddles over to your finger; push it and it falls over. Hand: pick it up, squash it, pull a flipper and it comes along.
-
-Fur: real-time shell fur with alpha-to-coverage — long fluffy down on the body, short on the face, combable with a Comb tool (against the grain darker, with it shinier). Sliders: Stuffing, Pile (mm), Table (felt ↔ ice friction, so it slides further on ice). Palettes: Chick, Classic, Little blue. ¼ speed and mesh toggles, Pause. 60 fps.
-```
-
-</details>

@@ -6,13 +6,62 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2110517313413796092) · [提示词帖](https://x.com/vib3coded/status/2110517517395403207) · 2026-10-15（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。结尾的 "publish it as an artifact" 是针对 Claude Artifacts 的要求，其他工具可忽略。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。结尾的 "publish it as an artifact" 是针对 Claude Artifacts 的要求，其他工具可忽略。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![冰山果冻 Iceberg Jelly](../assets/iceberg-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build "Iceberg Jelly" — the next piece in my "Material Studies" series of jelly dioramas: a single self-contained HTML file using WebGPU (WGSL), no external libraries, English UI.
+
+THE SCENE
+A square block of jelly (5.2 × 5.2 units) standing on a pale, cool-grey paper studio backdrop with a soft floor shadow. Inside it, a polar bay:
+- At the back left, a glacier flows down a valley between jagged mountains and ends in an ice cliff standing in deep water. The cliff has vertical runnels and blue bands. The glacier surface has chevron crevasses along its margins, transverse crevasses and seracs near the front, and grey lateral moraines. Its tongue is flanked by moraine banks, so only its front stands in the water.
+- Mountains: a peaky left range and a spur on the right of the glacier, with a snowy ridge along the back. Dark volcanic rock with orange lichen, and snow in ragged patches on flatter and higher ground (not everywhere).
+- At the back right, a low peninsula with an Adélie penguin rookery: an organic, irregular patch of round pebbles stained pink with krill, with pebble-ring nests. Behind it, a small research station (red and yellow huts on stilts, fuel drums, a radio mast with guy wires, a flag, a turning anemometer, a snowmobile) and a timber quay.
+- A ragged skerry of two low rocks off to the front right, where Weddell seals haul out.
+- The sea floor is grey gravel with shells, sponges, sea stars and swaying anemones, visible through the clear jelly front face.
+- The cut faces of the block show candy-coloured strata, dark basalt columns under the land, and layered blue glacier ice with a dirty basal layer under the glacier.
+
+PHYSICS
+- Shallow-water simulation on a ~168² grid for the bay: waves, wakes, foam, refraction, caustics on the floor, light shafts, and absorption that depends on the flavour.
+- Every piece of ice is a rigid body: tabular, dome, pinnacle and wedge bergs, growlers, pancake floes, and glacier slabs. Each is a star-shaped faceted mesh (superellipsoid plus lobes plus two octaves of noise), a lattice of mass points for buoyancy and drag, and contact spheres for ground, walls, each other and the ship. Settle stable poses at load so nothing capsizes at the start.
+- Calving: three slabs stand along the cliff. About once a minute (or on demand) one breaks off with a crack, a puff of ice dust, a splash, spray and a wave, then capsizes until it finds a stable way up. The glacier slowly pushes a new slab out. Old slabs melt away.
+- The displaced water is handed back to the waves without feedback: wakes only when a piece moves fast, splashes when it plunges in. Slow drift makes no waves.
+- The jelly block itself wobbles, shears and squashes, and can be tipped by dragging its side.
+
+LIFE
+- An icebreaker, "Polaris" (red hull with a spoon bow, white superstructure, yellow funnel with smoke, a turning radar, a helideck), lies at the quay. Now and then (or on demand) she casts off, shoulders round the bay through the pack, pushing floes and bergs aside, and comes back alongside. A status line shows Alongside / Casting off / Under way / Breaking ice / Coming alongside, with a countdown or progress.
+- 22 Adélie penguins: blue-black backs, white shirt fronts, white eye rings, pink feet. They stand on nests and look about, have the odd ecstatic display, waddle or toboggan to the beach, dive in, "fly" underwater with beating flippers, porpoise, leap out onto floes and bergs, and slide off when a floe tips. They chase silverfish and thrown fish.
+- 3 Weddell seals (spotted grey) haul out on the skerry and floes, lift their heads, and go for swims.
+- An orca (proper eye patch and grey saddle) patrols deep water, surfaces to blow and dives. Penguins keep clear of it.
+- Schools of silverfish; gentle snowfall.
+
+UI (same layout as the rest of the series)
+Masthead "Material Studies / Iceberg Jelly." with a one-line description. A "WebGPU · Live" status pill. A glass control panel on the right that turns into a bottom sheet on mobile:
+- Buttons: Calve (shows "Wait…" while no slab is ready), Cast off / Full ahead, Throw fish, Horn (Space).
+- A water-energy meter; tallies for Calved, Capsized, Fed; the ship status line.
+- Flavours: Glacier mint, Blue raspberry, Blackberry. Each changes the water's absorption, its tint and the strata.
+- Sliders: Firmness, Wave damping, Snowfall.
+- Reset, Pause, Sound on/off, View.
+- A "How to play" footer.
+Interaction: pick up and throw floes and bergs; drag across the water to make waves; drag the ground or the side of the block to tip it; drag empty space or right-drag to orbit; scroll or pinch to zoom.
+
+Web Audio sounds: calving crack and rumble, splashes, a capsizing groan, ice knocking on the hull, a deep two-reed ship's horn, penguin plops, and wind that rises with the snowfall.
+
+Show a fallback screen when WebGPU is unavailable. Respect prefers-reduced-motion. No network requests.
+
+QUALITY BAR
+Low-poly faceted ice with chalky snowy tops, glassy blue underwater parts, blue bands, sparkles and translucency. Soft shadows. Cool polar light. Performance around 60 fps on a laptop. Test headlessly: no NaNs over long soaks, a calm start, calving plus capsize, a full ship round trip, feeding, picking up ice, the mobile sheet, and no console errors.
+Deliver the HTML file and publish it as an artifact.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -66,55 +115,3 @@ WebGPU 不可用时显示降级页面。遵守 prefers-reduced-motion。无网�
 低多边形多面冰体，顶部是粉笔质感的积雪，水下部分是玻璃般的蓝色，有蓝色条带、闪光和半透明感。柔和阴影。冷色调的极地光线。在笔记本上约 60 fps。无头测试：长时间运行不出现 NaN，开场平静，崩解加翻覆，船完整往返一次，喂食，捡起冰块，移动端抽屉，无控制台报错。
 
 交付 HTML 文件并将其发布为 artifact。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build "Iceberg Jelly" — the next piece in my "Material Studies" series of jelly dioramas: a single self-contained HTML file using WebGPU (WGSL), no external libraries, English UI.
-
-THE SCENE
-A square block of jelly (5.2 × 5.2 units) standing on a pale, cool-grey paper studio backdrop with a soft floor shadow. Inside it, a polar bay:
-- At the back left, a glacier flows down a valley between jagged mountains and ends in an ice cliff standing in deep water. The cliff has vertical runnels and blue bands. The glacier surface has chevron crevasses along its margins, transverse crevasses and seracs near the front, and grey lateral moraines. Its tongue is flanked by moraine banks, so only its front stands in the water.
-- Mountains: a peaky left range and a spur on the right of the glacier, with a snowy ridge along the back. Dark volcanic rock with orange lichen, and snow in ragged patches on flatter and higher ground (not everywhere).
-- At the back right, a low peninsula with an Adélie penguin rookery: an organic, irregular patch of round pebbles stained pink with krill, with pebble-ring nests. Behind it, a small research station (red and yellow huts on stilts, fuel drums, a radio mast with guy wires, a flag, a turning anemometer, a snowmobile) and a timber quay.
-- A ragged skerry of two low rocks off to the front right, where Weddell seals haul out.
-- The sea floor is grey gravel with shells, sponges, sea stars and swaying anemones, visible through the clear jelly front face.
-- The cut faces of the block show candy-coloured strata, dark basalt columns under the land, and layered blue glacier ice with a dirty basal layer under the glacier.
-
-PHYSICS
-- Shallow-water simulation on a ~168² grid for the bay: waves, wakes, foam, refraction, caustics on the floor, light shafts, and absorption that depends on the flavour.
-- Every piece of ice is a rigid body: tabular, dome, pinnacle and wedge bergs, growlers, pancake floes, and glacier slabs. Each is a star-shaped faceted mesh (superellipsoid plus lobes plus two octaves of noise), a lattice of mass points for buoyancy and drag, and contact spheres for ground, walls, each other and the ship. Settle stable poses at load so nothing capsizes at the start.
-- Calving: three slabs stand along the cliff. About once a minute (or on demand) one breaks off with a crack, a puff of ice dust, a splash, spray and a wave, then capsizes until it finds a stable way up. The glacier slowly pushes a new slab out. Old slabs melt away.
-- The displaced water is handed back to the waves without feedback: wakes only when a piece moves fast, splashes when it plunges in. Slow drift makes no waves.
-- The jelly block itself wobbles, shears and squashes, and can be tipped by dragging its side.
-
-LIFE
-- An icebreaker, "Polaris" (red hull with a spoon bow, white superstructure, yellow funnel with smoke, a turning radar, a helideck), lies at the quay. Now and then (or on demand) she casts off, shoulders round the bay through the pack, pushing floes and bergs aside, and comes back alongside. A status line shows Alongside / Casting off / Under way / Breaking ice / Coming alongside, with a countdown or progress.
-- 22 Adélie penguins: blue-black backs, white shirt fronts, white eye rings, pink feet. They stand on nests and look about, have the odd ecstatic display, waddle or toboggan to the beach, dive in, "fly" underwater with beating flippers, porpoise, leap out onto floes and bergs, and slide off when a floe tips. They chase silverfish and thrown fish.
-- 3 Weddell seals (spotted grey) haul out on the skerry and floes, lift their heads, and go for swims.
-- An orca (proper eye patch and grey saddle) patrols deep water, surfaces to blow and dives. Penguins keep clear of it.
-- Schools of silverfish; gentle snowfall.
-
-UI (same layout as the rest of the series)
-Masthead "Material Studies / Iceberg Jelly." with a one-line description. A "WebGPU · Live" status pill. A glass control panel on the right that turns into a bottom sheet on mobile:
-- Buttons: Calve (shows "Wait…" while no slab is ready), Cast off / Full ahead, Throw fish, Horn (Space).
-- A water-energy meter; tallies for Calved, Capsized, Fed; the ship status line.
-- Flavours: Glacier mint, Blue raspberry, Blackberry. Each changes the water's absorption, its tint and the strata.
-- Sliders: Firmness, Wave damping, Snowfall.
-- Reset, Pause, Sound on/off, View.
-- A "How to play" footer.
-Interaction: pick up and throw floes and bergs; drag across the water to make waves; drag the ground or the side of the block to tip it; drag empty space or right-drag to orbit; scroll or pinch to zoom.
-
-Web Audio sounds: calving crack and rumble, splashes, a capsizing groan, ice knocking on the hull, a deep two-reed ship's horn, penguin plops, and wind that rises with the snowfall.
-
-Show a fallback screen when WebGPU is unavailable. Respect prefers-reduced-motion. No network requests.
-
-QUALITY BAR
-Low-poly faceted ice with chalky snowy tops, glassy blue underwater parts, blue bands, sparkles and translucency. Soft shadows. Cool polar light. Performance around 60 fps on a laptop. Test headlessly: no NaNs over long soaks, a calm start, calving plus capsize, a full ship round trip, feeding, picking up ice, the mobile sheet, and no console errors.
-Deliver the HTML file and publish it as an artifact.
-```
-
-</details>

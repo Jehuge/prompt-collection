@@ -6,13 +6,70 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2107617244301664483) · [提示词帖](https://x.com/vib3coded/status/2107617476473164210) · 2026-10-07（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。提示词里提到的「Island Jelly」是作者此前同系列的作品，源码未公开；没有原作时可让 AI 按文中描述从头搭建。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。提示词里提到的「Island Jelly」是作者此前同系列的作品，源码未公开；没有原作时可让 AI 按文中描述从头搭建。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![别墅果冻 Villa Jelly](../assets/villa-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build "Villa Jelly" — a single self-contained HTML file (no external requests, no libraries) using native WebGPU + WGSL, simulation in plain JS. It belongs to an editorial "MATERIAL STUDIES" series of interactive jelly dioramas. Scene: a square cut-out block of jelly showing a tropical island with a modern white villa at the back and a turquoise lagoon wrapping the two front edges, like a miniature real-estate diorama — but the sea is a wobbling block of jelly with candy-striped strata visible through its cut faces. Must run smoothly (sim ≈3 ms/frame).
+
+PAGE / LAYOUT (warm paper editorial)
+- Paper #ece9e3, ink #241f1d, rules #d5d0c8, accent #17a39b (turquoise). Serif italic display (Iowan Old Style / Palatino / Georgia), sans UI, mono numbers.
+- Top-left: eyebrow "MATERIAL STUDIES", huge italic H1 "Villa / Jelly.", short rule, caption "A white house, ten palms, a boat that never sits still and a sea that wobbles back."
+- Top-right status pill: green dot + "WEBGPU · LIVE" (Paused / Unavailable states).
+- Right glass panel:
+  • "THE SEA": three dark buttons in a row — "Beach ball", "Rubber duck", "Starfish" (each drops one into the lagoon from above); thin accent meter showing how lively the sea is; tally "Afloat · Sunk · Ashore".
+  • "FLAVOUR": three swatches with glossy jelly balls — Turquoise (default), Curaçao (vivid blue), Raspberry (pink).
+  • Sliders: Firmness 50, Wave damping 30, Tide 0 (±10 cm).
+  • Reset · Pause · Reset view.
+- Bottom-left "HOW TO PLAY": italic "Stir the sea. Tip the block. Throw a duck." + small grey line: "Drag across the water to make waves and watch the boat ride them · drag the side of the block to tip it and slosh the lagoon · grab the boat to steer it, let go and it carries on · pick up a ball, a duck or a starfish and throw it · drag a palm to bend it · drag empty space or right-drag to orbit · scroll or pinch to zoom".
+- Centre the diorama in the free space between masthead and panel. Mobile: panel becomes a bottom sheet ("Controls" bar, closed by default), touch orbit, pinch zoom, no page scroll. Fallback card "Villa Jelly." if WebGPU/adapter missing. Zero console errors.
+
+THE DIORAMA (block 5.2 × 5.2, sea level 1.3)
+- Terrain heightfield: the island fills the back ~60% of the tile; wavy shorelines run along the +z and +x edges (soft-max rounded front corner), so the lagoon is an L along the two edges facing the camera (camera from the front corner, az ≈0.74, el ≈0.5, FOV 34°).
+- Profile from sea inland: lagoon floor ≈0.5 deep with sand ripples → short beach slope → narrow sandy beach → steep sandy bank → raised lawn plateau (+0.455). Lawn is striped by a mower, slightly glossy like lime jelly; pale paving slabs for a patio, a terrace strip in front of the glass and a path to the stairs.
+- Cut faces of the block: candy strata (chocolate bedrock, caramel clay, a mint/blue/pink shell band depending on flavour, vanilla sand, wet sand under the sea; under the lawn: dark soil then a green grass band on top) with pressed-in pebble specks. The sea's cut faces are translucent jelly walls with a bright meniscus line and soft corner lines; you see the seabed and strata through them.
+- Villa (white, modern, boxy): stone plinth; ground floor with a full-height dark glass front split by white mullions; garage wing with dark slatted door; floor slab that runs forward as a balcony on four slim white columns with a dark metal rail; upper floor with a long glass band; a white fin wall at the left end; thin overhanging white roof slab with grey inset, small roof box. Dark glass reflects the studio softbox with a dim warm room behind.
+- Pergola over the patio: four dark metal posts, beams, a sagging beige canvas that breathes in the breeze; L-shaped outdoor sofa with cushions, low table, rug.
+- White stairs with cheek walls from the lawn down the bank to the beach, two garden lamps at the top.
+- Beach: white umbrella (scalloped, flutters), two white loungers, red kayak with paddle; beach grass tufts; rocks on the bank, beach and lagoon floor.
+- LUSH vegetation (important — no sparse, bald trees): 10 tall coconut palms with ringed caramel-gummy trunks (swollen foot, curving lean) and full crowns of 16 arching pinnate fronds each (30 leaflet pairs, V-folded, swept to the tip, young fronds upright, old ones drooping) plus 2 dry straw-coloured hanging fronds; dozens of lumpy gummy bushes along the lawn edge and around the house, some with pink/red/white flowers.
+
+PHYSICS (same as "Island Jelly")
+- Sea: linear shallow-water sim on a 168² staggered grid at 120 Hz, wave speed √(g·depth) so waves slow and steepen over the shallows, small surface-tension term for springy jelly ripples, damping slider, mean-level correction, tide slider changes the level and the wet area.
+- Block: drag its side to tip it (spring-damper, max ~0.17 rad); in-plane gravity makes the sea slosh to the low side and settle; the jelly top shears and squashes with inertia; everything inside is wobbled in the vertex shader.
+- Finger stirring: dragging over the water pushes moving dents that make waves.
+- Floating bodies (rigid spheres in block frame, 240 Hz): buoyancy along the surface normal, heavy jelly drag towards the flow, displaced volume handed back to the sea every frame (they make their own ripples), splash craters with bubbles and foam on entry, tiny air bubbles suspended in the jelly. Contacts with terrain, palm trunks, villa boxes, each other and the boat.
+  • Beach ball: r 0.085, very light, floats high, bounces and skips, rolls; six coloured gores (red, blue, yellow) with white caps, glossy vinyl.
+  • Rubber duck: floats half-in, always rights itself head-up (aligns to surface or ground normal), yellow body, orange beak, black eyes.
+  • Starfish: sinks slowly, planes down through the jelly, settles flat against the floor; coral/pink/purple with sugared knobs.
+  Start state: one ball on the beach, one on the lawn, two ducks afloat, two starfish on the lagoon floor.
+- Palms: one 2D bend spring per crown driven by breeze, block tilt and user drag; vertex shader bends the trunk (∝t²) and flutters frond tips.
+
+THE BOAT (runs by itself)
+- Small white day cruiser (scaled hull ~0.62 long): deep-V lofted hull with navy bottom and boot stripe, white deck, teak cockpit sole, aft bench, helm seats, low cabin with dark raked windscreen and side windows, white hard-top on slim posts, twin dark outboards, stainless bow rail.
+- Floats on the sim: 8 hull points give heave/pitch/roll from the local surface (own trough clamped so it can't sink into it), noses up with speed, leans into turns; in-plane: pushed (capped) down wave slopes, dragged by the flow, low drag fore-aft and high sideways (keel), terrain penalty if it touches sand, bounces off block walls.
+- Autopilot: pure-pursuit around a closed racetrack loop following the L-shaped lagoon (out along the outer lane, round the corner, U-turn, back along the inner lane), slowing in bends, cruise ≈0.78 u/s, never grounds.
+- It displaces water as it moves → a real wake in the wave sim that runs up the beach; plus a foam field: white lacy trail from the stern, side lines and bow spray, fading over a few seconds.
+- User can grab and tow it by the bow across the water; released, it finds the nearest point of its loop and carries on. It shoves floating ducks/balls aside.
+
+RENDERING
+- Passes: sun shadow map (everything), caustics (refract a grid through the waves onto the floor, brightness by triangle area change), opaque scene with distance buffer, back-faces of the sea, then the jelly sea over a copy of the scene: Beer–Lambert absorption by path length (flavour sigma), scattered tint, refraction, caustic light shafts, Fresnel studio reflection, sun glints, shoreline lace foam that laps the sand, wake/splash foam field, rim highlights. The floor under the block gets a tinted, caustic-flecked shadow.
+- Soft studio lighting: paper backdrop, big softbox front-left, cool strip behind; hemispherical ambient; tone shoulder + dither.
+- Materials: matte painted render and stone, dark reflective glass, glossy gel-coat/metal, translucent canvas, gummy translucent shrubs and palm fronds (backlit glow), matte speckled rocks.
+- Flavours swap water sigma/tint and strata colours: Turquoise (sigma ≈ 2.1/0.36/0.5, tint 0.07/0.46/0.42), Curaçao (2.7/1.05/0.26, tint 0.02/0.2/0.52), Raspberry (0.34/2.2/1.25, tint 0.44/0.05/0.17).
+
+QA (headless Chromium + SwiftShader)
+- Debug hook window.__vj (world, boat, bodies, water, block, advance, drop, pick, project, setPalette, reset, setPause, freeze flag). Verify: 6 starting bodies and tally 2/2/2; villa + 10 palms built; boat laps ≥6 units in 14 s without grounding and leaves foam + waves; idle stability; dropped ball floats high, duck upright, starfish sunk flat; tally UI matches; stirring makes waves that die down; tipping the block piles the sea on the low side and settles back; boat can be grabbed, towed and resumes its course; ball thrown into sea bobs, duck put on the beach sits upright; palms bend; flavours, sliders, pause, orbit, zoom; stress test with no NaN; sim < 5 ms/frame; no network requests; no console errors; no page scroll; mobile sheet + touch; WebGPU fallback.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -72,63 +129,3 @@
 ### QA（无头 Chromium + SwiftShader）
 
 - 调试钩子 window.__vj（world、boat、bodies、water、block、advance、drop、pick、project、setPalette、reset、setPause、freeze 标志）。验证：6 个初始物体且计数为 2/2/2；别墅 + 10 棵棕榈树已构建；船在 14 秒内绕行 ≥6 单位且不搁浅，并留下泡沫和波浪；空闲稳定性；丢下的球浮得高、鸭子直立、海星平沉；计数 UI 一致；搅动产生的波浪会平息；倾斜块时海水堆向低侧并恢复；船可以被抓住、拖动并恢复航线；扔进海里的球会上下浮动，放在海滩上的鸭子直立；棕榈树会弯；口味、滑块、暂停、环绕、缩放正常；压力测试无 NaN；模拟 < 5 ms/帧；无网络请求；无控制台报错；页面不滚动；移动端抽屉 + 触摸；WebGPU 降级。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build "Villa Jelly" — a single self-contained HTML file (no external requests, no libraries) using native WebGPU + WGSL, simulation in plain JS. It belongs to an editorial "MATERIAL STUDIES" series of interactive jelly dioramas. Scene: a square cut-out block of jelly showing a tropical island with a modern white villa at the back and a turquoise lagoon wrapping the two front edges, like a miniature real-estate diorama — but the sea is a wobbling block of jelly with candy-striped strata visible through its cut faces. Must run smoothly (sim ≈3 ms/frame).
-
-PAGE / LAYOUT (warm paper editorial)
-- Paper #ece9e3, ink #241f1d, rules #d5d0c8, accent #17a39b (turquoise). Serif italic display (Iowan Old Style / Palatino / Georgia), sans UI, mono numbers.
-- Top-left: eyebrow "MATERIAL STUDIES", huge italic H1 "Villa / Jelly.", short rule, caption "A white house, ten palms, a boat that never sits still and a sea that wobbles back."
-- Top-right status pill: green dot + "WEBGPU · LIVE" (Paused / Unavailable states).
-- Right glass panel:
-  • "THE SEA": three dark buttons in a row — "Beach ball", "Rubber duck", "Starfish" (each drops one into the lagoon from above); thin accent meter showing how lively the sea is; tally "Afloat · Sunk · Ashore".
-  • "FLAVOUR": three swatches with glossy jelly balls — Turquoise (default), Curaçao (vivid blue), Raspberry (pink).
-  • Sliders: Firmness 50, Wave damping 30, Tide 0 (±10 cm).
-  • Reset · Pause · Reset view.
-- Bottom-left "HOW TO PLAY": italic "Stir the sea. Tip the block. Throw a duck." + small grey line: "Drag across the water to make waves and watch the boat ride them · drag the side of the block to tip it and slosh the lagoon · grab the boat to steer it, let go and it carries on · pick up a ball, a duck or a starfish and throw it · drag a palm to bend it · drag empty space or right-drag to orbit · scroll or pinch to zoom".
-- Centre the diorama in the free space between masthead and panel. Mobile: panel becomes a bottom sheet ("Controls" bar, closed by default), touch orbit, pinch zoom, no page scroll. Fallback card "Villa Jelly." if WebGPU/adapter missing. Zero console errors.
-
-THE DIORAMA (block 5.2 × 5.2, sea level 1.3)
-- Terrain heightfield: the island fills the back ~60% of the tile; wavy shorelines run along the +z and +x edges (soft-max rounded front corner), so the lagoon is an L along the two edges facing the camera (camera from the front corner, az ≈0.74, el ≈0.5, FOV 34°).
-- Profile from sea inland: lagoon floor ≈0.5 deep with sand ripples → short beach slope → narrow sandy beach → steep sandy bank → raised lawn plateau (+0.455). Lawn is striped by a mower, slightly glossy like lime jelly; pale paving slabs for a patio, a terrace strip in front of the glass and a path to the stairs.
-- Cut faces of the block: candy strata (chocolate bedrock, caramel clay, a mint/blue/pink shell band depending on flavour, vanilla sand, wet sand under the sea; under the lawn: dark soil then a green grass band on top) with pressed-in pebble specks. The sea's cut faces are translucent jelly walls with a bright meniscus line and soft corner lines; you see the seabed and strata through them.
-- Villa (white, modern, boxy): stone plinth; ground floor with a full-height dark glass front split by white mullions; garage wing with dark slatted door; floor slab that runs forward as a balcony on four slim white columns with a dark metal rail; upper floor with a long glass band; a white fin wall at the left end; thin overhanging white roof slab with grey inset, small roof box. Dark glass reflects the studio softbox with a dim warm room behind.
-- Pergola over the patio: four dark metal posts, beams, a sagging beige canvas that breathes in the breeze; L-shaped outdoor sofa with cushions, low table, rug.
-- White stairs with cheek walls from the lawn down the bank to the beach, two garden lamps at the top.
-- Beach: white umbrella (scalloped, flutters), two white loungers, red kayak with paddle; beach grass tufts; rocks on the bank, beach and lagoon floor.
-- LUSH vegetation (important — no sparse, bald trees): 10 tall coconut palms with ringed caramel-gummy trunks (swollen foot, curving lean) and full crowns of 16 arching pinnate fronds each (30 leaflet pairs, V-folded, swept to the tip, young fronds upright, old ones drooping) plus 2 dry straw-coloured hanging fronds; dozens of lumpy gummy bushes along the lawn edge and around the house, some with pink/red/white flowers.
-
-PHYSICS (same as "Island Jelly")
-- Sea: linear shallow-water sim on a 168² staggered grid at 120 Hz, wave speed √(g·depth) so waves slow and steepen over the shallows, small surface-tension term for springy jelly ripples, damping slider, mean-level correction, tide slider changes the level and the wet area.
-- Block: drag its side to tip it (spring-damper, max ~0.17 rad); in-plane gravity makes the sea slosh to the low side and settle; the jelly top shears and squashes with inertia; everything inside is wobbled in the vertex shader.
-- Finger stirring: dragging over the water pushes moving dents that make waves.
-- Floating bodies (rigid spheres in block frame, 240 Hz): buoyancy along the surface normal, heavy jelly drag towards the flow, displaced volume handed back to the sea every frame (they make their own ripples), splash craters with bubbles and foam on entry, tiny air bubbles suspended in the jelly. Contacts with terrain, palm trunks, villa boxes, each other and the boat.
-  • Beach ball: r 0.085, very light, floats high, bounces and skips, rolls; six coloured gores (red, blue, yellow) with white caps, glossy vinyl.
-  • Rubber duck: floats half-in, always rights itself head-up (aligns to surface or ground normal), yellow body, orange beak, black eyes.
-  • Starfish: sinks slowly, planes down through the jelly, settles flat against the floor; coral/pink/purple with sugared knobs.
-  Start state: one ball on the beach, one on the lawn, two ducks afloat, two starfish on the lagoon floor.
-- Palms: one 2D bend spring per crown driven by breeze, block tilt and user drag; vertex shader bends the trunk (∝t²) and flutters frond tips.
-
-THE BOAT (runs by itself)
-- Small white day cruiser (scaled hull ~0.62 long): deep-V lofted hull with navy bottom and boot stripe, white deck, teak cockpit sole, aft bench, helm seats, low cabin with dark raked windscreen and side windows, white hard-top on slim posts, twin dark outboards, stainless bow rail.
-- Floats on the sim: 8 hull points give heave/pitch/roll from the local surface (own trough clamped so it can't sink into it), noses up with speed, leans into turns; in-plane: pushed (capped) down wave slopes, dragged by the flow, low drag fore-aft and high sideways (keel), terrain penalty if it touches sand, bounces off block walls.
-- Autopilot: pure-pursuit around a closed racetrack loop following the L-shaped lagoon (out along the outer lane, round the corner, U-turn, back along the inner lane), slowing in bends, cruise ≈0.78 u/s, never grounds.
-- It displaces water as it moves → a real wake in the wave sim that runs up the beach; plus a foam field: white lacy trail from the stern, side lines and bow spray, fading over a few seconds.
-- User can grab and tow it by the bow across the water; released, it finds the nearest point of its loop and carries on. It shoves floating ducks/balls aside.
-
-RENDERING
-- Passes: sun shadow map (everything), caustics (refract a grid through the waves onto the floor, brightness by triangle area change), opaque scene with distance buffer, back-faces of the sea, then the jelly sea over a copy of the scene: Beer–Lambert absorption by path length (flavour sigma), scattered tint, refraction, caustic light shafts, Fresnel studio reflection, sun glints, shoreline lace foam that laps the sand, wake/splash foam field, rim highlights. The floor under the block gets a tinted, caustic-flecked shadow.
-- Soft studio lighting: paper backdrop, big softbox front-left, cool strip behind; hemispherical ambient; tone shoulder + dither.
-- Materials: matte painted render and stone, dark reflective glass, glossy gel-coat/metal, translucent canvas, gummy translucent shrubs and palm fronds (backlit glow), matte speckled rocks.
-- Flavours swap water sigma/tint and strata colours: Turquoise (sigma ≈ 2.1/0.36/0.5, tint 0.07/0.46/0.42), Curaçao (2.7/1.05/0.26, tint 0.02/0.2/0.52), Raspberry (0.34/2.2/1.25, tint 0.44/0.05/0.17).
-
-QA (headless Chromium + SwiftShader)
-- Debug hook window.__vj (world, boat, bodies, water, block, advance, drop, pick, project, setPalette, reset, setPause, freeze flag). Verify: 6 starting bodies and tally 2/2/2; villa + 10 palms built; boat laps ≥6 units in 14 s without grounding and leaves foam + waves; idle stability; dropped ball floats high, duck upright, starfish sunk flat; tally UI matches; stirring makes waves that die down; tipping the block piles the sea on the low side and settles back; boat can be grabbed, towed and resumes its course; ball thrown into sea bobs, duck put on the beach sits upright; palms bend; flavours, sliders, pause, orbit, zoom; stress test with no NaN; sim < 5 ms/frame; no network requests; no console errors; no page scroll; mobile sheet + touch; WebGPU fallback.
-```
-
-</details>

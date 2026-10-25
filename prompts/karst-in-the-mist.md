@@ -6,13 +6,57 @@
 - **测试模型**：Claude Sonnet 5.5 vs GPT-6.1 Sol
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2111242759860351300) · [提示词帖](https://x.com/vib3coded/status/2111242878546813096) · 2026-10-17（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Sonnet 5.5 vs GPT-6.1 Sol）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Sonnet 5.5 vs GPT-6.1 Sol）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![雾中喀斯特 Karst in the Mist](../assets/karst-in-the-mist.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a single-file interactive WebGL diorama (one index.html, no build step) with Three.js r160 loaded via an import map from cdn.jsdelivr.net, plus OrbitControls and BufferGeometryUtils (mergeVertices, mergeGeometries) from three/examples/jsm. Everything is procedural — no external models or textures. English UI.
+
+CONCEPT
+"Karst in the Mist": a miniature of the Li River karst near Guilin inside a 10×10 block of clear jade-green water with rounded edges (vertical corner radius ~0.6, top edge radius ~0.26), on a thin sand-colored base slab, on a rice-paper background with a soft floor shadow that fades out with distance.
+
+TERRAIN
+- Heightfield river bed (~340×340, clipped to the rounded block, with a boundary skirt so the cross-section shows through the water): deep silty bed around -0.9, a winding central channel (center u = 0.2 − 0.35·sin(0.9·v) in a camera-facing local frame), small grassy banks around some tower feet, and one low islet for a pavilion. Darker river-silt colors (not bright sand), wet band at the waterline, procedural caustics only on the bed.
+
+KARST TOWERS (the hero)
+- ~20 towers placed by rejection sampling: radius 0.36–0.96, keep the channel and the pavilion islet clear, allow slight overlaps for twin peaks, heights growing toward the back (≈1.0 in front to ≈4.0 at the back), plus one tall hero tower at the back.
+- Each tower is a deformed cylinder (≈64 rings × 72 segments) from below the river bed to its apex: conical sugarloaf profile r = R·(1 − s^1.85)^0.5·(1 + 0.1·s(1−s)) with s = y/H, slightly wider below water, an undercut erosion notch at the waterline, horizontal bedding ledges (small sine on the radius), vertical flutes from 2D noise sampled on (cosθ, sinθ) with slow variation in y, and a gentle lean toward the top.
+- IMPORTANT: wind the triangles so the faces point OUTWARD (for ring j, segment i: a=(j,i), b=(j,i+1), c=(j+1,i), d=(j+1,i+1) → triangles a,c,b and b,c,d), then computeVertexNormals. Inward winding makes the towers look hollow/transparent and breaks every normal-based rule below.
+- Stone shader (world space): light limestone with noise variation, darker vertical drip stains, rusty orange streaks, subtle bedding bands, moss on upward-facing surfaces (smoothstep on normal.y plus noise) starting a little above the water, darker wet band at the waterline, algae below it; procedural bump from dFdx/dFdy.
+- Vegetation from the tower vertices with outward normals: sparse larger canopy blobs on upward-facing ledges and the summits (InstancedMesh of displaced icospheres, detail 2, per-instance AO), and many small shrub blobs on the slopes (separate InstancedMesh, detail 1); leave bare cliff patches via noise. Olive-to-fresh-green palette.
+- Bamboo clumps on the banks and the islet (thin leaning culms + small light-green leaf blobs), boulders at the tower feet.
+- A small Chinese pavilion on the islet: stone plinth, four red columns with beams, a square roof with strongly upturned corners (hip-roof generator with concave profile and lifted eaves), gold finial, a lantern inside.
+
+RAFT
+- A bamboo raft (7 poles with lashings), a fisherman in a conical straw hat holding a long pole, two black cormorants, and a lantern on a pole at the bow (emissive + point light at twilight).
+- It follows a loop of waypoints along the channel, steers around towers (repulsion) and away from shallow water, bobs and tilts with a JS copy of the shader's ambient wave function, and injects a wake into the ripple simulation every frame. Clicking the water sends it to that point.
+
+WATER (realistic, not jelly)
+- Pipeline: opaque scene → MSAA HalfFloat target with DepthTexture; copy to a second target; draw the water with a custom ShaderMaterial doing a manual depth test; then mist layers and rain; final fullscreen pass with ACES tone mapping, sRGB and a subtle tilt-shift. Transparent canvas over the CSS background.
+- Color from real thickness (Beer–Lambert toward a deep jade scatter color derived from the user's water color), screen-space refraction, Fresnel sky reflection, and screen-space reflections (~28 ray-march steps) so the towers mirror in the calm river. Keep sun glints and detail normals subtle — a calm river, not glitter.
+- Ripples: GPU wave equation on a 256×256 HalfFloat ping-pong target with a land mask that includes the tower footprints, two drop slots (cursor path + raft wake), and rain: a per-texel hashed random impulse each step whose probability follows the rain amount. Shore foam only on gentle slopes near the water level.
+
+MIST (signature mechanic)
+- 4–6 horizontal noise layers between y≈0.05 and 1.55 over the block (denser low, thinner high, faded at the block edges), drifting slowly, rendered after the water with alpha blending, a manual depth test against the scene depth and a soft fade near geometry so the towers rise through it.
+- A 128×128 HalfFloat "clearing mask" ping-pong texture: the cursor path carves a soft channel, the raft keeps a small clearing around itself, a click punches a hole, and the mask refills over a few seconds. The layers multiply their alpha by the mask.
+- Mist colors follow the time of day (pink-gold at dawn, neutral at noon, apricot-mauve at dusk, grey in rain).
+
+RAIN & TIME OF DAY
+- Rain toggle: animated amount 0 ↔ 0.75 that drives the sim impulses, ~500 thin camera-facing streak quads that respawn when they hit water or ground, a greyer and dimmer light, and reduced ripple foam.
+- Time of day slider shown as a clock 05:30–19:30: sun elevation follows sin(π·t), azimuth swings ±55°, warm twilight colors at both ends, sky reflection and hemisphere colors shift, lanterns glow at twilight.
+
+UI (editorial, minimal)
+Brand "lijiang°" with a small three-peak mark, headline "Mountains that grow / out of the river.", eyebrow "Stone forest and river, in miniature", vertical caption "A study of mist and stone", location "Li River Bend · 24°55′ N · 110°31′ E", a floating pill dock (reset, Mist toggle, Rain toggle, Tune, fullscreen), hints ("Move — part the mist", "Click the water — send the raft", "Drag — rotate", "Scroll — zoom"), adaptive FPS + clock in the footer, a glassy settings panel (mist, rain, time of day; water color, wave height, ripple strength, clarity, caustics; sun azimuth, tilt-shift) and a "How it's made" card. Jade accent, light and dark themes via CSS tokens, responsive to 390 px, prefers-reduced-motion respected, adaptive pixel ratio and a lighter mode for touch devices. Intro: the water fills the block while the camera eases in.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -61,50 +105,3 @@
 ### UI（编辑风格、极简）
 
 品牌标识 "lijiang°" 配一个三峰小标志，标题 "Mountains that grow / out of the river."，眉标 "Stone forest and river, in miniature"，竖排说明文字 "A study of mist and stone"，地点 "Li River Bend · 24°55′ N · 110°31′ E"，一个悬浮胶囊工具栏（reset、Mist 开关、Rain 开关、Tune、全屏），提示（"Move — part the mist"、"Click the water — send the raft"、"Drag — rotate"、"Scroll — zoom"），页脚放自适应 FPS + 时钟，一个玻璃质感的设置面板（雾、雨、时间；水色、波高、涟漪强度、清澈度、焦散；太阳方位角、移轴），以及一张 "How it's made" 卡片。翡翠色强调色，通过 CSS token 实现亮色和暗色主题，响应式适配到 390 px，遵守 prefers-reduced-motion，自适应像素比，并为触屏设备提供更轻量的模式。开场：水注满水块，同时相机缓缓推近。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a single-file interactive WebGL diorama (one index.html, no build step) with Three.js r160 loaded via an import map from cdn.jsdelivr.net, plus OrbitControls and BufferGeometryUtils (mergeVertices, mergeGeometries) from three/examples/jsm. Everything is procedural — no external models or textures. English UI.
-
-CONCEPT
-"Karst in the Mist": a miniature of the Li River karst near Guilin inside a 10×10 block of clear jade-green water with rounded edges (vertical corner radius ~0.6, top edge radius ~0.26), on a thin sand-colored base slab, on a rice-paper background with a soft floor shadow that fades out with distance.
-
-TERRAIN
-- Heightfield river bed (~340×340, clipped to the rounded block, with a boundary skirt so the cross-section shows through the water): deep silty bed around -0.9, a winding central channel (center u = 0.2 − 0.35·sin(0.9·v) in a camera-facing local frame), small grassy banks around some tower feet, and one low islet for a pavilion. Darker river-silt colors (not bright sand), wet band at the waterline, procedural caustics only on the bed.
-
-KARST TOWERS (the hero)
-- ~20 towers placed by rejection sampling: radius 0.36–0.96, keep the channel and the pavilion islet clear, allow slight overlaps for twin peaks, heights growing toward the back (≈1.0 in front to ≈4.0 at the back), plus one tall hero tower at the back.
-- Each tower is a deformed cylinder (≈64 rings × 72 segments) from below the river bed to its apex: conical sugarloaf profile r = R·(1 − s^1.85)^0.5·(1 + 0.1·s(1−s)) with s = y/H, slightly wider below water, an undercut erosion notch at the waterline, horizontal bedding ledges (small sine on the radius), vertical flutes from 2D noise sampled on (cosθ, sinθ) with slow variation in y, and a gentle lean toward the top.
-- IMPORTANT: wind the triangles so the faces point OUTWARD (for ring j, segment i: a=(j,i), b=(j,i+1), c=(j+1,i), d=(j+1,i+1) → triangles a,c,b and b,c,d), then computeVertexNormals. Inward winding makes the towers look hollow/transparent and breaks every normal-based rule below.
-- Stone shader (world space): light limestone with noise variation, darker vertical drip stains, rusty orange streaks, subtle bedding bands, moss on upward-facing surfaces (smoothstep on normal.y plus noise) starting a little above the water, darker wet band at the waterline, algae below it; procedural bump from dFdx/dFdy.
-- Vegetation from the tower vertices with outward normals: sparse larger canopy blobs on upward-facing ledges and the summits (InstancedMesh of displaced icospheres, detail 2, per-instance AO), and many small shrub blobs on the slopes (separate InstancedMesh, detail 1); leave bare cliff patches via noise. Olive-to-fresh-green palette.
-- Bamboo clumps on the banks and the islet (thin leaning culms + small light-green leaf blobs), boulders at the tower feet.
-- A small Chinese pavilion on the islet: stone plinth, four red columns with beams, a square roof with strongly upturned corners (hip-roof generator with concave profile and lifted eaves), gold finial, a lantern inside.
-
-RAFT
-- A bamboo raft (7 poles with lashings), a fisherman in a conical straw hat holding a long pole, two black cormorants, and a lantern on a pole at the bow (emissive + point light at twilight).
-- It follows a loop of waypoints along the channel, steers around towers (repulsion) and away from shallow water, bobs and tilts with a JS copy of the shader's ambient wave function, and injects a wake into the ripple simulation every frame. Clicking the water sends it to that point.
-
-WATER (realistic, not jelly)
-- Pipeline: opaque scene → MSAA HalfFloat target with DepthTexture; copy to a second target; draw the water with a custom ShaderMaterial doing a manual depth test; then mist layers and rain; final fullscreen pass with ACES tone mapping, sRGB and a subtle tilt-shift. Transparent canvas over the CSS background.
-- Color from real thickness (Beer–Lambert toward a deep jade scatter color derived from the user's water color), screen-space refraction, Fresnel sky reflection, and screen-space reflections (~28 ray-march steps) so the towers mirror in the calm river. Keep sun glints and detail normals subtle — a calm river, not glitter.
-- Ripples: GPU wave equation on a 256×256 HalfFloat ping-pong target with a land mask that includes the tower footprints, two drop slots (cursor path + raft wake), and rain: a per-texel hashed random impulse each step whose probability follows the rain amount. Shore foam only on gentle slopes near the water level.
-
-MIST (signature mechanic)
-- 4–6 horizontal noise layers between y≈0.05 and 1.55 over the block (denser low, thinner high, faded at the block edges), drifting slowly, rendered after the water with alpha blending, a manual depth test against the scene depth and a soft fade near geometry so the towers rise through it.
-- A 128×128 HalfFloat "clearing mask" ping-pong texture: the cursor path carves a soft channel, the raft keeps a small clearing around itself, a click punches a hole, and the mask refills over a few seconds. The layers multiply their alpha by the mask.
-- Mist colors follow the time of day (pink-gold at dawn, neutral at noon, apricot-mauve at dusk, grey in rain).
-
-RAIN & TIME OF DAY
-- Rain toggle: animated amount 0 ↔ 0.75 that drives the sim impulses, ~500 thin camera-facing streak quads that respawn when they hit water or ground, a greyer and dimmer light, and reduced ripple foam.
-- Time of day slider shown as a clock 05:30–19:30: sun elevation follows sin(π·t), azimuth swings ±55°, warm twilight colors at both ends, sky reflection and hemisphere colors shift, lanterns glow at twilight.
-
-UI (editorial, minimal)
-Brand "lijiang°" with a small three-peak mark, headline "Mountains that grow / out of the river.", eyebrow "Stone forest and river, in miniature", vertical caption "A study of mist and stone", location "Li River Bend · 24°55′ N · 110°31′ E", a floating pill dock (reset, Mist toggle, Rain toggle, Tune, fullscreen), hints ("Move — part the mist", "Click the water — send the raft", "Drag — rotate", "Scroll — zoom"), adaptive FPS + clock in the footer, a glassy settings panel (mist, rain, time of day; water color, wave height, ripple strength, clarity, caustics; sun azimuth, tilt-shift) and a "How it's made" card. Jade accent, light and dark themes via CSS tokens, responsive to 390 px, prefers-reduced-motion respected, adaptive pixel ratio and a lighter mode for touch devices. Intro: the water fills the block while the camera eases in.
-```
-
-</details>

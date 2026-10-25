@@ -6,13 +6,71 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2110850396864369001) · [提示词帖](https://x.com/vib3coded/status/2110850719972544882) · 2026-10-16（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![果冻沙袋 Jelly Bag](../assets/jelly-bag.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build "Jelly Bag" — a single-file HTML toy: a hanging boxing heavy bag made of translucent gummy candy that you punch, swing and wobble. Everything in one .html file, English UI only.
+
+TECH
+- three.js r160 as an ES module from https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js (no addons). WebGL2; if unavailable, show a polite fallback message.
+- Custom orbit camera (drag the background to walk around the bag, wheel/pinch to zoom, arrow keys rotate). Use setViewOffset so the bag stays framed beside the UI panel on desktop and above the bottom sheet on mobile.
+- ACES tone mapping, sRGB output, custom PMREM "gym" environment (dark room, one warm overhead lamp).
+
+SHAPE
+- The bag is an SDF: a rounded vertical cylinder (radius 0.42, half-height 0.8, edge rounding 0.15) with a slight barrel bulge in the middle (+4.5% radius at mid-height).
+- Mesh it with surface nets (cell ~0.017), snap vertices to the surface, normals from the SDF gradient.
+- Hardware: a steel chain of ~34 alternating torus links from the ceiling, a swivel and a ring, then four dark leather straps from the ring down to the top of the bag. The straps are boxes re-stretched every frame between the ring and the deformed attachment points.
+- About 120 tiny air bubbles suspended inside the jelly (instanced spheres) that ride along with the deformation.
+
+SOFT-BODY PHYSICS
+- Lattice of ~200 nodes (spacing 0.155) filling the bag. Neighbour springs plus free-body shape matching: each substep, find the best-fit rotation R (Müller 2016 quaternion extraction, warm-started) and center of mass c. Pull each node toward the goal g = R(r − c0) + c with stiffness kA, plus internal damping, a little air drag and gravity 9. Semi-implicit Euler, 10 substeps per frame.
+- Top-layer nodes hang from the swivel anchor on tension-only rope springs (they pull only when taut). Make the rope damping strong enough that there's no bungee bounce. Run ~150 pre-roll steps so the bag starts settled, then give it a gentle opening swing.
+- Clamp per-node displacement (MAXD ~0.32) so hard hits never fold the surface.
+- Render the deformation on the GPU: upload residuals Rᵀ(x − c) + c0 − r to a float DataTexture. In the vertex shader (onBeforeCompile on MeshPhysicalMaterial), blend them with normalized Gaussian weights (σ ≈ 0.108), compute normals from the analytic Jacobian, then transform P = R·(p + disp − c0) + c.
+- Firmness slider scales the spring stiffness; Wobble damping slider scales the damping.
+
+PUNCHING & SCORING
+- Pick the bag by sphere tracing the SDF in body space.
+- Two red leather boxing gloves (fist, thumb, cuff, white band, dark lining) alternate left/right. Each punch flies in from beside the camera, lands at ~0.075 s, holds briefly, then pulls back by ~0.3 s. On landing, apply an impulse along the camera ray (blended with the inverse surface normal) with Gaussian falloff (σ 0.2): strength 6 + power × 15. A "Gloves" toggle hides them and applies the impulse directly.
+- Quick tap (<160 ms) = jab with power 0.32–0.52. Hold to charge a power punch: a conic charge ring around the cursor fills over ~0.85 s, power up to 1.0.
+- Drag the bag itself to grab it and swing it around on its chain; release to let it swing back.
+- Keyboard: Space = tap to jab / hold to charge; Enter = jab.
+- Punch force in kg ≈ (170 + power × 790) × small random jitter × combo bonus (+4% per chained hit, capped). Ranks: under 300 Featherweight, under 480 Lightweight, under 650 Middleweight, under 820 Heavyweight, otherwise "Knockout!".
+- Combo counts hits landed within a short window. Best score is saved in localStorage; a new best plays a bell "ding" and highlights the rank.
+- A gold force number pops at the hit point and floats up.
+
+LOOK
+- Transmission jelly material: transmission 1, thickness 0.9, IOR 1.36, low roughness, attenuation colour per flavour, clearcoat, sheen, a faint emissive inner glow, DoubleSide.
+- Flavours: Cherry, Blueberry, Lime, Cola (body colour, attenuation, sheen, glow, shadow tint and UI accent change together).
+- Overlay shell (same mesh pushed out along the normal, masked procedurally in the fragment shader with fwidth anti-aliasing and alphaToCoverage):
+  - Every wrap: dark leather top and bottom caps with a stitch line.
+  - Wraps: Classic — a white label panel with "JELLY" and "HEAVY BAG · 100% GUMMY" drawn into a canvas texture with a red border; Stripes — racing stripes; Flames — flames licking up from the bottom; Plain — caps only.
+- Gym scene: dark rubber floor, warm directional lamp above, additive pool of light on the floor, ~90 dust motes drifting in the light, fog tied to camera distance so the bag never disappears on mobile.
+- Planar projected shadow on the floor, tinted by the flavour (multiply blend + stencil, hidden from the transmission pass).
+- Vignette over the canvas.
+
+SOUND (WebAudio, synthesized, off by default)
+- Punch: filtered noise smack + low sine thud, followed by a jelly "boing" (pitch-dropping sine with LFO wobble).
+- New best: a three-partial bell ding.
+
+UI
+- Single dark theme. Fonts: Bebas Neue (display), Onest (UI), JetBrains Mono (labels).
+- Top-left: eyebrow "Confectionery physics · No. 10", big title "Jelly / Bag.", lede "A heavy bag made of gummy candy. It takes every hit and wobbles back for more."
+- How-to card: "Click to jab. Hold to load a power punch." plus drag/Space hints.
+- Right panel: "Round 1 · live" badge, Gloves and Sound toggles. A black scoreboard with a large gold force readout in kg, rank line, a green→gold→red meter bar, Best / Punches / Combo stats and a Reset link. Then Flavour swatches, Wrap swatches, and the Firmness and Wobble damping sliders.
+- Mobile: the panel becomes a bottom sheet (max ~44% height), sliders side by side, smaller title.
+- Accessible labels on the canvas and buttons; respect touch input (no page scroll while punching).
+```
+
+---
 
 ## 提示词（中文）
 
@@ -74,64 +132,3 @@
 - 右侧面板："Round 1 · live" 徽章，Gloves 和 Sound 开关。一块黑色记分板，显示大号金色的力量读数（kg）、等级行、绿→金→红的仪表条、Best / Punches / Combo 统计和一个 Reset 链接。然后是口味色板、包裹样式色板，以及 Firmness 和 Wobble damping 滑块。
 - 移动端：面板变为底部抽屉（最高约 44% 高度），滑块并排，标题更小。
 - canvas 和按钮上有无障碍标签；正确处理触摸输入（击打时页面不滚动）。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build "Jelly Bag" — a single-file HTML toy: a hanging boxing heavy bag made of translucent gummy candy that you punch, swing and wobble. Everything in one .html file, English UI only.
-
-TECH
-- three.js r160 as an ES module from https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js (no addons). WebGL2; if unavailable, show a polite fallback message.
-- Custom orbit camera (drag the background to walk around the bag, wheel/pinch to zoom, arrow keys rotate). Use setViewOffset so the bag stays framed beside the UI panel on desktop and above the bottom sheet on mobile.
-- ACES tone mapping, sRGB output, custom PMREM "gym" environment (dark room, one warm overhead lamp).
-
-SHAPE
-- The bag is an SDF: a rounded vertical cylinder (radius 0.42, half-height 0.8, edge rounding 0.15) with a slight barrel bulge in the middle (+4.5% radius at mid-height).
-- Mesh it with surface nets (cell ~0.017), snap vertices to the surface, normals from the SDF gradient.
-- Hardware: a steel chain of ~34 alternating torus links from the ceiling, a swivel and a ring, then four dark leather straps from the ring down to the top of the bag. The straps are boxes re-stretched every frame between the ring and the deformed attachment points.
-- About 120 tiny air bubbles suspended inside the jelly (instanced spheres) that ride along with the deformation.
-
-SOFT-BODY PHYSICS
-- Lattice of ~200 nodes (spacing 0.155) filling the bag. Neighbour springs plus free-body shape matching: each substep, find the best-fit rotation R (Müller 2016 quaternion extraction, warm-started) and center of mass c. Pull each node toward the goal g = R(r − c0) + c with stiffness kA, plus internal damping, a little air drag and gravity 9. Semi-implicit Euler, 10 substeps per frame.
-- Top-layer nodes hang from the swivel anchor on tension-only rope springs (they pull only when taut). Make the rope damping strong enough that there's no bungee bounce. Run ~150 pre-roll steps so the bag starts settled, then give it a gentle opening swing.
-- Clamp per-node displacement (MAXD ~0.32) so hard hits never fold the surface.
-- Render the deformation on the GPU: upload residuals Rᵀ(x − c) + c0 − r to a float DataTexture. In the vertex shader (onBeforeCompile on MeshPhysicalMaterial), blend them with normalized Gaussian weights (σ ≈ 0.108), compute normals from the analytic Jacobian, then transform P = R·(p + disp − c0) + c.
-- Firmness slider scales the spring stiffness; Wobble damping slider scales the damping.
-
-PUNCHING & SCORING
-- Pick the bag by sphere tracing the SDF in body space.
-- Two red leather boxing gloves (fist, thumb, cuff, white band, dark lining) alternate left/right. Each punch flies in from beside the camera, lands at ~0.075 s, holds briefly, then pulls back by ~0.3 s. On landing, apply an impulse along the camera ray (blended with the inverse surface normal) with Gaussian falloff (σ 0.2): strength 6 + power × 15. A "Gloves" toggle hides them and applies the impulse directly.
-- Quick tap (<160 ms) = jab with power 0.32–0.52. Hold to charge a power punch: a conic charge ring around the cursor fills over ~0.85 s, power up to 1.0.
-- Drag the bag itself to grab it and swing it around on its chain; release to let it swing back.
-- Keyboard: Space = tap to jab / hold to charge; Enter = jab.
-- Punch force in kg ≈ (170 + power × 790) × small random jitter × combo bonus (+4% per chained hit, capped). Ranks: under 300 Featherweight, under 480 Lightweight, under 650 Middleweight, under 820 Heavyweight, otherwise "Knockout!".
-- Combo counts hits landed within a short window. Best score is saved in localStorage; a new best plays a bell "ding" and highlights the rank.
-- A gold force number pops at the hit point and floats up.
-
-LOOK
-- Transmission jelly material: transmission 1, thickness 0.9, IOR 1.36, low roughness, attenuation colour per flavour, clearcoat, sheen, a faint emissive inner glow, DoubleSide.
-- Flavours: Cherry, Blueberry, Lime, Cola (body colour, attenuation, sheen, glow, shadow tint and UI accent change together).
-- Overlay shell (same mesh pushed out along the normal, masked procedurally in the fragment shader with fwidth anti-aliasing and alphaToCoverage):
-  - Every wrap: dark leather top and bottom caps with a stitch line.
-  - Wraps: Classic — a white label panel with "JELLY" and "HEAVY BAG · 100% GUMMY" drawn into a canvas texture with a red border; Stripes — racing stripes; Flames — flames licking up from the bottom; Plain — caps only.
-- Gym scene: dark rubber floor, warm directional lamp above, additive pool of light on the floor, ~90 dust motes drifting in the light, fog tied to camera distance so the bag never disappears on mobile.
-- Planar projected shadow on the floor, tinted by the flavour (multiply blend + stencil, hidden from the transmission pass).
-- Vignette over the canvas.
-
-SOUND (WebAudio, synthesized, off by default)
-- Punch: filtered noise smack + low sine thud, followed by a jelly "boing" (pitch-dropping sine with LFO wobble).
-- New best: a three-partial bell ding.
-
-UI
-- Single dark theme. Fonts: Bebas Neue (display), Onest (UI), JetBrains Mono (labels).
-- Top-left: eyebrow "Confectionery physics · No. 10", big title "Jelly / Bag.", lede "A heavy bag made of gummy candy. It takes every hit and wobbles back for more."
-- How-to card: "Click to jab. Hold to load a power punch." plus drag/Space hints.
-- Right panel: "Round 1 · live" badge, Gloves and Sound toggles. A black scoreboard with a large gold force readout in kg, rank line, a green→gold→red meter bar, Best / Punches / Combo stats and a Reset link. Then Flavour swatches, Wrap swatches, and the Firmness and Wobble damping sliders.
-- Mobile: the panel becomes a bottom sheet (max ~44% height), sliders side by side, smaller title.
-- Accessible labels on the canvas and buttons; respect touch input (no page scroll while punching).
-```
-
-</details>

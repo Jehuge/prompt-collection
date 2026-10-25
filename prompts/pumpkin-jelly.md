@@ -6,13 +6,59 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2110438822085312714) · [提示词帖](https://x.com/vib3coded/status/2110438942466302433) · 2026-10-15（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![南瓜果冻 Pumpkin Jelly](../assets/pumpkin-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build "Pumpkin Jelly" — a single self-contained HTML file (inline JS/CSS, no libraries): a Halloween real-time WebGPU soft-body gummy pumpkin wedge lit by a flickering candle, which you can grab, stretch, lift and twist.
+Object
+A rounded pie-shaped wedge: 32° half-angle, radius ≈ 1.8, thickness 0.58, rounded corners (exact pie SDF minus a rounding radius) and bevelled top/bottom edges.
+Ribbed rind on the outer arc:broad lobes with darker grooves running pole to pole, fine speckle and a waxy finish;
+the normal is tilted across the ribs so they read as real bumps.
+
+A lighter inner-rind band, then dense orange flesh with grain.
+At the tip, the seed pulp:glassy yellow-orange pulp with clumped fibrous strings (domain-warped noise strands);
+about 24 flat creamy pumpkin seeds (oval with one pointed end, raised rim, thin middle) hanging at random angles and depths. Some lie flat just under the cut faces.
+
+A few small air bubbles in the flesh.
+Varieties: Jack (orange), Cinderella (red-orange), Ghost (white).
+Physics (XPBD tetrahedral soft body)
+Mesh: 2D Delaunay of the rounded outline plus a hex lattice, extruded into prisms → tets.
+Co-rotational per-tet shape matching (warm-started quaternion) plus volume constraints.
+Stiffer rind; edge-velocity damping; floor contact with Coulomb friction.
+Soft patch grab with bounded reach; scroll or a second finger twists the held patch.
+Fixed 60 Hz step with 10 substeps.
+Seeds and bubbles are embedded in the tets by barycentric weights, so they ride with the flesh.
+Rendering (WebGPU / WGSL)
+Dusk-violet studio cyclorama with softboxes. Soft PCSS key shadow tinted by the jelly, plus contact AO from a top-down height map.
+A candle just out of frame (front-left, low) with a multi-sine flicker:wraps warm light into the jelly;
+glows through thin parts;
+adds its own GGX glint;
+pools orange light on the table.
+
+Jelly:refraction of the scene by view-ray thickness (back-face pass);
+per-tap Beer–Lambert absorption by material (flesh, glassy pulp with strings, milky inner rind, opaque rind) with matching scattering;
+back-lit glow at thin edges, Fresnel studio reflections and GGX highlights.
+
+Seeds are shaded creamy and matte with a darker rim and a wet sheen, also lit by the candle.
+Post: exposure, Khronos PBR Neutral tone mapping, sRGB, dither.
+UI (dark editorial theme, English)
+"Material Studies / No. 031", italic serif title "Pumpkin / Jelly." with the caption "Cut by candlelight. Seeds in the strings. A spooky little wobble."
+Status pill "WEBGPU · LIVE".
+Panel "The Specimen": variety chips (rind / inner band / flesh); Firmness and Internal damping sliders; Give it a nudge, Reset, Pause; ¼ speed and Show mesh.
+Readouts: Mass (g, 1 unit ≈ 4 cm at 1.3 g/cm³), Volume (% of rest), Kinetic (µJ).
+A collapsible "Inside the experiment" with notes on the method.
+Fallback "This pumpkin needs WebGPU." Stacked mobile layout with no horizontal scroll.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -68,52 +114,3 @@
 - 读数：Mass（g，1 单位 ≈ 4 cm，密度 1.3 g/cm³）、Volume（静止体积的百分比）、Kinetic（µJ）。
 - 可折叠的 "Inside the experiment"，说明所用方法。
 - 降级页面 "This pumpkin needs WebGPU."。移动端为堆叠布局，无横向滚动。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build "Pumpkin Jelly" — a single self-contained HTML file (inline JS/CSS, no libraries): a Halloween real-time WebGPU soft-body gummy pumpkin wedge lit by a flickering candle, which you can grab, stretch, lift and twist.
-Object
-A rounded pie-shaped wedge: 32° half-angle, radius ≈ 1.8, thickness 0.58, rounded corners (exact pie SDF minus a rounding radius) and bevelled top/bottom edges.
-Ribbed rind on the outer arc:broad lobes with darker grooves running pole to pole, fine speckle and a waxy finish;
-the normal is tilted across the ribs so they read as real bumps.
-
-A lighter inner-rind band, then dense orange flesh with grain.
-At the tip, the seed pulp:glassy yellow-orange pulp with clumped fibrous strings (domain-warped noise strands);
-about 24 flat creamy pumpkin seeds (oval with one pointed end, raised rim, thin middle) hanging at random angles and depths. Some lie flat just under the cut faces.
-
-A few small air bubbles in the flesh.
-Varieties: Jack (orange), Cinderella (red-orange), Ghost (white).
-Physics (XPBD tetrahedral soft body)
-Mesh: 2D Delaunay of the rounded outline plus a hex lattice, extruded into prisms → tets.
-Co-rotational per-tet shape matching (warm-started quaternion) plus volume constraints.
-Stiffer rind; edge-velocity damping; floor contact with Coulomb friction.
-Soft patch grab with bounded reach; scroll or a second finger twists the held patch.
-Fixed 60 Hz step with 10 substeps.
-Seeds and bubbles are embedded in the tets by barycentric weights, so they ride with the flesh.
-Rendering (WebGPU / WGSL)
-Dusk-violet studio cyclorama with softboxes. Soft PCSS key shadow tinted by the jelly, plus contact AO from a top-down height map.
-A candle just out of frame (front-left, low) with a multi-sine flicker:wraps warm light into the jelly;
-glows through thin parts;
-adds its own GGX glint;
-pools orange light on the table.
-
-Jelly:refraction of the scene by view-ray thickness (back-face pass);
-per-tap Beer–Lambert absorption by material (flesh, glassy pulp with strings, milky inner rind, opaque rind) with matching scattering;
-back-lit glow at thin edges, Fresnel studio reflections and GGX highlights.
-
-Seeds are shaded creamy and matte with a darker rim and a wet sheen, also lit by the candle.
-Post: exposure, Khronos PBR Neutral tone mapping, sRGB, dither.
-UI (dark editorial theme, English)
-"Material Studies / No. 031", italic serif title "Pumpkin / Jelly." with the caption "Cut by candlelight. Seeds in the strings. A spooky little wobble."
-Status pill "WEBGPU · LIVE".
-Panel "The Specimen": variety chips (rind / inner band / flesh); Firmness and Internal damping sliders; Give it a nudge, Reset, Pause; ¼ speed and Show mesh.
-Readouts: Mass (g, 1 unit ≈ 4 cm at 1.3 g/cm³), Volume (% of rest), Kinetic (µJ).
-A collapsible "Inside the experiment" with notes on the method.
-Fallback "This pumpkin needs WebGPU." Stacked mobile layout with no horizontal scroll.
-```
-
-</details>

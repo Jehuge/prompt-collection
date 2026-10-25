@@ -6,13 +6,45 @@
 - **测试模型**：Claude Opus 5.5 vs Gemini 4 Argon
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2111501344750059978) · [提示词帖](https://x.com/vib3coded/status/2111502058608050536) · 2026-10-18（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs Gemini 4 Argon）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs Gemini 4 Argon）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![毛茸茸西瓜 Fluffy Watermelon](../assets/fluffy-watermelon.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a single self-contained HTML page (no build step) showing an interactive 3D "Fluffy Watermelon" covered in long fur, rendered with WebGL using three.js r147 (UMD build: https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js). All UI text in English.
+
+SCENE & LOOK
+- Full-screen canvas on a soft watermelon-flesh pink studio background: vertical gradient #ECB3AB → #F7CFC7 (lighter band in the middle) → #E8A9A0, used as the scene background.
+- A big oblong watermelon lying on its side along the X axis: half-length 1.38, radius 0.98, blunt barrel-like ends, small dimples at both ends, slightly flattened belly, subtle surface unevenness. Start in a 3/4 view (about -0.32 rad around Y, 0.1 rad tilt), camera FOV 30°, framed to fill ~80% of the height.
+- Rind pattern under the fur: light green (#A8D66B) with 16 dark green (#1C4D1C) stripes running stem to blossom, with ragged finger-like edges (sine meander + value noise), plus a pale cream "field spot" on the underside. Each hair takes the colour of its own root, so the stripes stay crisp through the fur.
+- A short, dried, ribbed stem stub at one end with a slightly domed pale cut cap, and a thin curly helical tendril springing from beside it.
+- One directional light from upper-left-front, wrap diffuse, Kajiya-Kay anisotropic highlight along the hair tangent, darker roots (occlusion by hair height), slight per-hair brightness variation.
+
+FUR (most important: it must look crisp, never blurry)
+- Fur length 0.2 units. Hairs grow out along the normal, then bend: combed from the stem end toward the blossom end and draped down the flanks (no whorls at the ends), plus slight gravity.
+- Undercoat: shell texturing with ~64 instanced shells of the body mesh that reach only 50% of the fur length. Procedural hair cells in UV space (density scaled so one cell is ~3.4 device pixels at the default view), two hair populations (long + fine underfur), hairs gathering into locks toward their tips, analytic anti-aliased coverage, alpha blending, shells write depth. Fade shells out where the surface is seen edge-on and discard faint fragments, so no dotted rim appears at the outline.
+- Guard hairs: ~90,000 individual tapered, camera-facing ribbon strands (instanced, 7 segments each) that follow exactly the same bend function, with a minimum width of ~0.75 px so they stay sharp. Draw them twice: once before the shells and once after (depth-tested), so faint edge fur never hides them and they always lie crisply on top.
+- Always render at the device's full pixel ratio (capped at 2) and NEVER lower it for performance. If frames are slow, reduce the shell count first (down to 32), then the guard-hair count.
+
+INTERACTION
+- Drag to rotate freely (trackball style) with inertia after a flick. The fur lags behind the rotation through a damped spring and flops back. Gentle idle breeze in the fur; after 3 s without input, a slow auto-turn.
+- Mouse wheel / pinch to zoom (smooth dolly). Double-click or "0" resets with an eased animation. Arrow keys rotate.
+- Custom cursor: the native grab hand plus a thin dark 46 px ring that follows the pointer and shrinks while dragging. Hovering gently parts the fur under the cursor, as if stroking it.
+- Respect prefers-reduced-motion (no idle spin, no breeze).
+
+UI & ROBUSTNESS
+- Bottom-left caption: "Fluffy Watermelon" and a hint "Drag to rotate · Scroll to zoom · Double-click to reset" (on touch devices: "Drag to rotate · Pinch to zoom") that fades after the first interaction. Font: Onest from Google Fonts with system fallbacks.
+- Guard against a zero-sized container at load: clamp width/height to at least 1 and, every frame, recover from any non-finite camera distance or rotation state.
+- Show a small on-page note if the WebGL context is lost or a shader fails to compile, and a fallback message if WebGL is unavailable.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -45,38 +77,3 @@
 - 左下说明："Fluffy Watermelon" 和一行提示 "Drag to rotate · Scroll to zoom · Double-click to reset"（触屏设备上为 "Drag to rotate · Pinch to zoom"），首次交互后淡出。字体：Google Fonts 的 Onest，配系统字体回退。
 - 防范加载时容器尺寸为零：把宽/高至少钳制为 1，并在每一帧从任何非有限的相机距离或旋转状态中恢复。
 - 如果 WebGL 上下文丢失或着色器编译失败，在页面上显示一条小提示；如果 WebGL 不可用，显示降级信息。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a single self-contained HTML page (no build step) showing an interactive 3D "Fluffy Watermelon" covered in long fur, rendered with WebGL using three.js r147 (UMD build: https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js). All UI text in English.
-
-SCENE & LOOK
-- Full-screen canvas on a soft watermelon-flesh pink studio background: vertical gradient #ECB3AB → #F7CFC7 (lighter band in the middle) → #E8A9A0, used as the scene background.
-- A big oblong watermelon lying on its side along the X axis: half-length 1.38, radius 0.98, blunt barrel-like ends, small dimples at both ends, slightly flattened belly, subtle surface unevenness. Start in a 3/4 view (about -0.32 rad around Y, 0.1 rad tilt), camera FOV 30°, framed to fill ~80% of the height.
-- Rind pattern under the fur: light green (#A8D66B) with 16 dark green (#1C4D1C) stripes running stem to blossom, with ragged finger-like edges (sine meander + value noise), plus a pale cream "field spot" on the underside. Each hair takes the colour of its own root, so the stripes stay crisp through the fur.
-- A short, dried, ribbed stem stub at one end with a slightly domed pale cut cap, and a thin curly helical tendril springing from beside it.
-- One directional light from upper-left-front, wrap diffuse, Kajiya-Kay anisotropic highlight along the hair tangent, darker roots (occlusion by hair height), slight per-hair brightness variation.
-
-FUR (most important: it must look crisp, never blurry)
-- Fur length 0.2 units. Hairs grow out along the normal, then bend: combed from the stem end toward the blossom end and draped down the flanks (no whorls at the ends), plus slight gravity.
-- Undercoat: shell texturing with ~64 instanced shells of the body mesh that reach only 50% of the fur length. Procedural hair cells in UV space (density scaled so one cell is ~3.4 device pixels at the default view), two hair populations (long + fine underfur), hairs gathering into locks toward their tips, analytic anti-aliased coverage, alpha blending, shells write depth. Fade shells out where the surface is seen edge-on and discard faint fragments, so no dotted rim appears at the outline.
-- Guard hairs: ~90,000 individual tapered, camera-facing ribbon strands (instanced, 7 segments each) that follow exactly the same bend function, with a minimum width of ~0.75 px so they stay sharp. Draw them twice: once before the shells and once after (depth-tested), so faint edge fur never hides them and they always lie crisply on top.
-- Always render at the device's full pixel ratio (capped at 2) and NEVER lower it for performance. If frames are slow, reduce the shell count first (down to 32), then the guard-hair count.
-
-INTERACTION
-- Drag to rotate freely (trackball style) with inertia after a flick. The fur lags behind the rotation through a damped spring and flops back. Gentle idle breeze in the fur; after 3 s without input, a slow auto-turn.
-- Mouse wheel / pinch to zoom (smooth dolly). Double-click or "0" resets with an eased animation. Arrow keys rotate.
-- Custom cursor: the native grab hand plus a thin dark 46 px ring that follows the pointer and shrinks while dragging. Hovering gently parts the fur under the cursor, as if stroking it.
-- Respect prefers-reduced-motion (no idle spin, no breeze).
-
-UI & ROBUSTNESS
-- Bottom-left caption: "Fluffy Watermelon" and a hint "Drag to rotate · Scroll to zoom · Double-click to reset" (on touch devices: "Drag to rotate · Pinch to zoom") that fades after the first interaction. Font: Onest from Google Fonts with system fallbacks.
-- Guard against a zero-sized container at load: clamp width/height to at least 1 and, every frame, recover from any non-finite camera distance or rotation state.
-- Show a small on-page note if the WebGL context is lost or a shader fails to compile, and a fallback message if WebGL is unavailable.
-```
-
-</details>

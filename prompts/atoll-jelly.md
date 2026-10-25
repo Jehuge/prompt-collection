@@ -6,13 +6,35 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2107977531726934288) · [提示词帖](https://x.com/vib3coded/status/2107977713415864782) · 2026-10-08（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。提示词里提到的「Island Jelly」是作者此前同系列的作品，源码未公开；没有原作时可让 AI 按文中描述从头搭建。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。提示词里提到的「Island Jelly」是作者此前同系列的作品，源码未公开；没有原作时可让 AI 按文中描述从头搭建。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![环礁果冻 Atoll Jelly](../assets/atoll-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build "Atoll Jelly" — one self-contained HTML file, native WebGPU + WGSL, sim in plain JS, no external requests. An entry in the editorial "MATERIAL STUDIES" series of interactive jelly dioramas: a square cut-out block of turquoise jelly lagoon in the Maldives with a palm islet, a jetty of overwater bungalows, a seaplane that runs its own day, and reef life under the jelly.
+
+PAGE: warm paper (#ece9e3), ink #241f1d, accent #12a2a6, italic serif H1 "Atoll / Jelly.", eyebrow "MATERIAL STUDIES", caption "Six bungalows on stilts, a seaplane that comes and goes, and eagle rays gliding through the jelly below." Status pill "WEBGPU · LIVE". Right glass panel: "THE LAGOON" with three dark buttons "Seaplane", "Feed the fish", "Float ring", a thin meter, tally "Landings · Fed · Afloat"; "FLAVOUR" swatches Turquoise / Sapphire / Lime; sliders Firmness, Wave damping, Tide (±10 cm); Reset · Pause · Reset view. Bottom-left "HOW TO PLAY": "Stir the lagoon. Feed the fish. Wave the seaplane off." + one grey line of gestures. Mobile bottom sheet, touch orbit/pinch, WebGPU fallback card, no scroll, no console errors.
+
+SCENE (block 5.2², sea level 1.3): white-sand lagoon ~0.3 deep sloping into a deep "blue hole" near the front corner; eight coral heads (bumps) dressed with brain corals, branching corals and sea fans in pink/purple/orange/yellow/teal that sway slightly; a sandy islet in the back-left corner (beach ring, low wooded hump, gummy shrubs, two thatched parasols with loungers) with 8 lush coconut palms (16 arching pinnate fronds each + dry hanging fronds); an open lobby pavilion under a big hipped thatch roof. A plank jetty on thin stilts runs from the islet diagonally across the lagoon with low lamp posts; five bungalows hang off it on alternating sides plus a larger one at the end: plank decks on stilts, pale timber huts with glass doors to the sea, hipped thatched roofs (banded straw texture), plunge pool, two loungers, a steel ladder into the water. A floating seaplane pontoon with a tiny thatched shade, linked to the islet's south beach by a stilted walk. Block cut faces show candy strata (sand, shell band, caramel, chocolate) under translucent jelly walls.
+
+WATER (as "Island Jelly"): linear shallow-water sim (168² staggered grid, 120 Hz, √(g·depth) wave speed, small surface tension, damping), finger stirring, block tilting with slosh, floating bodies hand displaced volume back to the sea, splash craters + bubbles, a foam field (white water that fades and laces), caustics, light shafts, refraction, Beer–Lambert flavour absorption, shoreline lace.
+
+SEAPLANE (twin-engine floatplane: white with teal cheatline, high wing with teal tips, struts, twin floats, 3-bladed propellers spinning in the vertex shader): a fixed daily loop — wait at the pontoon → pivot 180° on its floats → taxi out → take-off run (spray) → climb → a racetrack circuit around the diorama at ~3.1 height with banking → approach → touchdown with crater, white water and a jolt → landing run → turn → taxi back to the pontoon. On water it rides the jelly: four float samples set height, pitch and roll; its floats push volume into the sim (wake) and foam. "Seaplane" button: leave now if waiting, or hurry the circuit to land early. Counts landings.
+
+REEF LIFE: 42 boids fish in four colour kinds (yellow tang, blue with yellow tail, black-white banded, orange with white bars), schooling with their own kind, wandering, kept in the water (off the floor, under the surface, out of the shallows, inside the block), tails beating in the vertex shader; 3 spotted eagle rays gliding near the floor with wave-flapping wings and whip tails. A finger in the water, any splash, or the seaplane's floats rushing by scatter them. "Feed the fish" scatters 16 pellets that float, then sink; fish and rays home in and eat them (counted as Fed).
+
+FLOAT RINGS: inflatable candy-striped rings (pink / orange / blue with white) — light, float high, lie flat on the waves, damped so they never pop out of the jelly, shoved aside by the seaplane; pick up and throw; land on decks and beach too.
+
+QA: hook window.__aj; checks for the full seaplane cycle and one landing, altitude > 2.8, floats riding the surface, touchdown foam + waves, fish always in water, feeding brings fish and gets eaten, a finger scatters a school, rings float flat, stirring makes waves that die down, tilt sloshes and settles, flavours/sliders/pause/orbit/zoom, stress, sim < 5 ms, no network, no errors, mobile, fallback.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -45,28 +67,3 @@
 ### QA
 
 钩子 window.__aj；检查：完整的水上飞机循环和一次降落、高度 > 2.8、浮筒贴着水面、接水泡沫 + 波浪、鱼始终在水中、喂食能引来鱼并被吃掉、手指能惊散鱼群、游泳圈平浮、搅动产生的波浪会平息、倾斜后晃荡并恢复、口味/滑块/暂停/环绕/缩放、压力测试、模拟 < 5 ms、无网络请求、无报错、移动端、降级。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build "Atoll Jelly" — one self-contained HTML file, native WebGPU + WGSL, sim in plain JS, no external requests. An entry in the editorial "MATERIAL STUDIES" series of interactive jelly dioramas: a square cut-out block of turquoise jelly lagoon in the Maldives with a palm islet, a jetty of overwater bungalows, a seaplane that runs its own day, and reef life under the jelly.
-
-PAGE: warm paper (#ece9e3), ink #241f1d, accent #12a2a6, italic serif H1 "Atoll / Jelly.", eyebrow "MATERIAL STUDIES", caption "Six bungalows on stilts, a seaplane that comes and goes, and eagle rays gliding through the jelly below." Status pill "WEBGPU · LIVE". Right glass panel: "THE LAGOON" with three dark buttons "Seaplane", "Feed the fish", "Float ring", a thin meter, tally "Landings · Fed · Afloat"; "FLAVOUR" swatches Turquoise / Sapphire / Lime; sliders Firmness, Wave damping, Tide (±10 cm); Reset · Pause · Reset view. Bottom-left "HOW TO PLAY": "Stir the lagoon. Feed the fish. Wave the seaplane off." + one grey line of gestures. Mobile bottom sheet, touch orbit/pinch, WebGPU fallback card, no scroll, no console errors.
-
-SCENE (block 5.2², sea level 1.3): white-sand lagoon ~0.3 deep sloping into a deep "blue hole" near the front corner; eight coral heads (bumps) dressed with brain corals, branching corals and sea fans in pink/purple/orange/yellow/teal that sway slightly; a sandy islet in the back-left corner (beach ring, low wooded hump, gummy shrubs, two thatched parasols with loungers) with 8 lush coconut palms (16 arching pinnate fronds each + dry hanging fronds); an open lobby pavilion under a big hipped thatch roof. A plank jetty on thin stilts runs from the islet diagonally across the lagoon with low lamp posts; five bungalows hang off it on alternating sides plus a larger one at the end: plank decks on stilts, pale timber huts with glass doors to the sea, hipped thatched roofs (banded straw texture), plunge pool, two loungers, a steel ladder into the water. A floating seaplane pontoon with a tiny thatched shade, linked to the islet's south beach by a stilted walk. Block cut faces show candy strata (sand, shell band, caramel, chocolate) under translucent jelly walls.
-
-WATER (as "Island Jelly"): linear shallow-water sim (168² staggered grid, 120 Hz, √(g·depth) wave speed, small surface tension, damping), finger stirring, block tilting with slosh, floating bodies hand displaced volume back to the sea, splash craters + bubbles, a foam field (white water that fades and laces), caustics, light shafts, refraction, Beer–Lambert flavour absorption, shoreline lace.
-
-SEAPLANE (twin-engine floatplane: white with teal cheatline, high wing with teal tips, struts, twin floats, 3-bladed propellers spinning in the vertex shader): a fixed daily loop — wait at the pontoon → pivot 180° on its floats → taxi out → take-off run (spray) → climb → a racetrack circuit around the diorama at ~3.1 height with banking → approach → touchdown with crater, white water and a jolt → landing run → turn → taxi back to the pontoon. On water it rides the jelly: four float samples set height, pitch and roll; its floats push volume into the sim (wake) and foam. "Seaplane" button: leave now if waiting, or hurry the circuit to land early. Counts landings.
-
-REEF LIFE: 42 boids fish in four colour kinds (yellow tang, blue with yellow tail, black-white banded, orange with white bars), schooling with their own kind, wandering, kept in the water (off the floor, under the surface, out of the shallows, inside the block), tails beating in the vertex shader; 3 spotted eagle rays gliding near the floor with wave-flapping wings and whip tails. A finger in the water, any splash, or the seaplane's floats rushing by scatter them. "Feed the fish" scatters 16 pellets that float, then sink; fish and rays home in and eat them (counted as Fed).
-
-FLOAT RINGS: inflatable candy-striped rings (pink / orange / blue with white) — light, float high, lie flat on the waves, damped so they never pop out of the jelly, shoved aside by the seaplane; pick up and throw; land on decks and beach too.
-
-QA: hook window.__aj; checks for the full seaplane cycle and one landing, altitude > 2.8, floats riding the surface, touchdown foam + waves, fish always in water, feeding brings fish and gets eaten, a finger scatters a school, rings float flat, stirring makes waves that die down, tilt sloshes and settles, flavours/sliders/pause/orbit/zoom, stress, sim < 5 ms, no network, no errors, mobile, fallback.
-```
-
-</details>

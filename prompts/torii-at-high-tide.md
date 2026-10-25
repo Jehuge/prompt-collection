@@ -6,13 +6,69 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2110014604524896392) · [提示词帖](https://x.com/vib3coded/status/2110014758548078979) · 2026-10-13（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![涨潮时的鸟居 Torii at High Tide](../assets/torii-at-high-tide.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a single-file interactive WebGL diorama (one index.html, no build step) with Three.js r160 loaded via an import map from cdn.jsdelivr.net, plus OrbitControls and BufferGeometryUtils (mergeVertices, mergeGeometries) from three/examples/jsm. Everything is procedural — no external models or textures.
+
+CONCEPT
+"Torii at High Tide": a miniature Japanese shrine island inspired by Itsukushima, inside a 10×10 block of clear water with rounded edges (vertical corner radius ~0.6, top edge radius ~0.26), on a thin sand-colored base slab, on a warm washi-paper background with a soft floor shadow that fades out with distance (so long dusk shadows never streak across the page).
+
+TERRAIN (heightfield ~400×400, clipped to the rounded block, with a boundary "skirt" so the cross-section shows through the water)
+- Work in a local frame facing the camera (u = across, v = toward the viewer).
+- A forested dome-shaped hill at the back (~2.4 high), a low sandy shrine terrace at its foot, then a wide, gently sloping tidal flat in front (from ~-0.06 down to ~-0.46), dropping to ~-1.0 at the front and sides.
+- Two rocky granite headlands framing the bay, each with 1–2 leaning bonsai-style pines (segmented trunks + flattened canopy pads).
+- A flattened clearing on the hill flank for the pagoda.
+- Terrain shader: granite rock on steep slopes (speckled, darker wet band just above the waterline, algae-dark below it), sand with a wet line, darker wet intertidal sand below the high-tide mark, moss/grass on the hill and in patches on the terrace, snow on upward-facing surfaces in winter, procedural animated caustics under water. CPU-baked horizon AO per vertex plus canopy-cover darkening.
+
+ARCHITECTURE (merge everything into one vertex-colored mesh + one emissive "glow" mesh; write a small Builder that adds boxes/cylinders/spheres/custom geometry with a color and a transform, then mergeGeometries)
+- Ryōbu-style torii standing in the bay on the axis of the shrine (~1.9 tall): vermilion tapered main pillars with black base sheaths, four supporting sode-bashira legs with black caps and two connecting beams each, nuki tie beam, central strut with a dark plaque, shimaki, and a curved kasagi (extruded shape with upturned ends) with a black top layer. Pillars must end inside the shimaki, not poke through the kasagi.
+- Shrine on stilts over the tidal flat: plank deck (with plank-gap strips and dark edge beams) on a grid of wooden stilts reaching the seabed; a main hall and a smaller front hall (white walls, vermilion posts and tie beams, shoji-style front panels = glow panels behind a thin dark lattice), a lower front stage with vermilion railings, and two roofed vermilion corridors on stilts running sideways then back to the shore.
+- Roofs: a hip-roof generator with a concave profile and lifted eave corners (top surface dark cypress-bark brown, warm wood underside, pale fascia trim, black ridge cap).
+- A five-storey pagoda on the hill clearing: stone plinth, white walls with vermilion posts, bracket layer, flared roofs decreasing in size, bronze finial with rings.
+- Stone tōrō lanterns on the terrace and on the stage (hexagonal base, post, firebox with emissive windows, small roof, jewel).
+
+VEGETATION
+- ~4–5k canopy blobs (InstancedMesh of icospheres with vertex-noise displacement + fragment bump), clustered 2–4 per tree, per-instance AO from neighbour occlusion, brighter tops.
+- Four kinds via an instance attribute: broadleaf, cherry, maple, pine (flattened pads). Cherries cluster lower on the hill and as 5 feature trees with visible trunks on the terrace; pines dominate the summit and the headlands.
+- Colors come from per-kind dark/light palette uniforms that the JS blends across seasons.
+
+SEASONS (cyclic 0..4 = spring, summer, autumn, winter; animated transition from a dock button)
+- Spring: pink sakura, falling petals. Summer: lush green, no particles. Autumn: red maples, orange/yellow broadleaf, falling maple leaves. Winter: bare-ish brown deciduous blobs shrunk ~38%, snow on canopy tops, roofs, decks, rocks and ground; snowfall that melts instantly on the water.
+
+WATER (realistic, not jelly)
+- Pipeline: opaque scene → MSAA HalfFloat target with DepthTexture; copy to a second target, then draw the water with a custom ShaderMaterial doing a manual depth test; then floating particles; final fullscreen pass with ACES tone mapping, sRGB, subtle tilt-shift. Transparent canvas over the CSS background.
+- Color from real thickness: reconstruct the depth behind each water pixel, Beer–Lambert absorption toward a deep scatter color derived from the user's water color (pale over the flats, blue in the deep; side walls get extra path length so they read as a water volume).
+- Screen-space refraction, Fresnel sky reflection, sun glints from fine animated detail normals.
+- Screen-space reflections (~26 ray-march steps against the depth buffer, fewer on mobile) so the torii, shrine and lit lanterns reflect in the water.
+- Ripples: GPU wave equation on a 256×256 HalfFloat ping-pong target, fixed 60 Hz steps, land-mask texture so waves reflect off the shore. Cursor movement injects capsule drops along its path; a click makes a splash.
+- Shore foam only where the terrain is near the water level AND gently sloped (no white outlines around cliffs, stilts or the torii pillars); foam band width scaled by slope; broken by noise.
+- Tide: a dock toggle animates between high tide (0) and low tide (-0.55): the water block's rim moves and its sides stretch; at low tide the whole flat is exposed and the torii stands on wet sand.
+
+PARTICLES (petals / leaves / snow, ~700 instanced quads, CPU-simulated)
+- Spawn from cherry blobs (spring), deciduous blobs (autumn) or the sky (winter); flutter while falling; a gusting wind blows from the island toward the bay so they reach the water.
+- Landing: on water they become floating (vertex shader lifts them by the same ripple + wave height as the water), drift slowly, get pushed by the cursor's movement and blown away by click splashes, strand when the tide drops, re-float when it rises; on land they rest and fade.
+- Shapes drawn in the fragment shader: notched petal, five-lobed maple leaf, soft snow disc. Manual depth test against the scene depth.
+
+KOI
+- 7 koi (lathe body + forked fan tail + pectoral fins, merged), InstancedMesh with a swimming sway in the vertex shader and procedural patterns per type (kohaku, sanke, showa, ogon, plain orange). They wander, steer away from shallow water and the block walls, and flee the cursor and splashes. Rendered under the water so they are refracted and tinted.
+
+TIME OF DAY (slider, shown as a clock from 11:00 to ~19:10)
+- Sun elevation, color and intensity, hemisphere colors, and the water's sky reflection shift from noon to golden hour; towards dusk the shoji panels and lanterns glow (emissive) and three warm point lights light the shrine, the stage and the torii.
+
+UI (editorial, minimal, English)
+Brand "shiosai°" with a small torii mark, headline "A gate that / stands in the sea.", eyebrow "Shrine and tide, in miniature", a vertical caption "A study of tide and seasons", a location label "Shrine Cove · 34°16′ N · 132°19′ E", a floating pill dock (reset, season cycle with the current season name, High tide / Low tide toggle, Tune, fullscreen), hints and an adaptive FPS + "Season · time" readout in the footer, a glassy settings panel (season, time of day, falling petals; water color, tide level, wave height, ripple strength, clarity, caustics; sun azimuth, tilt-shift), and a "How it's made" card. Vermilion accent, light and dark themes via CSS tokens, responsive to 390 px (panel becomes a bottom sheet), prefers-reduced-motion respected, adaptive pixel ratio and a lighter mode for touch devices. Intro: the water fills the block while the camera eases in.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -75,62 +131,3 @@
 ### UI（编辑风格、极简、英文）
 
 品牌标识 "shiosai°" 配一个小鸟居标志，标题 "A gate that / stands in the sea."，眉标 "Shrine and tide, in miniature"，竖排说明文字 "A study of tide and seasons"，地点标签 "Shrine Cove · 34°16′ N · 132°19′ E"，一个悬浮胶囊工具栏（reset、显示当前季节名的季节循环、High tide / Low tide 开关、Tune、全屏），页脚放提示和自适应 FPS + "Season · time" 读数，一个玻璃质感的设置面板（季节、时间、飘落花瓣；水色、潮位、波高、涟漪强度、清澈度、焦散；太阳方位角、移轴），以及一张 "How it's made" 卡片。朱红色强调色，通过 CSS token 实现亮色和暗色主题，响应式适配到 390 px（面板变为底部抽屉），遵守 prefers-reduced-motion，自适应像素比，并为触屏设备提供更轻量的模式。开场：水注满水块，同时相机缓缓推近。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a single-file interactive WebGL diorama (one index.html, no build step) with Three.js r160 loaded via an import map from cdn.jsdelivr.net, plus OrbitControls and BufferGeometryUtils (mergeVertices, mergeGeometries) from three/examples/jsm. Everything is procedural — no external models or textures.
-
-CONCEPT
-"Torii at High Tide": a miniature Japanese shrine island inspired by Itsukushima, inside a 10×10 block of clear water with rounded edges (vertical corner radius ~0.6, top edge radius ~0.26), on a thin sand-colored base slab, on a warm washi-paper background with a soft floor shadow that fades out with distance (so long dusk shadows never streak across the page).
-
-TERRAIN (heightfield ~400×400, clipped to the rounded block, with a boundary "skirt" so the cross-section shows through the water)
-- Work in a local frame facing the camera (u = across, v = toward the viewer).
-- A forested dome-shaped hill at the back (~2.4 high), a low sandy shrine terrace at its foot, then a wide, gently sloping tidal flat in front (from ~-0.06 down to ~-0.46), dropping to ~-1.0 at the front and sides.
-- Two rocky granite headlands framing the bay, each with 1–2 leaning bonsai-style pines (segmented trunks + flattened canopy pads).
-- A flattened clearing on the hill flank for the pagoda.
-- Terrain shader: granite rock on steep slopes (speckled, darker wet band just above the waterline, algae-dark below it), sand with a wet line, darker wet intertidal sand below the high-tide mark, moss/grass on the hill and in patches on the terrace, snow on upward-facing surfaces in winter, procedural animated caustics under water. CPU-baked horizon AO per vertex plus canopy-cover darkening.
-
-ARCHITECTURE (merge everything into one vertex-colored mesh + one emissive "glow" mesh; write a small Builder that adds boxes/cylinders/spheres/custom geometry with a color and a transform, then mergeGeometries)
-- Ryōbu-style torii standing in the bay on the axis of the shrine (~1.9 tall): vermilion tapered main pillars with black base sheaths, four supporting sode-bashira legs with black caps and two connecting beams each, nuki tie beam, central strut with a dark plaque, shimaki, and a curved kasagi (extruded shape with upturned ends) with a black top layer. Pillars must end inside the shimaki, not poke through the kasagi.
-- Shrine on stilts over the tidal flat: plank deck (with plank-gap strips and dark edge beams) on a grid of wooden stilts reaching the seabed; a main hall and a smaller front hall (white walls, vermilion posts and tie beams, shoji-style front panels = glow panels behind a thin dark lattice), a lower front stage with vermilion railings, and two roofed vermilion corridors on stilts running sideways then back to the shore.
-- Roofs: a hip-roof generator with a concave profile and lifted eave corners (top surface dark cypress-bark brown, warm wood underside, pale fascia trim, black ridge cap).
-- A five-storey pagoda on the hill clearing: stone plinth, white walls with vermilion posts, bracket layer, flared roofs decreasing in size, bronze finial with rings.
-- Stone tōrō lanterns on the terrace and on the stage (hexagonal base, post, firebox with emissive windows, small roof, jewel).
-
-VEGETATION
-- ~4–5k canopy blobs (InstancedMesh of icospheres with vertex-noise displacement + fragment bump), clustered 2–4 per tree, per-instance AO from neighbour occlusion, brighter tops.
-- Four kinds via an instance attribute: broadleaf, cherry, maple, pine (flattened pads). Cherries cluster lower on the hill and as 5 feature trees with visible trunks on the terrace; pines dominate the summit and the headlands.
-- Colors come from per-kind dark/light palette uniforms that the JS blends across seasons.
-
-SEASONS (cyclic 0..4 = spring, summer, autumn, winter; animated transition from a dock button)
-- Spring: pink sakura, falling petals. Summer: lush green, no particles. Autumn: red maples, orange/yellow broadleaf, falling maple leaves. Winter: bare-ish brown deciduous blobs shrunk ~38%, snow on canopy tops, roofs, decks, rocks and ground; snowfall that melts instantly on the water.
-
-WATER (realistic, not jelly)
-- Pipeline: opaque scene → MSAA HalfFloat target with DepthTexture; copy to a second target, then draw the water with a custom ShaderMaterial doing a manual depth test; then floating particles; final fullscreen pass with ACES tone mapping, sRGB, subtle tilt-shift. Transparent canvas over the CSS background.
-- Color from real thickness: reconstruct the depth behind each water pixel, Beer–Lambert absorption toward a deep scatter color derived from the user's water color (pale over the flats, blue in the deep; side walls get extra path length so they read as a water volume).
-- Screen-space refraction, Fresnel sky reflection, sun glints from fine animated detail normals.
-- Screen-space reflections (~26 ray-march steps against the depth buffer, fewer on mobile) so the torii, shrine and lit lanterns reflect in the water.
-- Ripples: GPU wave equation on a 256×256 HalfFloat ping-pong target, fixed 60 Hz steps, land-mask texture so waves reflect off the shore. Cursor movement injects capsule drops along its path; a click makes a splash.
-- Shore foam only where the terrain is near the water level AND gently sloped (no white outlines around cliffs, stilts or the torii pillars); foam band width scaled by slope; broken by noise.
-- Tide: a dock toggle animates between high tide (0) and low tide (-0.55): the water block's rim moves and its sides stretch; at low tide the whole flat is exposed and the torii stands on wet sand.
-
-PARTICLES (petals / leaves / snow, ~700 instanced quads, CPU-simulated)
-- Spawn from cherry blobs (spring), deciduous blobs (autumn) or the sky (winter); flutter while falling; a gusting wind blows from the island toward the bay so they reach the water.
-- Landing: on water they become floating (vertex shader lifts them by the same ripple + wave height as the water), drift slowly, get pushed by the cursor's movement and blown away by click splashes, strand when the tide drops, re-float when it rises; on land they rest and fade.
-- Shapes drawn in the fragment shader: notched petal, five-lobed maple leaf, soft snow disc. Manual depth test against the scene depth.
-
-KOI
-- 7 koi (lathe body + forked fan tail + pectoral fins, merged), InstancedMesh with a swimming sway in the vertex shader and procedural patterns per type (kohaku, sanke, showa, ogon, plain orange). They wander, steer away from shallow water and the block walls, and flee the cursor and splashes. Rendered under the water so they are refracted and tinted.
-
-TIME OF DAY (slider, shown as a clock from 11:00 to ~19:10)
-- Sun elevation, color and intensity, hemisphere colors, and the water's sky reflection shift from noon to golden hour; towards dusk the shoji panels and lanterns glow (emissive) and three warm point lights light the shrine, the stage and the torii.
-
-UI (editorial, minimal, English)
-Brand "shiosai°" with a small torii mark, headline "A gate that / stands in the sea.", eyebrow "Shrine and tide, in miniature", a vertical caption "A study of tide and seasons", a location label "Shrine Cove · 34°16′ N · 132°19′ E", a floating pill dock (reset, season cycle with the current season name, High tide / Low tide toggle, Tune, fullscreen), hints and an adaptive FPS + "Season · time" readout in the footer, a glassy settings panel (season, time of day, falling petals; water color, tide level, wave height, ripple strength, clarity, caustics; sun azimuth, tilt-shift), and a "How it's made" card. Vermilion accent, light and dark themes via CSS tokens, responsive to 390 px (panel becomes a bottom sheet), prefers-reduced-motion respected, adaptive pixel ratio and a lighter mode for touch devices. Intro: the water fills the block while the camera eases in.
-```
-
-</details>

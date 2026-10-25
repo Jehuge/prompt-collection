@@ -6,13 +6,62 @@
 - **测试模型**：未注明
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2113217041985401339) · [提示词帖](https://x.com/vib3coded/status/2113217928120221741) · 2026-10-22（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 公开分享的提示词（具体测试模型未注明）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 公开分享的提示词（具体测试模型未注明）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![像素冰场 Pixel Ice Rink](../assets/pixel-ice-rink.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build "Pixel Ice Rink" — a single-file, real-time three.js (r160, ES module via import map from jsDelivr) page: an isometric diorama of a floating outdoor ice rink, rendered as crisp pixel art in the style of "3D rendered as pixel art". UI text in English.
+
+RENDER PIPELINE
+- Orthographic camera at ~31° elevation, azimuth 45° + 90° steps (animated turns, drag sideways or buttons), wheel/pinch zoom. Fit the whole floating slab into the free screen area (clear of the title, a top-centre scoreboard and a right control rail).
+- Render the scene into a tiny target (screen / pixel size, ~480×300 on desktop) with no anti-aliasing. Snap the camera so the world origin lands on a whole pixel (static things never shimmer).
+- Post pass on a full-screen quad:
+  - depth-based outlines: darken a pixel that stands >0.55 m in front of a neighbour;
+  - map every pixel to the nearest colour of a fixed ~49-colour winter palette in OKLab (snow/ice greys, ice blues, reds, lamplight/wood/skin, pines, dusk peach/rose/mauve/lilac, brass/ochre);
+  - optional light 4×4 Bayer dither;
+  - upscale with texelFetch so each art pixel is an exact block of device pixels. The background (depth = 1) is the page colour.
+- Hard sun shadows (BasicShadowMap, 2048). Lambert flat-shaded low-poly materials.
+- Planar ice reflection: render the scene mirrored (scene.scale.y = -1 about the ice plane, ground, ice, particles and lamp posts hidden) into a second target. Sample it in the ice shader at gl_FragCoord. Gloss = small base + extra where the ice is wet, reduced where it is worn.
+- A "Raw 3D" mode renders the same scene at full resolution with MSAA, for comparison.
+
+SCENE
+- A floating slab of snow over earth over rock, each extruded from a ragged rounded rectangle.
+- A 24×12 m rink with 3 m corners: white boards with a yellow kick plate and red cap, built as band segments with gaps for two bench doors and a double resurfacer gate (hinged doors that swing open).
+- Ice markings painted texel-by-texel into a 10 px/m canvas: red centre and goal lines, blue lines, circles, face-off dots, creases.
+- Red-post goals with alpha-tested grid nets; players' benches; a lit scoreboard drawn with 3×5 pixel digits.
+- A log warming hut with lit windows and chimney smoke; a garage for the resurfacer; lamp posts with point lights; string lights at night.
+- Snowy stacked-cone pines, snowbanks, a snowman.
+
+PLAYERS — procedural rigs of ~16 boxes
+- Placed every frame from heading, lean, crouch and turn roll. Two-bone IK for the legs (skating stride with push-out and toe-out, gliding, sideways hockey stop) and for the arms holding a stick.
+- Stick poses: carry/stickhandle, slap-shot wind-up and strike, pass sweep, celebration with stick raised.
+- Goalies: pads, blocker and glove, crease positioning, butterfly drop on incoming shots.
+
+GAME
+- Two-on-two pick-up hockey plus goalies. Steering with arrival, separation and board/net avoidance; hockey stops when reversing hard.
+- Carrier AI weaves to the slot, shoots when the lane is open, passes when pressured. Defenders pressure goal-side and poke-check; the nearest skater chases a loose puck.
+- Puck physics with substeps: friction, board bounces, posts, solid nets with goal detection through the mouth, goalie saves (deflect or catch and play out), blocks by skates.
+- Face-offs, goal celebrations, score, shots and a game clock on the scoreboard. Clicking the ice drops a puck.
+
+ICE WEAR
+- An RG DataTexture over the rink (20 px/m). Blades write scratches as they glide; stops gouge wider marks and throw spray particles that settle as wear; falling snow settles too.
+- "Resurface the ice": players skate off through the bench doors; the resurfacer drives out of its garage through the gate and does shrinking rounded-rectangle laps (swinging in front of the nets), wiping its swath and leaving wet, reflective ice that dries over time. Then the players return for a face-off. Show an "ice worn %" bar.
+
+UI
+- Pixel display font (Silkscreen) with a clean body font.
+- Light and dark themes via tokens; the background is a near-white or near-black page.
+- Controls: Day / Dusk / Night (lighting presets blended over ~1.6 s), Snow Off / Light / Heavy, Resurface, Drop a puck, Pause, New game, Turn left / right, Pixel art / Raw 3D, Pixel size slider, Palette / Dither / Outlines toggles.
+- A "How it's drawn" panel explaining the pipeline. Stacked mobile layout with no horizontal scroll.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -64,55 +113,3 @@
 - 浅色和深色主题用 token 切换。背景是接近白或接近黑的页面。
 - 控制：Day / Dusk / Night（光照预设大约用 1.6 秒混过去）、Snow Off / Light / Heavy、Resurface、Drop a puck、Pause、New game、Turn left / right、Pixel art / Raw 3D、像素尺寸滑块、Palette / Dither / Outlines 开关。
 - 一块 "How it's drawn" 面板，解释这条管线。手机上改成上下堆叠，不要出现横向滚动。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build "Pixel Ice Rink" — a single-file, real-time three.js (r160, ES module via import map from jsDelivr) page: an isometric diorama of a floating outdoor ice rink, rendered as crisp pixel art in the style of "3D rendered as pixel art". UI text in English.
-
-RENDER PIPELINE
-- Orthographic camera at ~31° elevation, azimuth 45° + 90° steps (animated turns, drag sideways or buttons), wheel/pinch zoom. Fit the whole floating slab into the free screen area (clear of the title, a top-centre scoreboard and a right control rail).
-- Render the scene into a tiny target (screen / pixel size, ~480×300 on desktop) with no anti-aliasing. Snap the camera so the world origin lands on a whole pixel (static things never shimmer).
-- Post pass on a full-screen quad:
-  - depth-based outlines: darken a pixel that stands >0.55 m in front of a neighbour;
-  - map every pixel to the nearest colour of a fixed ~49-colour winter palette in OKLab (snow/ice greys, ice blues, reds, lamplight/wood/skin, pines, dusk peach/rose/mauve/lilac, brass/ochre);
-  - optional light 4×4 Bayer dither;
-  - upscale with texelFetch so each art pixel is an exact block of device pixels. The background (depth = 1) is the page colour.
-- Hard sun shadows (BasicShadowMap, 2048). Lambert flat-shaded low-poly materials.
-- Planar ice reflection: render the scene mirrored (scene.scale.y = -1 about the ice plane, ground, ice, particles and lamp posts hidden) into a second target. Sample it in the ice shader at gl_FragCoord. Gloss = small base + extra where the ice is wet, reduced where it is worn.
-- A "Raw 3D" mode renders the same scene at full resolution with MSAA, for comparison.
-
-SCENE
-- A floating slab of snow over earth over rock, each extruded from a ragged rounded rectangle.
-- A 24×12 m rink with 3 m corners: white boards with a yellow kick plate and red cap, built as band segments with gaps for two bench doors and a double resurfacer gate (hinged doors that swing open).
-- Ice markings painted texel-by-texel into a 10 px/m canvas: red centre and goal lines, blue lines, circles, face-off dots, creases.
-- Red-post goals with alpha-tested grid nets; players' benches; a lit scoreboard drawn with 3×5 pixel digits.
-- A log warming hut with lit windows and chimney smoke; a garage for the resurfacer; lamp posts with point lights; string lights at night.
-- Snowy stacked-cone pines, snowbanks, a snowman.
-
-PLAYERS — procedural rigs of ~16 boxes
-- Placed every frame from heading, lean, crouch and turn roll. Two-bone IK for the legs (skating stride with push-out and toe-out, gliding, sideways hockey stop) and for the arms holding a stick.
-- Stick poses: carry/stickhandle, slap-shot wind-up and strike, pass sweep, celebration with stick raised.
-- Goalies: pads, blocker and glove, crease positioning, butterfly drop on incoming shots.
-
-GAME
-- Two-on-two pick-up hockey plus goalies. Steering with arrival, separation and board/net avoidance; hockey stops when reversing hard.
-- Carrier AI weaves to the slot, shoots when the lane is open, passes when pressured. Defenders pressure goal-side and poke-check; the nearest skater chases a loose puck.
-- Puck physics with substeps: friction, board bounces, posts, solid nets with goal detection through the mouth, goalie saves (deflect or catch and play out), blocks by skates.
-- Face-offs, goal celebrations, score, shots and a game clock on the scoreboard. Clicking the ice drops a puck.
-
-ICE WEAR
-- An RG DataTexture over the rink (20 px/m). Blades write scratches as they glide; stops gouge wider marks and throw spray particles that settle as wear; falling snow settles too.
-- "Resurface the ice": players skate off through the bench doors; the resurfacer drives out of its garage through the gate and does shrinking rounded-rectangle laps (swinging in front of the nets), wiping its swath and leaving wet, reflective ice that dries over time. Then the players return for a face-off. Show an "ice worn %" bar.
-
-UI
-- Pixel display font (Silkscreen) with a clean body font.
-- Light and dark themes via tokens; the background is a near-white or near-black page.
-- Controls: Day / Dusk / Night (lighting presets blended over ~1.6 s), Snow Off / Light / Heavy, Resurface, Drop a puck, Pause, New game, Turn left / right, Pixel art / Raw 3D, Pixel size slider, Palette / Dither / Outlines toggles.
-- A "How it's drawn" panel explaining the pipeline. Stacked mobile layout with no horizontal scroll.
-```
-
-</details>

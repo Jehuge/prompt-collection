@@ -6,13 +6,29 @@
 - **测试模型**：未注明
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2112240323560645092) · [提示词帖](https://x.com/vib3coded/status/2112240438635868328) · 2026-10-19（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 公开分享的提示词（具体测试模型未注明）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 公开分享的提示词（具体测试模型未注明）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![桃子果冻 Peach Jelly](../assets/peach-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a single-file WebGPU page "Peach Jelly" in the style of a "Material Studies" specimen sheet (light studio backdrop #E2DFDA, italic serif title, a specimen control panel on the right, live readouts bottom-left, collapsible "Inside the experiment" notes; responsive with a stacked phone layout and a no-WebGPU fallback card).
+
+Subject: half a peach made of translucent jelly, cut along its suture, lying skin-down with the cut face up and its stone seated in the hollow.
+
+Geometry: a signed distance field for the fruit — a sphere slightly longer from stem to blossom end, with a stem dimple, a faint point at the blossom tip and the suture crease along one side of the rim, belly gently flattened on the floor — cut at the equator, minus an almond-shaped hollow for the stone (flattened, broad faces parallel to the cut, blunt toward the stem). Simulation mesh: a snapped hex lattice, 5 tets per cell (~700 particles / ~2500 tets), node layers exactly on the floor and the cut face, nodes forced out of the stone. Render surface by surface nets, embedded in the tets by barycentric weights, with one normal-smoothing pass per frame so reflections don't pick out tet kinks. The stone gets its own high-resolution mesh: deep wormy furrows (mostly lengthwise) and little pits carved by displacement, a low keel round its edge, a small point at the blossom end; groove depth rides in the vertex material id for shading.
+
+Physics (CPU, XPBD, 60 Hz, 10 substeps): per-tet co-rotational shape matching + volume constraints, stiffer skin, edge-relative damping, floor friction, pointer grab with twist. The stone is a rigid body (position, quaternion, ellipsoid inertia) with frictional contact against every particle and sampled floor contacts. Nodes lining the hollow are held by soft adhesion bonds that peel (floor of the hollow first, lip last) under a sustained net pull measured in the half's best-fit rigid frame — never from brief knocks; a loose stone resting in the hollow is drawn home and re-bonded with a soft grace period. Grabbing the stone moves it as a whole and it can be thrown. Buttons: nudge, reset, "Pop the stone" / "Put the stone back", pause, ¼ speed, show mesh; sliders for firmness and damping; readouts mass, volume %, grip %.
+
+Rendering (WGSL): shadow map + top-down contact-AO map, scene pass (floor, stone, bubbles) with linear depth in alpha, back-face thickness pass, refracting jelly with Beer–Lambert absorption and scattering. Regions from rest-space SDFs: golden flesh; a ruby ring hugging the stone, broken up irregularly, with fine red fibres streaking out; the skin's blush bleeding a little way into the flesh. Skin: yellow with patchy red blush and pale flecks, a velvet sheen at grazing angles (nectarine: smooth and glossy). Stone: woody reddish-brown, dark furrows with shreds of red fibre, soft key shadows, low sheen. Varieties: Yellow, White, Nectarine. UI text in English.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -45,22 +61,3 @@
 区域由静止空间的 SDF 决定：金色的果肉；紧贴果核的一圈红宝石色，不规则地断开，细的红纤维向外延伸；果皮的红晕向果肉渗进一点点。果皮是黄的，带着一块一块的红晕和浅色斑点，掠射角有丝绒一样的光泽（Nectarine 这个品种是光滑、有光泽的）。果核是木质的红棕色，深色沟里挂着红色纤维的碎屑，主光的阴影很柔，光泽很低。
 
 品种：Yellow、White、Nectarine。界面文字为英文。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a single-file WebGPU page "Peach Jelly" in the style of a "Material Studies" specimen sheet (light studio backdrop #E2DFDA, italic serif title, a specimen control panel on the right, live readouts bottom-left, collapsible "Inside the experiment" notes; responsive with a stacked phone layout and a no-WebGPU fallback card).
-
-Subject: half a peach made of translucent jelly, cut along its suture, lying skin-down with the cut face up and its stone seated in the hollow.
-
-Geometry: a signed distance field for the fruit — a sphere slightly longer from stem to blossom end, with a stem dimple, a faint point at the blossom tip and the suture crease along one side of the rim, belly gently flattened on the floor — cut at the equator, minus an almond-shaped hollow for the stone (flattened, broad faces parallel to the cut, blunt toward the stem). Simulation mesh: a snapped hex lattice, 5 tets per cell (~700 particles / ~2500 tets), node layers exactly on the floor and the cut face, nodes forced out of the stone. Render surface by surface nets, embedded in the tets by barycentric weights, with one normal-smoothing pass per frame so reflections don't pick out tet kinks. The stone gets its own high-resolution mesh: deep wormy furrows (mostly lengthwise) and little pits carved by displacement, a low keel round its edge, a small point at the blossom end; groove depth rides in the vertex material id for shading.
-
-Physics (CPU, XPBD, 60 Hz, 10 substeps): per-tet co-rotational shape matching + volume constraints, stiffer skin, edge-relative damping, floor friction, pointer grab with twist. The stone is a rigid body (position, quaternion, ellipsoid inertia) with frictional contact against every particle and sampled floor contacts. Nodes lining the hollow are held by soft adhesion bonds that peel (floor of the hollow first, lip last) under a sustained net pull measured in the half's best-fit rigid frame — never from brief knocks; a loose stone resting in the hollow is drawn home and re-bonded with a soft grace period. Grabbing the stone moves it as a whole and it can be thrown. Buttons: nudge, reset, "Pop the stone" / "Put the stone back", pause, ¼ speed, show mesh; sliders for firmness and damping; readouts mass, volume %, grip %.
-
-Rendering (WGSL): shadow map + top-down contact-AO map, scene pass (floor, stone, bubbles) with linear depth in alpha, back-face thickness pass, refracting jelly with Beer–Lambert absorption and scattering. Regions from rest-space SDFs: golden flesh; a ruby ring hugging the stone, broken up irregularly, with fine red fibres streaking out; the skin's blush bleeding a little way into the flesh. Skin: yellow with patchy red blush and pale flecks, a velvet sheen at grazing angles (nectarine: smooth and glossy). Stone: woody reddish-brown, dark furrows with shreds of red fibre, soft key shadows, low sheen. Varieties: Yellow, White, Nectarine. UI text in English.
-```
-
-</details>

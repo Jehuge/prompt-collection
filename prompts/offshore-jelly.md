@@ -6,13 +6,49 @@
 - **测试模型**：未注明
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2113401221910253853) · [提示词帖](https://x.com/vib3coded/status/2113401353196466400) · 2026-10-22（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 公开分享的提示词（具体测试模型未注明）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 公开分享的提示词（具体测试模型未注明）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![离岸果冻 Offshore Jelly](../assets/offshore-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build "Offshore Jelly" — a single-file interactive WebGPU diorama in the "Material Studies" series: a stretch of North Sea cut out as a cube of translucent jelly, sitting on a studio floor. Everything is procedural (no external assets, no network), one HTML file with inline JS/WGSL.
+
+THE BLOCK
+- A wobbly jelly cube you can grab by its sides and tip; it springs back. Sliders: firmness, damping, wind (0–20 m/s).
+- Inside: a shallow-water simulation for the sea surface (waves, wakes, foam, whitecaps), seabed with sand ripples, scour rocks, kelp, boulders, starfish, crabs, urchins, a pipeline, cables and a small wreck. Caustics on the seabed. Dragging the water stirs up waves.
+- Waves come from the wind: several wave trains whose height grows with wind speed.
+
+THE SCENE
+- A production platform on a four-legged steel jacket (braces, risers, conductors, boat landing, marine growth below the waterline): main and cellar decks, process module, derrick, living quarters, lifeboats, a pedestal crane with a laydown area, a flare boom with a flickering flame and smoke.
+- An octagonal helideck with an H, a net, perimeter lights and a windsock.
+- Five offshore wind turbines on monopiles: transition piece with yellow platform, boat landing ladder, davit, tower, nacelle, three-blade rotors with red tips, blinking red aviation lights. Rotor speed and power output (MW) follow the wind.
+- A rocky skerry with a lighthouse whose beam turns; seals haul out on it.
+
+WHAT HAPPENS
+- Supply run: a platform supply vessel comes in from standby, holds station next to the jacket on dynamic positioning (thruster foam), and the crane does four lifts — containers swing on the hook, are set down on the platform and back-loaded onto the boat's deck. Then she sails back to standby.
+- Helicopter: flies in from the west, turns into the wind, lands on the helideck; a deck officer walks out; passengers get off. A second press sends it away (spin-up, lift, outbound). Rotor and tail rotor spin, downwash flattens the water.
+- Crew boat: a small catamaran sails out to a turbine, pushes its bow onto the boat landing, and technicians climb the ladder onto the platform. Next time she picks them up and brings them home.
+- Storm: the wind builds to a gale, waves get big with whitecaps and spray, rain falls, the room darkens, lightning strikes blades, the lighthouse, the derrick or the sea with a flash and thunder. Above cut-out the turbines feather their blades and stop (0 MW); the helicopter is grounded. Then it eases and the turbines restart.
+
+LIFE
+- Schools of fish around the jacket and wrecks, gulls that perch on railings and take off on the horn, gannets that plunge-dive for fish, a pod of porpoises, seals, moon jellyfish, crew walking the decks.
+
+CONTROLS & UI
+- Buttons: Supply run, Helicopter (take-off when landed), Crew boat, Storm. Space = ship's horn. Tapping a turbine switches it on/off, tapping the supply boat or helideck calls them. Orbit by drag, zoom by wheel/pinch.
+- Tallies: Power (MW), Lifts, Flights; status lines for the supply boat, helicopter and crew boat.
+- Flavours (jelly colour palettes): North Sea, Curaçao, Blackcurrant.
+- Sounds are synthesised with WebAudio and only play for events (horn, winch, set-down, bump, rotor, thunder, rain) — no constant background ambience. Sound toggle and pause.
+- Mobile: a bottom sheet with the controls, touch orbit and pinch zoom. Clean fallback message when WebGPU is unavailable.
+- Copy in English: "Offshore Jelly. A wind farm and a platform working a stretch of North Sea, set in a block of jelly." — "Call in the supply boat. Fly the crew out. Brew up a storm."
+```
+
+---
 
 ## 提示词（中文）
 
@@ -50,42 +86,3 @@
 - 声音用 WebAudio 合成，只在事件发生时响（汽笛、绞车、放下、碰撞、旋翼、雷、雨）——没有一直循环的背景环境音。有声音开关，也可以暂停。
 - 手机上：控制放在底部抽屉里，触摸环绕，双指缩放。没有 WebGPU 时给出一句清楚的降级提示。
 - 英文文案："Offshore Jelly. A wind farm and a platform working a stretch of North Sea, set in a block of jelly." —— "Call in the supply boat. Fly the crew out. Brew up a storm."
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build "Offshore Jelly" — a single-file interactive WebGPU diorama in the "Material Studies" series: a stretch of North Sea cut out as a cube of translucent jelly, sitting on a studio floor. Everything is procedural (no external assets, no network), one HTML file with inline JS/WGSL.
-
-THE BLOCK
-- A wobbly jelly cube you can grab by its sides and tip; it springs back. Sliders: firmness, damping, wind (0–20 m/s).
-- Inside: a shallow-water simulation for the sea surface (waves, wakes, foam, whitecaps), seabed with sand ripples, scour rocks, kelp, boulders, starfish, crabs, urchins, a pipeline, cables and a small wreck. Caustics on the seabed. Dragging the water stirs up waves.
-- Waves come from the wind: several wave trains whose height grows with wind speed.
-
-THE SCENE
-- A production platform on a four-legged steel jacket (braces, risers, conductors, boat landing, marine growth below the waterline): main and cellar decks, process module, derrick, living quarters, lifeboats, a pedestal crane with a laydown area, a flare boom with a flickering flame and smoke.
-- An octagonal helideck with an H, a net, perimeter lights and a windsock.
-- Five offshore wind turbines on monopiles: transition piece with yellow platform, boat landing ladder, davit, tower, nacelle, three-blade rotors with red tips, blinking red aviation lights. Rotor speed and power output (MW) follow the wind.
-- A rocky skerry with a lighthouse whose beam turns; seals haul out on it.
-
-WHAT HAPPENS
-- Supply run: a platform supply vessel comes in from standby, holds station next to the jacket on dynamic positioning (thruster foam), and the crane does four lifts — containers swing on the hook, are set down on the platform and back-loaded onto the boat's deck. Then she sails back to standby.
-- Helicopter: flies in from the west, turns into the wind, lands on the helideck; a deck officer walks out; passengers get off. A second press sends it away (spin-up, lift, outbound). Rotor and tail rotor spin, downwash flattens the water.
-- Crew boat: a small catamaran sails out to a turbine, pushes its bow onto the boat landing, and technicians climb the ladder onto the platform. Next time she picks them up and brings them home.
-- Storm: the wind builds to a gale, waves get big with whitecaps and spray, rain falls, the room darkens, lightning strikes blades, the lighthouse, the derrick or the sea with a flash and thunder. Above cut-out the turbines feather their blades and stop (0 MW); the helicopter is grounded. Then it eases and the turbines restart.
-
-LIFE
-- Schools of fish around the jacket and wrecks, gulls that perch on railings and take off on the horn, gannets that plunge-dive for fish, a pod of porpoises, seals, moon jellyfish, crew walking the decks.
-
-CONTROLS & UI
-- Buttons: Supply run, Helicopter (take-off when landed), Crew boat, Storm. Space = ship's horn. Tapping a turbine switches it on/off, tapping the supply boat or helideck calls them. Orbit by drag, zoom by wheel/pinch.
-- Tallies: Power (MW), Lifts, Flights; status lines for the supply boat, helicopter and crew boat.
-- Flavours (jelly colour palettes): North Sea, Curaçao, Blackcurrant.
-- Sounds are synthesised with WebAudio and only play for events (horn, winch, set-down, bump, rotor, thunder, rain) — no constant background ambience. Sound toggle and pause.
-- Mobile: a bottom sheet with the controls, touch orbit and pinch zoom. Clean fallback message when WebGPU is unavailable.
-- Copy in English: "Offshore Jelly. A wind farm and a platform working a stretch of North Sea, set in a block of jelly." — "Call in the supply boat. Fly the crew out. Brew up a storm."
-```
-
-</details>

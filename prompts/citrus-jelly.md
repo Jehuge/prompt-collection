@@ -6,13 +6,63 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2109424502237016076) · [提示词帖](https://x.com/vib3coded/status/2109424651340284152) · 2026-10-12（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![柑橘果冻 Citrus Jelly](../assets/citrus-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build "Citrus Jelly" — a single self-contained HTML file (inline JS/CSS, no libraries) with a real-time WebGPU soft-body jelly shaped like a half-moon citrus slice that the user can grab, stretch and let go.
+
+Object
+- A rounded half-moon slice: half-disk profile extruded into a thick slab with softly rounded edges; flat cut edge on the bottom, arc on top.
+- Three material zones by radius: translucent fruit flesh inside, a pale pith band, and a thin glossy rind along the arc (the cut edge is all flesh).
+- Inside the jelly: thin milky radial membranes between the segments (inset from both faces), a few seeds, small air bubbles with a faint rim and a pin-point highlight, and tiny sub-surface glints like sugar crystals.
+
+Physics (XPBD tetrahedral soft body)
+- Mesh: 2D Bowyer–Watson Delaunay of the profile, extruded into prisms and split into tets. Render mesh embedded in sim tets with barycentric coordinates.
+- Constraints:
+  - co-rotational per-tet shape matching (warm-started quaternion, Müller 2016), which recovers inverted tets;
+  - tet volume constraints for near-incompressibility;
+  - hard edge strain limits (max 1.8×, min 0.35× rest length).
+- Fixed timestep, "small steps" XPBD (many substeps, 1 iteration each).
+- Damping: relative-velocity damping along edges, light air drag, and settling that bleeds off residual jitter.
+- Floor contact with Coulomb-style positional friction (static and kinetic). Never crush the held patch into the floor; lift the patch instead.
+- Grab and pull:
+  - pick a surface point with the mouse or touch;
+  - the patch around it is attached softly;
+  - reach is bounded, so stretching is strong but never unbounded;
+  - on release the slice wobbles back.
+- Safety: reset gently if any value becomes NaN.
+
+Rendering (WebGPU / WGSL)
+- Procedural photo studio: pale cyclorama paper sweep, overhead softbox, back-left strip light, front-right fill card.
+- Jelly material:
+  - refraction of the scene through the slice;
+  - view-ray thickness from a back-face depth pass, used for Beer–Lambert absorption;
+  - Fresnel studio reflections and a key highlight.
+- Soft PCSS-style floor shadows, tinted by the jelly color.
+- Post: exposure, Khronos PBR Neutral tone mapping, sRGB, dither. Optional mesh-overlay debug view.
+
+UI (minimal editorial style, English)
+- Corner label "Material Studies / No. 010", big title "Citrus / Jelly.", hint "Grab. Stretch. Let go."
+- Variety swatches: Orange, Blood Orange, Lemon. Each changes the flesh, pith and rind colors.
+- Sliders: Firmness (log-mapped edge compliance) and Internal damping.
+- Buttons:
+  - "Give it a nudge": a small hop with a twist;
+  - Reset;
+  - Pause.
+- Keys: Space to pause, N to nudge, R to reset.
+- Fallback screen "This slice needs WebGPU." when the browser has no WebGPU.
+- Responsive: works on mobile with touch and no horizontal scroll.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -63,56 +113,3 @@
 - 按键：空格暂停，N 推一下，R 重置。
 - 浏览器没有 WebGPU 时显示降级页面 "This slice needs WebGPU."。
 - 响应式：在移动端支持触摸，无横向滚动。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build "Citrus Jelly" — a single self-contained HTML file (inline JS/CSS, no libraries) with a real-time WebGPU soft-body jelly shaped like a half-moon citrus slice that the user can grab, stretch and let go.
-
-Object
-- A rounded half-moon slice: half-disk profile extruded into a thick slab with softly rounded edges; flat cut edge on the bottom, arc on top.
-- Three material zones by radius: translucent fruit flesh inside, a pale pith band, and a thin glossy rind along the arc (the cut edge is all flesh).
-- Inside the jelly: thin milky radial membranes between the segments (inset from both faces), a few seeds, small air bubbles with a faint rim and a pin-point highlight, and tiny sub-surface glints like sugar crystals.
-
-Physics (XPBD tetrahedral soft body)
-- Mesh: 2D Bowyer–Watson Delaunay of the profile, extruded into prisms and split into tets. Render mesh embedded in sim tets with barycentric coordinates.
-- Constraints:
-  - co-rotational per-tet shape matching (warm-started quaternion, Müller 2016), which recovers inverted tets;
-  - tet volume constraints for near-incompressibility;
-  - hard edge strain limits (max 1.8×, min 0.35× rest length).
-- Fixed timestep, "small steps" XPBD (many substeps, 1 iteration each).
-- Damping: relative-velocity damping along edges, light air drag, and settling that bleeds off residual jitter.
-- Floor contact with Coulomb-style positional friction (static and kinetic). Never crush the held patch into the floor; lift the patch instead.
-- Grab and pull:
-  - pick a surface point with the mouse or touch;
-  - the patch around it is attached softly;
-  - reach is bounded, so stretching is strong but never unbounded;
-  - on release the slice wobbles back.
-- Safety: reset gently if any value becomes NaN.
-
-Rendering (WebGPU / WGSL)
-- Procedural photo studio: pale cyclorama paper sweep, overhead softbox, back-left strip light, front-right fill card.
-- Jelly material:
-  - refraction of the scene through the slice;
-  - view-ray thickness from a back-face depth pass, used for Beer–Lambert absorption;
-  - Fresnel studio reflections and a key highlight.
-- Soft PCSS-style floor shadows, tinted by the jelly color.
-- Post: exposure, Khronos PBR Neutral tone mapping, sRGB, dither. Optional mesh-overlay debug view.
-
-UI (minimal editorial style, English)
-- Corner label "Material Studies / No. 010", big title "Citrus / Jelly.", hint "Grab. Stretch. Let go."
-- Variety swatches: Orange, Blood Orange, Lemon. Each changes the flesh, pith and rind colors.
-- Sliders: Firmness (log-mapped edge compliance) and Internal damping.
-- Buttons:
-  - "Give it a nudge": a small hop with a twist;
-  - Reset;
-  - Pause.
-- Keys: Space to pause, N to nudge, R to reset.
-- Fallback screen "This slice needs WebGPU." when the browser has no WebGPU.
-- Responsive: works on mobile with touch and no horizontal scroll.
-```
-
-</details>

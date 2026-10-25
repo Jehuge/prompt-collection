@@ -6,13 +6,39 @@
 - **测试模型**：Gemini 4 Argon vs Claude Opus 5.5
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2111965632338292943) · [提示词帖](https://x.com/vib3coded/status/2111965978770669760) · 2026-10-19（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Gemini 4 Argon vs Claude Opus 5.5）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Gemini 4 Argon vs Claude Opus 5.5）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![春风站 Harukaze Station](../assets/harukaze-station.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a single self-contained HTML file: an interactive low-poly 3D diorama of a rural Japanese railway station in spring, using Three.js (ES modules from a CDN). No external models or images — generate all geometry from primitives in code and paint textures (grass, signs) on <canvas>.
+
+Style: a floating diorama block (grass top, layered earth and stone sides) on a soft pastel sky gradient. MeshToonMaterial with a 3-step gradient map, dark ink outlines (OutlineEffect), soft directional shadows, bright saturated palette.
+
+Scene:
+- A single railway track across the block, running into green tunnel hills with concrete portals at both ends.
+- Concrete platform with a yellow tactile strip, a shelter with a corrugated roof, benches, a hanging clock, a small station building with a teal gable roof and a "春風駅" sign, a station name board (はるかぜ / Harukaze, with neighbouring stations), vending machines, bins, lamps, fence.
+- A road crossing the track with a level crossing: striped poles, crossbuck, red flashing lamps, barrier arms; road markings and "止まれ".
+- Utility poles with sagging wires, overhead catenary, small village houses, a vegetable patch, bushes, and cherry trees with puffy pink blob crowns and fallen petals painted on the grass.
+
+Animation:
+- A two-car commuter train (white with a pink stripe, pantograph) comes out of one tunnel, stops at the platform, then departs into the other; clipping planes hide it inside the tunnels. Loop every ~32 s.
+- Crossing lamps blink alternately and the arms lower before the train passes, then rise.
+- ~460 instanced sakura petals drifting in the wind.
+- Slow auto-orbit camera; OrbitControls for drag and zoom.
+
+UI (English): bottom-left title "春風駅 / Harukaze Station" with a small caption; bottom-right glass toolbar with Day / Night, Orbit on/off, and Train (call the next train). Night mode: dark sky with stars, lit windows, lamp point lights with additive glow sprites, glowing crossing lamps and train headlights.
+
+Technical: merge static meshes by material into a few dozen draw calls; use a seeded random so the scene is identical on every load; responsive down to phone width; respect prefers-reduced-motion.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -43,32 +69,3 @@
 ### 技术
 
 按材质合并静态网格，控制在几十次绘制调用以内；使用带种子的随机数，让每次加载场景都完全相同；响应式适配到手机宽度；遵守 prefers-reduced-motion。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a single self-contained HTML file: an interactive low-poly 3D diorama of a rural Japanese railway station in spring, using Three.js (ES modules from a CDN). No external models or images — generate all geometry from primitives in code and paint textures (grass, signs) on <canvas>.
-
-Style: a floating diorama block (grass top, layered earth and stone sides) on a soft pastel sky gradient. MeshToonMaterial with a 3-step gradient map, dark ink outlines (OutlineEffect), soft directional shadows, bright saturated palette.
-
-Scene:
-- A single railway track across the block, running into green tunnel hills with concrete portals at both ends.
-- Concrete platform with a yellow tactile strip, a shelter with a corrugated roof, benches, a hanging clock, a small station building with a teal gable roof and a "春風駅" sign, a station name board (はるかぜ / Harukaze, with neighbouring stations), vending machines, bins, lamps, fence.
-- A road crossing the track with a level crossing: striped poles, crossbuck, red flashing lamps, barrier arms; road markings and "止まれ".
-- Utility poles with sagging wires, overhead catenary, small village houses, a vegetable patch, bushes, and cherry trees with puffy pink blob crowns and fallen petals painted on the grass.
-
-Animation:
-- A two-car commuter train (white with a pink stripe, pantograph) comes out of one tunnel, stops at the platform, then departs into the other; clipping planes hide it inside the tunnels. Loop every ~32 s.
-- Crossing lamps blink alternately and the arms lower before the train passes, then rise.
-- ~460 instanced sakura petals drifting in the wind.
-- Slow auto-orbit camera; OrbitControls for drag and zoom.
-
-UI (English): bottom-left title "春風駅 / Harukaze Station" with a small caption; bottom-right glass toolbar with Day / Night, Orbit on/off, and Train (call the next train). Night mode: dark sky with stars, lit windows, lamp point lights with additive glow sprites, glowing crossing lamps and train headlights.
-
-Technical: merge static meshes by material into a few dozen draw calls; use a seeded random so the scene is identical on every load; responsive down to phone width; respect prefers-reduced-motion.
-```
-
-</details>
