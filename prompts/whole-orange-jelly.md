@@ -6,13 +6,69 @@
 - **测试模型**：Claude Opus 5.5
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2110665495221268915) · [提示词帖](https://x.com/vib3coded/status/2110665641665454342) · 2026-10-15（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来测试 AI 模型的提示词（帖子展示的是 Claude Opus 5.5 的结果）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来测试 AI 模型的提示词（帖子展示的是 Claude Opus 5.5 的结果）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![整颗橙子果冻 Whole Orange Jelly](../assets/whole-orange-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build "Whole Orange Jelly" — a single self-contained HTML file (inline JS/CSS, no libraries): a real-time WebGPU soft-body whole orange made of jelly. The user can grab and stretch it, and cut it with a knife into wheels, wedges and small pieces. Every piece is its own wobbling body.
+
+Shape and pieces
+- The orange is a signed distance field: a gently oblate ellipsoid (polar half-length 1.27 along x, equatorial radius 1.36) lying on its side, with a softly flattened seat on the floor.
+- Every piece is that field clipped by the half-spaces n·X ≤ c of the cuts that made it, with the fresh edges rounded (smooth max, k ≈ 0.085). All pieces share the orange's original rest frame, so the anatomy stays where it grew.
+- Per piece:
+  - a surface-nets render skin (0.042 grid) projected onto the field;
+  - a hex lattice for the simulation in the piece's own principal frame, with boundary nodes snapped to the surface;
+  - barycentric embedding of render vertices into the lattice tets.
+- Up to 30 pieces; slivers are rejected.
+
+Anatomy (all in rest space, so every cut shows it where it really is)
+- Zest (0.07 deep) with oil-gland pores, a mottled tone, a green stem button at one end and a small navel at the other.
+- White pith (to 0.19 deep).
+- 11 segments around the stem axis, with thin milky membrane walls (slightly jittered, bowed and wandering along the axis) and a pithy core along the axis.
+- Juice vesicles: teardrop sacs fanning out from the core within each segment.
+- 16 pale citrus pips near the core, pointed end inward; a few small bubbles in the flesh.
+- A pip that a cut goes through is kept by the side holding its centre and eased just under the new face.
+
+Physics (XPBD)
+- Per piece: hex cells with co-rotational shape matching plus volume constraints on their five tets.
+- Zest and pith firmer than the flesh.
+- Edge and deformation damping; floor contact with Coulomb friction and a little rolling resistance.
+- Piece–piece contact against each other's exact rest shape in a best-fit frame.
+- Sleeping pieces that wake on touch; fixed 60 Hz step with small substeps.
+
+Knife
+- A nakiri-style knife: draw a stroke across the orange.
+- The stroke, read on the top of what it crosses, fixes a vertical blade plane, carried into each crossed piece's rest frame by its best-fit rotation and added as a half-space.
+- The new pieces are built incrementally while the knife lines up, presses a groove and cuts straight down. They take over the position and speed of the jelly they came from, and the blade wedges the faces apart.
+
+Rendering (WebGPU / WGSL)
+- Procedural photo studio. Soft PCSS key shadow tinted by the jelly, plus contact AO from a height map.
+- Back-face thickness; refraction of the scene, with each tap dimmed by its own path length.
+- A volumetric march through the jelly in rest space, using a per-vertex inverse deformation gradient:
+  - zest, pith, membranes/core and flesh each absorb with their own colour (Beer–Lambert);
+  - scattering is grey (only absorption is coloured), so light scattered out of orange flesh stays orange.
+- The white pith, the membrane star and the core read crisply on cut faces.
+- Back-lit glow at thin edges, Fresnel studio reflections, GGX highlights, sugar-crystal glints.
+- Post: Khronos PBR Neutral tone mapping, sRGB, dither.
+
+UI (editorial "Material Studies / No. 032", English)
+- Italic serif title "Whole / Orange." with the caption "Eleven segments, set in jelly. Zest, pith and juice. Cut it as small as you like."
+- Status pill "WEBGPU · LIVE".
+- Tools: Hand / Knife. Varieties: Navel, Blood, Cara Cara.
+- Firmness and Internal damping sliders; Give it a nudge, Reset, Pause; ¼ speed and Show mesh.
+- Readouts: Mass (g, 1 unit ≈ 3 cm at 1.3 g/cm³), Volume (% of rest), Kinetic (mJ), Pieces.
+- A collapsible "Inside the experiment" with notes on the method.
+- Fallback without WebGPU. Stacked mobile layout with no horizontal scroll.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -71,62 +127,3 @@
 - 读数：Mass（g，1 单位 ≈ 3 cm，密度 1.3 g/cm³）、Volume（静止体积的百分比）、Kinetic（mJ）、Pieces。
 - 可折叠的 "Inside the experiment"，说明所用方法。
 - 没有 WebGPU 时降级。移动端为堆叠布局，无横向滚动。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build "Whole Orange Jelly" — a single self-contained HTML file (inline JS/CSS, no libraries): a real-time WebGPU soft-body whole orange made of jelly. The user can grab and stretch it, and cut it with a knife into wheels, wedges and small pieces. Every piece is its own wobbling body.
-
-Shape and pieces
-- The orange is a signed distance field: a gently oblate ellipsoid (polar half-length 1.27 along x, equatorial radius 1.36) lying on its side, with a softly flattened seat on the floor.
-- Every piece is that field clipped by the half-spaces n·X ≤ c of the cuts that made it, with the fresh edges rounded (smooth max, k ≈ 0.085). All pieces share the orange's original rest frame, so the anatomy stays where it grew.
-- Per piece:
-  - a surface-nets render skin (0.042 grid) projected onto the field;
-  - a hex lattice for the simulation in the piece's own principal frame, with boundary nodes snapped to the surface;
-  - barycentric embedding of render vertices into the lattice tets.
-- Up to 30 pieces; slivers are rejected.
-
-Anatomy (all in rest space, so every cut shows it where it really is)
-- Zest (0.07 deep) with oil-gland pores, a mottled tone, a green stem button at one end and a small navel at the other.
-- White pith (to 0.19 deep).
-- 11 segments around the stem axis, with thin milky membrane walls (slightly jittered, bowed and wandering along the axis) and a pithy core along the axis.
-- Juice vesicles: teardrop sacs fanning out from the core within each segment.
-- 16 pale citrus pips near the core, pointed end inward; a few small bubbles in the flesh.
-- A pip that a cut goes through is kept by the side holding its centre and eased just under the new face.
-
-Physics (XPBD)
-- Per piece: hex cells with co-rotational shape matching plus volume constraints on their five tets.
-- Zest and pith firmer than the flesh.
-- Edge and deformation damping; floor contact with Coulomb friction and a little rolling resistance.
-- Piece–piece contact against each other's exact rest shape in a best-fit frame.
-- Sleeping pieces that wake on touch; fixed 60 Hz step with small substeps.
-
-Knife
-- A nakiri-style knife: draw a stroke across the orange.
-- The stroke, read on the top of what it crosses, fixes a vertical blade plane, carried into each crossed piece's rest frame by its best-fit rotation and added as a half-space.
-- The new pieces are built incrementally while the knife lines up, presses a groove and cuts straight down. They take over the position and speed of the jelly they came from, and the blade wedges the faces apart.
-
-Rendering (WebGPU / WGSL)
-- Procedural photo studio. Soft PCSS key shadow tinted by the jelly, plus contact AO from a height map.
-- Back-face thickness; refraction of the scene, with each tap dimmed by its own path length.
-- A volumetric march through the jelly in rest space, using a per-vertex inverse deformation gradient:
-  - zest, pith, membranes/core and flesh each absorb with their own colour (Beer–Lambert);
-  - scattering is grey (only absorption is coloured), so light scattered out of orange flesh stays orange.
-- The white pith, the membrane star and the core read crisply on cut faces.
-- Back-lit glow at thin edges, Fresnel studio reflections, GGX highlights, sugar-crystal glints.
-- Post: Khronos PBR Neutral tone mapping, sRGB, dither.
-
-UI (editorial "Material Studies / No. 032", English)
-- Italic serif title "Whole / Orange." with the caption "Eleven segments, set in jelly. Zest, pith and juice. Cut it as small as you like."
-- Status pill "WEBGPU · LIVE".
-- Tools: Hand / Knife. Varieties: Navel, Blood, Cara Cara.
-- Firmness and Internal damping sliders; Give it a nudge, Reset, Pause; ¼ speed and Show mesh.
-- Readouts: Mass (g, 1 unit ≈ 3 cm at 1.3 g/cm³), Volume (% of rest), Kinetic (mJ), Pieces.
-- A collapsible "Inside the experiment" with notes on the method.
-- Fallback without WebGPU. Stacked mobile layout with no horizontal scroll.
-```
-
-</details>

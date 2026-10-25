@@ -6,13 +6,56 @@
 - **测试模型**：Claude Opus 5.5
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2111829421040488960) · [提示词帖](https://x.com/vib3coded/status/2111829905553969329) · 2026-10-18（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来测试 AI 模型的提示词（帖子展示的是 Claude Opus 5.5 的结果）。这是在 [fluffy-watermelon](fluffy-watermelon.md) 基础上的升级版（作者让 Claude Opus 5.5 在原作上继续加功能），但提示词本身是完整独立的。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来测试 AI 模型的提示词（帖子展示的是 Claude Opus 5.5 的结果）。这是在 [fluffy-watermelon](fluffy-watermelon.md) 基础上的升级版（作者让 Claude Opus 5.5 在原作上继续加功能），但提示词本身是完整独立的。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![毛茸茸西瓜游乐场 Fluffy Watermelon Playground](../assets/fluffy-watermelon-playground.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a single self-contained HTML page (no build step) called "Fluffy Watermelon Playground": an interactive 3D toy where a big, furry watermelon can be sliced with a visible knife into as many furry pieces as you like, and the pieces can be grabbed, dragged and thrown around like springy plush toys. Use three.js r147 (UMD: https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js) with custom ShaderMaterials. All UI text in English. Font: Onest (Google Fonts) with system fallbacks.
+
+LOOK
+- Full-screen canvas on a watermelon-flesh pink studio background: vertical gradient #ECB3AB → #F7CFC7 (lighter band mid-screen) → #E8A9A0.
+- Watermelon: oblong ellipsoid lying along X (half-length 1.38, radius 0.98), blunt barrel-like ends, small dimples at both ends, slightly flattened belly, subtle bumps. Short dried ribbed stem stub with a pale domed cut cap, plus a thin curly helical tendril.
+- Rind colour under the fur: light green #A8D66B with 16 dark green (#1C4D1C) stripes running stem to blossom, with ragged finger-like edges (sine meander + value noise), plus a pale cream field spot on the underside.
+- One directional light from upper-left-front: wrap diffuse, Kajiya-Kay anisotropic highlight along the hair tangent, darker roots, slight per-hair brightness variation.
+
+FUR (must look crisp, never blurry)
+- Fur length 0.2 units. Hairs grow along the normal, then comb from the stem end toward the blossom end and drape down the flanks (radial at the ends, no whorls), with gravity, an idle breeze, and lag/sway that trails the piece's spin.
+- Undercoat: ~64 instanced shells of the surface reaching only 50% of fur length. Procedural hair cells in UV space sized to ~3.4 device pixels at the default view, two populations (long + fine underfur), locks that clump toward the tips, analytic anti-aliased coverage, alpha blended, shells write depth. Each hair takes the colour of its own root, so stripes stay crisp. On the rind, fade shells out where seen edge-on and discard faint fragments (no dotted rim at the outline).
+- Guard hairs: ~90,000 individual tapered camera-facing ribbons (instanced, 7 segments) that follow the same bend function, minimum width ~0.75 px, visible from the root. Draw them twice: before the shells and after them (depth-tested, no depth write).
+- Always render at the full device pixel ratio (max 2), never lower it. If frames are slow, first reduce the shell count (down to 32), then the guard-hair count.
+
+SLICING (unlimited pieces)
+- A "Knife" toggle button (top right). With the knife on, the cursor becomes a visible 3D chef's knife: steel blade with a curved tip, steel bolster, dark wooden handle with three rivets, lit with Phong materials. It follows the pointer slightly in front of the pieces. The tip points the way you swipe (left or right) and dips a little when cutting downward; the cutting edge always faces down, so the knife is never upside down. The spine leans toward the viewer. A white fading trail follows each swipe.
+- A swipe defines a cutting plane containing the swipe line and the view direction. It cuts every piece the blade passes over on screen (it must really split the piece, not graze it). Up to 24 pieces, up to 8 cuts per piece. Esc puts the knife down.
+- Every piece is the original melon geometry plus a list of clip planes (all of them discarded in the shaders via uniforms), the rind triangles and guard hairs filtered to its side, and one furry cut face per plane it was cut by.
+- Cut face: find the cross-section outline by ray-marching the analytic body shape (128 angles), build a polar disc mesh, and EXTEND it by one extra ring across the thickness of the rind's fur (0.11 units), so no empty gap shows between the cut fur and the rind fur when viewed from the side. Faces from older cuts are trimmed by newer planes.
+- Inside colour is painted once per cut into a 384×384 texture: deep red core #E62640 blending to #FD666B, grainy, pale rind band, thin green skin, a dark green rim across the fur thickness, and seeds: 16 rows around the long axis on a shell at ~60% of the radius, black with a few pale ones.
+- Cut-face fur uses the same shell + guard-hair technique, as dense as on the rind, guard hairs drawn under and over the undercoat, and the undercoat stays visible at grazing angles (fade only when exactly edge-on) so the hairs never float above a bare slab. Hair colour comes from the flesh map at each hair's root.
+- New halves inherit the parent's motion plus a gentle push apart and a little hop. The stem stays with whichever piece contains it.
+
+PHYSICS (plush toy)
+- Gravity 22, invisible table, big round arena (radius 6.5) shown as a faint ring on the floor; a soft round fence at its edge. 3 substeps per frame.
+- Each piece is a rigid body: centre of mass, bounding radius, mass ∝ R³, sample points (rind + cut faces) for contacts. Floor contacts at the deepest points with restitution 0.5 on hard hits, friction, positional correction, sleep when settled.
+- Pieces never pass through each other: test every piece's sample points against the other piece's actual shape (analytic body radius + all its clip planes, padded 0.07 for the fur). Resolve with impulses at up to 4 deepest contacts (restitution 0.45), angular effects, and positional correction, both directions.
+- Plush squash & stretch: on impacts (floor, fence, other pieces) the piece flattens along the hit direction with a pivot on the hit side and springs back with a damped spring (k=160, c=7), volume preserved; it stretches slightly along its velocity when flying fast. Applied as a separate wrapper transform so physics stays rigid.
+- Without the knife: drag a piece to carry it (it follows a plane facing the camera, pushes other pieces away); release while moving to throw it with the speed of the last ~90 ms (cap 30), adding tumble. Drag the empty background to orbit the camera around the table; wheel or pinch zooms; arrow keys orbit.
+- Soft contact shadow under each piece that grows and fades with height.
+- The camera automatically follows the centre of all pieces and pulls back so every piece stays in frame.
+
+UI & ROBUSTNESS
+- Top right: "Knife" toggle and "New watermelon" (appears after the first cut; drops a fresh whole melon). Bottom left: "Fluffy Watermelon" and a hint that changes with the mode ("Drag a piece to throw it · Drag the background to look around · Press Knife to slice" / "Swipe across the watermelon to slice it · Esc puts the knife down" / "Missed. Swipe right across a piece."), adapted for touch devices. Custom 46 px ring cursor when the knife is off.
+- Guard against a zero-sized container at load (clamp width/height to ≥1) and recover from any non-finite camera or body state every frame.
+- Show a small note if the WebGL context is lost or a shader fails to compile; a fallback message if WebGL is unavailable. Respect prefers-reduced-motion (no breeze).
+```
+
+---
 
 ## 提示词（中文）
 
@@ -57,49 +100,3 @@
 - 右上："Knife" 开关和 "New watermelon"（第一刀之后出现；落下一个新的完整西瓜）。左下："Fluffy Watermelon" 和一行随模式变化的提示（"Drag a piece to throw it · Drag the background to look around · Press Knife to slice" / "Swipe across the watermelon to slice it · Esc puts the knife down" / "Missed. Swipe right across a piece."），并针对触屏设备调整。刀关闭时使用自定义 46 px 圆环光标。
 - 防范加载时容器尺寸为零（把宽/高钳制为 ≥1），并在每一帧从任何非有限的相机或物体状态中恢复。
 - 如果 WebGL 上下文丢失或着色器编译失败，显示一条小提示；WebGL 不可用时显示降级信息。遵守 prefers-reduced-motion（没有微风）。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a single self-contained HTML page (no build step) called "Fluffy Watermelon Playground": an interactive 3D toy where a big, furry watermelon can be sliced with a visible knife into as many furry pieces as you like, and the pieces can be grabbed, dragged and thrown around like springy plush toys. Use three.js r147 (UMD: https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js) with custom ShaderMaterials. All UI text in English. Font: Onest (Google Fonts) with system fallbacks.
-
-LOOK
-- Full-screen canvas on a watermelon-flesh pink studio background: vertical gradient #ECB3AB → #F7CFC7 (lighter band mid-screen) → #E8A9A0.
-- Watermelon: oblong ellipsoid lying along X (half-length 1.38, radius 0.98), blunt barrel-like ends, small dimples at both ends, slightly flattened belly, subtle bumps. Short dried ribbed stem stub with a pale domed cut cap, plus a thin curly helical tendril.
-- Rind colour under the fur: light green #A8D66B with 16 dark green (#1C4D1C) stripes running stem to blossom, with ragged finger-like edges (sine meander + value noise), plus a pale cream field spot on the underside.
-- One directional light from upper-left-front: wrap diffuse, Kajiya-Kay anisotropic highlight along the hair tangent, darker roots, slight per-hair brightness variation.
-
-FUR (must look crisp, never blurry)
-- Fur length 0.2 units. Hairs grow along the normal, then comb from the stem end toward the blossom end and drape down the flanks (radial at the ends, no whorls), with gravity, an idle breeze, and lag/sway that trails the piece's spin.
-- Undercoat: ~64 instanced shells of the surface reaching only 50% of fur length. Procedural hair cells in UV space sized to ~3.4 device pixels at the default view, two populations (long + fine underfur), locks that clump toward the tips, analytic anti-aliased coverage, alpha blended, shells write depth. Each hair takes the colour of its own root, so stripes stay crisp. On the rind, fade shells out where seen edge-on and discard faint fragments (no dotted rim at the outline).
-- Guard hairs: ~90,000 individual tapered camera-facing ribbons (instanced, 7 segments) that follow the same bend function, minimum width ~0.75 px, visible from the root. Draw them twice: before the shells and after them (depth-tested, no depth write).
-- Always render at the full device pixel ratio (max 2), never lower it. If frames are slow, first reduce the shell count (down to 32), then the guard-hair count.
-
-SLICING (unlimited pieces)
-- A "Knife" toggle button (top right). With the knife on, the cursor becomes a visible 3D chef's knife: steel blade with a curved tip, steel bolster, dark wooden handle with three rivets, lit with Phong materials. It follows the pointer slightly in front of the pieces. The tip points the way you swipe (left or right) and dips a little when cutting downward; the cutting edge always faces down, so the knife is never upside down. The spine leans toward the viewer. A white fading trail follows each swipe.
-- A swipe defines a cutting plane containing the swipe line and the view direction. It cuts every piece the blade passes over on screen (it must really split the piece, not graze it). Up to 24 pieces, up to 8 cuts per piece. Esc puts the knife down.
-- Every piece is the original melon geometry plus a list of clip planes (all of them discarded in the shaders via uniforms), the rind triangles and guard hairs filtered to its side, and one furry cut face per plane it was cut by.
-- Cut face: find the cross-section outline by ray-marching the analytic body shape (128 angles), build a polar disc mesh, and EXTEND it by one extra ring across the thickness of the rind's fur (0.11 units), so no empty gap shows between the cut fur and the rind fur when viewed from the side. Faces from older cuts are trimmed by newer planes.
-- Inside colour is painted once per cut into a 384×384 texture: deep red core #E62640 blending to #FD666B, grainy, pale rind band, thin green skin, a dark green rim across the fur thickness, and seeds: 16 rows around the long axis on a shell at ~60% of the radius, black with a few pale ones.
-- Cut-face fur uses the same shell + guard-hair technique, as dense as on the rind, guard hairs drawn under and over the undercoat, and the undercoat stays visible at grazing angles (fade only when exactly edge-on) so the hairs never float above a bare slab. Hair colour comes from the flesh map at each hair's root.
-- New halves inherit the parent's motion plus a gentle push apart and a little hop. The stem stays with whichever piece contains it.
-
-PHYSICS (plush toy)
-- Gravity 22, invisible table, big round arena (radius 6.5) shown as a faint ring on the floor; a soft round fence at its edge. 3 substeps per frame.
-- Each piece is a rigid body: centre of mass, bounding radius, mass ∝ R³, sample points (rind + cut faces) for contacts. Floor contacts at the deepest points with restitution 0.5 on hard hits, friction, positional correction, sleep when settled.
-- Pieces never pass through each other: test every piece's sample points against the other piece's actual shape (analytic body radius + all its clip planes, padded 0.07 for the fur). Resolve with impulses at up to 4 deepest contacts (restitution 0.45), angular effects, and positional correction, both directions.
-- Plush squash & stretch: on impacts (floor, fence, other pieces) the piece flattens along the hit direction with a pivot on the hit side and springs back with a damped spring (k=160, c=7), volume preserved; it stretches slightly along its velocity when flying fast. Applied as a separate wrapper transform so physics stays rigid.
-- Without the knife: drag a piece to carry it (it follows a plane facing the camera, pushes other pieces away); release while moving to throw it with the speed of the last ~90 ms (cap 30), adding tumble. Drag the empty background to orbit the camera around the table; wheel or pinch zooms; arrow keys orbit.
-- Soft contact shadow under each piece that grows and fades with height.
-- The camera automatically follows the centre of all pieces and pulls back so every piece stays in frame.
-
-UI & ROBUSTNESS
-- Top right: "Knife" toggle and "New watermelon" (appears after the first cut; drops a fresh whole melon). Bottom left: "Fluffy Watermelon" and a hint that changes with the mode ("Drag a piece to throw it · Drag the background to look around · Press Knife to slice" / "Swipe across the watermelon to slice it · Esc puts the knife down" / "Missed. Swipe right across a piece."), adapted for touch devices. Custom 46 px ring cursor when the knife is off.
-- Guard against a zero-sized container at load (clamp width/height to ≥1) and recover from any non-finite camera or body state every frame.
-- Show a small note if the WebGL context is lost or a shader fails to compile; a fallback message if WebGL is unavailable. Respect prefers-reduced-motion (no breeze).
-```
-
-</details>

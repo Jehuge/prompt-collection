@@ -6,13 +6,29 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2112128541022114137) · [提示词帖](https://x.com/vib3coded/status/2112128796505624621) · 2026-10-19（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![牛油果果冻 Avocado Jelly](../assets/avocado-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a single-file WebGPU page "Avocado Jelly" in the style of a "Material Studies" specimen sheet (light studio backdrop #E2DFDA, italic serif title, a specimen control panel on the right, live readouts bottom-left, collapsible "Inside the experiment" notes; fully responsive with a stacked phone layout and a no-WebGPU fallback card).
+
+Subject: half an avocado made of translucent jelly, lying skin-down on a table, cut face up, with its pit seated in the hollow.
+
+Geometry: define the fruit as a signed distance field — a smooth pear of revolution along x (round body + narrower neck, smooth-min blended, cross-section slightly flattened, belly gently flattened on the floor), cut at the axis plane, minus an egg-shaped hollow for the pit (two half-ellipsoids, a little longer toward the neck). Build the simulation mesh as a hex lattice (5 tets per cell, ~800 particles / ~2400 tets) with node layers exactly on the floor and the cut face, boundary nodes snapped onto the surface (back off where tets would invert, force nodes out of the pit). Render surface via surface nets (~0.03 spacing), embedded in the tets with barycentric weights.
+
+Physics (CPU, XPBD, 60 Hz, 10 substeps): per-tet co-rotational shape matching + volume constraints, stiffer leathery skin, edge-relative damping, floor contact with friction, soft pointer grab with twist (wheel / second finger). The pit is a true rigid body (position, quaternion, ellipsoid inertia): frictional contact with every particle, floor contact through ~70 sampled surface points so it rolls and stops. The hollow's lining nodes are held to the pit by soft adhesion bonds. Release them by a sustained net pull (fatigue on the lining's net force, measured in the half's best-fit rigid frame), peeling from the floor of the hollow up to the lip, so the flesh clings, stretches, then lets go and snaps back; brief knocks and wobbles must not release it. A loose pit that settles near its hollow is drawn home and re-bonded with a short soft grace period. Grabbing the pit moves it as a whole (no pivoting); it can be thrown. Buttons: "Give it a nudge", "Reset", "Pop the pit" (tosses it onto the table toward the viewer) / "Put the pit back" (carries it along an arc and drops it in), Pause, ¼ speed, Show mesh, sliders for firmness and internal damping. Readouts: mass, volume % of rest, grip % (share of bonds holding).
+
+Rendering (WGSL): shadow map + top-down height map for contact AO; a scene pass (floor, pit, a few bubbles) whose alpha stores linear depth; a back-face pass for view-ray thickness; jelly front faces that refract the scene by that thickness with Beer–Lambert absorption and scattering. Flesh regions from rest-space SDFs: dark pebbled skin (derivative bump mapping, anti-aliased), an emerald band under the skin, vivid green fading to a milky butter-yellow heart around the pit, faint strands, glints, back-lit edge glow, Fresnel studio reflections and GGX highlights. The pit: tan core under a papery brown coat with fibres and a faint seam, soft key shadows, a moist sheen. Three varieties: Hass, Fuerte, Reed. UI text in English.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -42,22 +58,3 @@
 - 果肉区域由静止空间的 SDF 决定：深色、带颗粒疙瘩的果皮（导数凹凸贴图，抗锯齿），果皮下方一条祖母绿色带，鲜绿色逐渐过渡到果核周围乳白的黄油色果心，淡淡的纤维丝，闪光，背光边缘辉光，菲涅尔摄影棚反射和 GGX 高光。
 - 果核：棕褐色内核，外面包着一层纸质的棕色种皮，带纤维和一条淡淡的接缝，柔和的主光阴影，湿润的光泽。
 - 三个品种：Hass、Fuerte、Reed。界面文字为英文。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a single-file WebGPU page "Avocado Jelly" in the style of a "Material Studies" specimen sheet (light studio backdrop #E2DFDA, italic serif title, a specimen control panel on the right, live readouts bottom-left, collapsible "Inside the experiment" notes; fully responsive with a stacked phone layout and a no-WebGPU fallback card).
-
-Subject: half an avocado made of translucent jelly, lying skin-down on a table, cut face up, with its pit seated in the hollow.
-
-Geometry: define the fruit as a signed distance field — a smooth pear of revolution along x (round body + narrower neck, smooth-min blended, cross-section slightly flattened, belly gently flattened on the floor), cut at the axis plane, minus an egg-shaped hollow for the pit (two half-ellipsoids, a little longer toward the neck). Build the simulation mesh as a hex lattice (5 tets per cell, ~800 particles / ~2400 tets) with node layers exactly on the floor and the cut face, boundary nodes snapped onto the surface (back off where tets would invert, force nodes out of the pit). Render surface via surface nets (~0.03 spacing), embedded in the tets with barycentric weights.
-
-Physics (CPU, XPBD, 60 Hz, 10 substeps): per-tet co-rotational shape matching + volume constraints, stiffer leathery skin, edge-relative damping, floor contact with friction, soft pointer grab with twist (wheel / second finger). The pit is a true rigid body (position, quaternion, ellipsoid inertia): frictional contact with every particle, floor contact through ~70 sampled surface points so it rolls and stops. The hollow's lining nodes are held to the pit by soft adhesion bonds. Release them by a sustained net pull (fatigue on the lining's net force, measured in the half's best-fit rigid frame), peeling from the floor of the hollow up to the lip, so the flesh clings, stretches, then lets go and snaps back; brief knocks and wobbles must not release it. A loose pit that settles near its hollow is drawn home and re-bonded with a short soft grace period. Grabbing the pit moves it as a whole (no pivoting); it can be thrown. Buttons: "Give it a nudge", "Reset", "Pop the pit" (tosses it onto the table toward the viewer) / "Put the pit back" (carries it along an arc and drops it in), Pause, ¼ speed, Show mesh, sliders for firmness and internal damping. Readouts: mass, volume % of rest, grip % (share of bonds holding).
-
-Rendering (WGSL): shadow map + top-down height map for contact AO; a scene pass (floor, pit, a few bubbles) whose alpha stores linear depth; a back-face pass for view-ray thickness; jelly front faces that refract the scene by that thickness with Beer–Lambert absorption and scattering. Flesh regions from rest-space SDFs: dark pebbled skin (derivative bump mapping, anti-aliased), an emerald band under the skin, vivid green fading to a milky butter-yellow heart around the pit, faint strands, glints, back-lit edge glow, Fresnel studio reflections and GGX highlights. The pit: tan core under a papery brown coat with fibres and a faint seam, soft key shadows, a moist sheen. Three varieties: Hass, Fuerte, Reed. UI text in English.
-```
-
-</details>

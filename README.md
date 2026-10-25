@@ -1,6 +1,6 @@
 # 提示词收集
 
-收集我在视频里用过、实测能跑出效果的 AI 编程提示词（vibe coding）。每个提示词一个文件，中文为主，并附英文原文，复制即可直接丢给 AI 使用。
+收集我在视频里用过、实测能跑出效果的 AI 编程提示词（vibe coding）。每个提示词一个文件，优先收录英文原文，并附中文翻译，复制即可直接丢给 AI 使用。
 
 ## 声明
 
@@ -87,12 +87,12 @@
 
 ## 使用方式
 
-1. 打开对应的提示词文件，复制「提示词」部分（中文或英文原文均可）。
+1. 打开对应的提示词文件，优先复制「提示词（英文原文）」；需要中文时再复制后面的「提示词（中文）」。
 2. 粘贴给你常用的 AI 编程工具（Cursor、Claude、ChatGPT、Grok 等）。
 3. 生成后用浏览器直接打开 HTML 文件即可预览。
 
 上面三步对应 [@vib3coded](https://x.com/vib3coded) 的交互网页提示词。
 
-[@0xwhrrari](https://x.com/0xwhrrari) 的 motion Prompt Pack 在 [`authors/0xwhrrari/motion-prompt-packs/`](authors/0xwhrrari/motion-prompt-packs/)：复制英文提示词，贴给跑着 Opus 5.5 的 Claude Code（需要提示词里写明的 Blender、Python 或 ffmpeg）。同目录 PDF 是原件。系列说明见 [Motion Engineering](https://x.com/i/article/2105626165704572928)。
+[@0xwhrrari](https://x.com/0xwhrrari) 的 motion Prompt Pack 在 [`authors/0xwhrrari/motion-prompt-packs/`](authors/0xwhrrari/motion-prompt-packs/)：优先复制英文提示词（画面 / 声音），贴给跑着 Opus 5.5 的 Claude Code（需要提示词里写明的 Blender、Python 或 ffmpeg）；中文译文附后仅作说明。同目录 PDF 是原件。系列说明见 [Motion Engineering](https://x.com/i/article/2105626165704572928)。
 
 欢迎 Star，后续会持续更新更多提示词。

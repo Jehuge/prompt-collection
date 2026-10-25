@@ -6,13 +6,21 @@
 - **测试模型**：未注明
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2113069968266834400) · [提示词帖](https://x.com/vib3coded/status/2113070117189808506) · 2026-10-22（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 公开分享的提示词（具体测试模型未注明）。提示词要求沿用作者此前的 Melon / Avocado / Peach jelly 切片的引擎和版式，那些源码未公开；没有原作时可让 AI 按文中描述从头搭建。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 公开分享的提示词（具体测试模型未注明）。提示词要求沿用作者此前的 Melon / Avocado / Peach jelly 切片的引擎和版式，那些源码未公开；没有原作时可让 AI 按文中描述从头搭建。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![百香果果冻 Passion Fruit Jelly](../assets/passion-fruit-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a real-time WebGPU soft-body "jelly" study of a halved passion fruit, same engine and editorial page style as my Melon / Avocado / Peach jelly slices. Geometry from SDFs: a slightly squashed sphere cut flat at the top, a thin wrinkled purple skin, a ~0.15 R white pith wall, and a hollow filled with lumpy translucent orange pulp sitting a little below the rim. Sim: CPU XPBD co-rotational shape matching + volume constraints on a 5-tet hex lattice, 10 substeps at 60 Hz, with per-tet regions — a firm, leathery rind cup and a very soft pulp whose volume constraints are compliant, so grabbing the pulp makes it neck and stretch like goo and slump back instead of lifting the whole fruit. Render a surface-nets mesh skinned to the lattice: refraction, Beer–Lambert absorption, subsurface scattering, Fresnel studio reflections, GGX, shadow map, contact AO, PBR Neutral tone mapping. Shader regions from rest-space SDFs: rounded wrinkle bump on the skin (faded at grazing angles and distance), pale pith, a thin yellow membrane lining the hollow, soft Voronoi juice-sac cells in the pulp; ~100 dark flat teardrop seeds and a few bubbles embedded in the pulp so they ride the wobble. Varieties: Purple, Golden, Granadilla. Controls: firmness, internal damping, nudge, reset, ¼ speed, show mesh, pause; mass/volume/kinetic readouts; "Inside the experiment" notes. English UI, mobile-friendly.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -33,14 +41,3 @@
 ### 品种与控制
 
 品种：Purple、Golden、Granadilla。控制：firmness、internal damping、nudge、reset、¼ speed、show mesh、pause。读数：质量、体积、动能。有一份 "Inside the experiment" 说明。界面为英文，适配手机。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a real-time WebGPU soft-body "jelly" study of a halved passion fruit, same engine and editorial page style as my Melon / Avocado / Peach jelly slices. Geometry from SDFs: a slightly squashed sphere cut flat at the top, a thin wrinkled purple skin, a ~0.15 R white pith wall, and a hollow filled with lumpy translucent orange pulp sitting a little below the rim. Sim: CPU XPBD co-rotational shape matching + volume constraints on a 5-tet hex lattice, 10 substeps at 60 Hz, with per-tet regions — a firm, leathery rind cup and a very soft pulp whose volume constraints are compliant, so grabbing the pulp makes it neck and stretch like goo and slump back instead of lifting the whole fruit. Render a surface-nets mesh skinned to the lattice: refraction, Beer–Lambert absorption, subsurface scattering, Fresnel studio reflections, GGX, shadow map, contact AO, PBR Neutral tone mapping. Shader regions from rest-space SDFs: rounded wrinkle bump on the skin (faded at grazing angles and distance), pale pith, a thin yellow membrane lining the hollow, soft Voronoi juice-sac cells in the pulp; ~100 dark flat teardrop seeds and a few bubbles embedded in the pulp so they ride the wobble. Varieties: Purple, Golden, Granadilla. Controls: firmness, internal damping, nudge, reset, ¼ speed, show mesh, pause; mass/volume/kinetic readouts; "Inside the experiment" notes. English UI, mobile-friendly.
-```
-
-</details>

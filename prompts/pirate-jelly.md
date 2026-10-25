@@ -6,13 +6,51 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2108336208891801999) · [提示词帖](https://x.com/vib3coded/status/2108336611796615233) · 2026-10-09（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。提示词里提到的「Material Studies 果冻微缩场景系列」是作者此前同系列的作品，源码未公开；没有原作时可让 AI 按文中描述从头搭建。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。提示词里提到的「Material Studies 果冻微缩场景系列」是作者此前同系列的作品，源码未公开；没有原作时可让 AI 按文中描述从头搭建。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![海盗果冻 Pirate Jelly](../assets/pirate-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Create a self-contained interactive WebGPU/WGSL page "Pirate Jelly" — part of a "Material Studies" series of jelly dioramas. Single HTML file, no external models, textures, fonts or libraries; everything procedural. English UI.
+
+LOOK & LAYOUT
+- A square block of translucent jelly sea (≈5.2 × 5.2 units) standing on a paper-studio floor; the camera looks in at the front corner at ~27°. The block's cut faces show candy strata (chocolate bedrock, caramel clay, a shell band, vanilla sand); the sea surface and walls refract and tint what's behind them, with caustics on the sea floor, light shafts, a tinted caustic shadow on the floor, foam lace on the shoreline and a bright meniscus on the cut edges.
+- A small tropical island toward the back: sandy beach, a cove facing the viewer, a mossy jungle hump with ~9 gummy palms (ringed caramel trunks, translucent fronds that flutter), lumpy gummy bushes with flowers, ferns, beach grass, rocks around the shore.
+- SKULL ROCK at the island's west tip, standing in the shallows: a cartoon skull sculpted as a signed-distance field (cranium, cheekbones, jaws, deep eye sockets, heart-shaped nose, crack on the crown, rock strata and noise, moss on top, a wet band at the waterline), meshed with surface nets; two rows of separate box teeth set into a carved grin. At night its eye sockets glow like a candle-lit cave.
+- A PIRATE SHIP riding at anchor in front of the island, seen at three-quarters from the stern: black hull with an ochre gunport strake, red bottom, gunports with cannons, raised quarterdeck with lit stern windows and a stern lantern, three masts (square courses and topsails on fore and main, a gaff sail on the mizzen, a jib to the bowsprit), shrouds and stays, and a Jolly Roger (skull and crossed bones drawn procedurally in the shader) streaming aft. Her anchor chain runs from the bow down through the jelly to an anchor lying on the sea floor.
+- The camp on the cove beach: a campfire (stone ring, teepee of logs with glowing ends, embers, a tripod with a pot, two seating logs), an iron-bound treasure chest under a leaning palm with a hinged lid and a heap of gold and gems inside, a shovel in a sand heap, barrels, a crate, a pyramid of round shot, a rum bottle, a rowing boat pulled up with its bow on the sand, and an "X" scored in the sand.
+- On the sea floor: the bow half of an old wreck lying on its side with ribs showing and its broken mast beside it, swaying kelp, a few doubloons, bubbles caught in the jelly.
+
+SIMULATION
+- Linear shallow-water waves on a staggered grid with a little surface tension (springy jelly); the block can be tipped and the sea sloshes and the jelly wobbles (shear + squash).
+- The ship floats on 10 buoyancy points (heave, pitch, roll), is pushed by a gently veering offshore breeze, held by an elastic anchor rode at the bow, and weathervanes into the wind. Her displaced volume is handed back to the sea, so she makes a wake.
+- Rigid bodies: cannonballs (dense, fly in a clean arc, punch a crater, sink and roll on the floor), barrels (float on their side), doubloons (flutter down and settle flat). All interact with the sea (buoyancy, drag, splashes, bubbles), the terrain, the skull, the props, the palm trunks and the ship's hull.
+- One particle system: fire flames (additive), embers, woodsmoke, muzzle flash, white gunsmoke, sea spray, sand puffs, gold glints over the open chest, fireflies at night.
+
+INTERACTION
+- Tap the ship → fire the next gun on the side facing the viewer (ball, flash, smoke, recoil heel). Drag the ship → tow her against the rode; release → she drifts back to her anchor.
+- Tap the chest → lid swings open/shut with a bounce; gold glitters. Tap the fire → it roars and throws sparks. Tap the X → three doubloons pop out of the sand.
+- Drag across the water to make waves; drag a side of the block to tip it; pick up and throw balls/barrels/coins; drag a palm to bend it; drag empty space or right-drag to orbit; wheel/pinch to zoom.
+
+TIME OF DAY
+- A slider from Noon → Afternoon → Golden hour → Sunset → Dusk → Night → Midnight. The sun lowers and warms, the backdrop turns peach, then the moon takes over (dim blue), stars appear on the backdrop, the page UI switches to a dark theme, and the campfire becomes the main light: a flickering point light that warms the sand, palms, sails and gold, reflects in the water, and lights the smoke from below. Stern windows and lantern glow.
+
+UI (editorial, like the series)
+- Top-left masthead: eyebrow "MATERIAL STUDIES", big italic serif title "Pirate / Jelly.", a short line of copy.
+- Status pill (WebGPU · Live / Paused / Unavailable).
+- Right glass panel: "The cove" — buttons Fire a gun / Doubloons / Barrel, a liveliness meter, tally Shots · Afloat · Sunk; "Flavour" — Turquoise, Rum (amber), Kraken (violet) jelly palettes; sliders Firmness, Wave damping, Time of day; Reset / Pause / Reset view.
+- Bottom-left "How to play" line plus small instructions. Space fires a gun.
+- Mobile: the panel becomes a bottom sheet; touch orbit and pinch zoom.
+- Fallback card when WebGPU (or an adapter) isn't available. Respect prefers-reduced-motion.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -52,44 +90,3 @@
 - 左下 "How to play" 一行加小字说明。空格键开炮。
 - 移动端：面板变为底部抽屉；触摸环绕和双指缩放。
 - WebGPU（或 adapter）不可用时显示降级卡片。遵守 prefers-reduced-motion。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Create a self-contained interactive WebGPU/WGSL page "Pirate Jelly" — part of a "Material Studies" series of jelly dioramas. Single HTML file, no external models, textures, fonts or libraries; everything procedural. English UI.
-
-LOOK & LAYOUT
-- A square block of translucent jelly sea (≈5.2 × 5.2 units) standing on a paper-studio floor; the camera looks in at the front corner at ~27°. The block's cut faces show candy strata (chocolate bedrock, caramel clay, a shell band, vanilla sand); the sea surface and walls refract and tint what's behind them, with caustics on the sea floor, light shafts, a tinted caustic shadow on the floor, foam lace on the shoreline and a bright meniscus on the cut edges.
-- A small tropical island toward the back: sandy beach, a cove facing the viewer, a mossy jungle hump with ~9 gummy palms (ringed caramel trunks, translucent fronds that flutter), lumpy gummy bushes with flowers, ferns, beach grass, rocks around the shore.
-- SKULL ROCK at the island's west tip, standing in the shallows: a cartoon skull sculpted as a signed-distance field (cranium, cheekbones, jaws, deep eye sockets, heart-shaped nose, crack on the crown, rock strata and noise, moss on top, a wet band at the waterline), meshed with surface nets; two rows of separate box teeth set into a carved grin. At night its eye sockets glow like a candle-lit cave.
-- A PIRATE SHIP riding at anchor in front of the island, seen at three-quarters from the stern: black hull with an ochre gunport strake, red bottom, gunports with cannons, raised quarterdeck with lit stern windows and a stern lantern, three masts (square courses and topsails on fore and main, a gaff sail on the mizzen, a jib to the bowsprit), shrouds and stays, and a Jolly Roger (skull and crossed bones drawn procedurally in the shader) streaming aft. Her anchor chain runs from the bow down through the jelly to an anchor lying on the sea floor.
-- The camp on the cove beach: a campfire (stone ring, teepee of logs with glowing ends, embers, a tripod with a pot, two seating logs), an iron-bound treasure chest under a leaning palm with a hinged lid and a heap of gold and gems inside, a shovel in a sand heap, barrels, a crate, a pyramid of round shot, a rum bottle, a rowing boat pulled up with its bow on the sand, and an "X" scored in the sand.
-- On the sea floor: the bow half of an old wreck lying on its side with ribs showing and its broken mast beside it, swaying kelp, a few doubloons, bubbles caught in the jelly.
-
-SIMULATION
-- Linear shallow-water waves on a staggered grid with a little surface tension (springy jelly); the block can be tipped and the sea sloshes and the jelly wobbles (shear + squash).
-- The ship floats on 10 buoyancy points (heave, pitch, roll), is pushed by a gently veering offshore breeze, held by an elastic anchor rode at the bow, and weathervanes into the wind. Her displaced volume is handed back to the sea, so she makes a wake.
-- Rigid bodies: cannonballs (dense, fly in a clean arc, punch a crater, sink and roll on the floor), barrels (float on their side), doubloons (flutter down and settle flat). All interact with the sea (buoyancy, drag, splashes, bubbles), the terrain, the skull, the props, the palm trunks and the ship's hull.
-- One particle system: fire flames (additive), embers, woodsmoke, muzzle flash, white gunsmoke, sea spray, sand puffs, gold glints over the open chest, fireflies at night.
-
-INTERACTION
-- Tap the ship → fire the next gun on the side facing the viewer (ball, flash, smoke, recoil heel). Drag the ship → tow her against the rode; release → she drifts back to her anchor.
-- Tap the chest → lid swings open/shut with a bounce; gold glitters. Tap the fire → it roars and throws sparks. Tap the X → three doubloons pop out of the sand.
-- Drag across the water to make waves; drag a side of the block to tip it; pick up and throw balls/barrels/coins; drag a palm to bend it; drag empty space or right-drag to orbit; wheel/pinch to zoom.
-
-TIME OF DAY
-- A slider from Noon → Afternoon → Golden hour → Sunset → Dusk → Night → Midnight. The sun lowers and warms, the backdrop turns peach, then the moon takes over (dim blue), stars appear on the backdrop, the page UI switches to a dark theme, and the campfire becomes the main light: a flickering point light that warms the sand, palms, sails and gold, reflects in the water, and lights the smoke from below. Stern windows and lantern glow.
-
-UI (editorial, like the series)
-- Top-left masthead: eyebrow "MATERIAL STUDIES", big italic serif title "Pirate / Jelly.", a short line of copy.
-- Status pill (WebGPU · Live / Paused / Unavailable).
-- Right glass panel: "The cove" — buttons Fire a gun / Doubloons / Barrel, a liveliness meter, tally Shots · Afloat · Sunk; "Flavour" — Turquoise, Rum (amber), Kraken (violet) jelly palettes; sliders Firmness, Wave damping, Time of day; Reset / Pause / Reset view.
-- Bottom-left "How to play" line plus small instructions. Space fires a gun.
-- Mobile: the panel becomes a bottom sheet; touch orbit and pinch zoom.
-- Fallback card when WebGPU (or an adapter) isn't available. Respect prefers-reduced-motion.
-```
-
-</details>

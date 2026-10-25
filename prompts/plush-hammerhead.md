@@ -6,13 +6,48 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2108486895344767283) · [提示词帖](https://x.com/vib3coded/status/2108487206155194794) · 2026-10-09（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![毛绒双髻鲨 Plush Hammerhead](../assets/plush-hammerhead.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a single-file interactive WebGPU page called "Plush Hammerhead".
+
+Page: an editorial layout with a big two-line title "Plush / Hammerhead.", a warm studio-grey background, a control panel on the right, live readouts and collapsible technical notes. English UI.
+
+The toy: a plush hammerhead shark. It has a wide, flat hammer-shaped head (cephalofoil) whose ends sweep back a little, with a shallow notch at the middle of the front edge. A glass eye sits on each tip of the hammer, looking out sideways. It has a tall sickle-shaped dorsal fin, two pectoral fins and a tail with a long upper lobe and a small lower one. A cream belly panel is sewn on below a seam along each flank, with embroidered gill lines. A smiling mouth is cut in under the hammer, lined with felt and set with soft white felt teeth; its lower jaw swings open on a hinge.
+
+Simulation:
+- Body, hammer and fins are one signed distance field filled with a soft-body XPBD lattice: shape-matched hexahedral cells and tetrahedral volume preservation. It is skinned to a high-res surface-nets mesh.
+- It swims with a travelling S-wave that bends the cells' rest shapes side to side, more toward the tail, and steers by turning its head, the body curving into each turn.
+- Fur is drawn as alpha-to-coverage shells over minky pile. The pile lags behind each jiggle on a spring and can be combed.
+
+Behaviour:
+- It circles its space.
+- Scan: it sweeps its hammer side to side over the floor the way real hammerheads hunt. It also does this on its own now and then, and a little while hunting.
+- Feed drops in a felt fish: it turns, closes in faster, opens wide and snaps it up.
+- Dash is a burst of fast tail beats; Chomp opens the mouth and snaps it shut.
+- Grab it by the tail and it thrashes; let go and it shoots off.
+- Boop the middle of the hammer with the finger and it wriggles and blushes.
+
+Tools: Hand, Finger, Comb.
+
+Controls:
+- Buttons: Feed, Dash, Scan, Chomp, Smooth fur, Reset, Pause.
+- Toggles: Circle, quarter speed, Mesh.
+- Sliders: Stuffing, Pile, Tail beat.
+- Three fabrics: Bronze, Lagoon, Sunset.
+- Readouts: mass, volume, beats per minute, fish eaten.
+- Phone layout with a stacked panel.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -53,41 +88,3 @@ Hand、Finger、Comb。
 - 三种布料：Bronze（古铜）、Lagoon（泻湖）、Sunset（日落）。
 - 读数：质量、体积、每分钟拍尾次数、吃掉的鱼数。
 - 手机布局采用堆叠面板。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a single-file interactive WebGPU page called "Plush Hammerhead".
-
-Page: an editorial layout with a big two-line title "Plush / Hammerhead.", a warm studio-grey background, a control panel on the right, live readouts and collapsible technical notes. English UI.
-
-The toy: a plush hammerhead shark. It has a wide, flat hammer-shaped head (cephalofoil) whose ends sweep back a little, with a shallow notch at the middle of the front edge. A glass eye sits on each tip of the hammer, looking out sideways. It has a tall sickle-shaped dorsal fin, two pectoral fins and a tail with a long upper lobe and a small lower one. A cream belly panel is sewn on below a seam along each flank, with embroidered gill lines. A smiling mouth is cut in under the hammer, lined with felt and set with soft white felt teeth; its lower jaw swings open on a hinge.
-
-Simulation:
-- Body, hammer and fins are one signed distance field filled with a soft-body XPBD lattice: shape-matched hexahedral cells and tetrahedral volume preservation. It is skinned to a high-res surface-nets mesh.
-- It swims with a travelling S-wave that bends the cells' rest shapes side to side, more toward the tail, and steers by turning its head, the body curving into each turn.
-- Fur is drawn as alpha-to-coverage shells over minky pile. The pile lags behind each jiggle on a spring and can be combed.
-
-Behaviour:
-- It circles its space.
-- Scan: it sweeps its hammer side to side over the floor the way real hammerheads hunt. It also does this on its own now and then, and a little while hunting.
-- Feed drops in a felt fish: it turns, closes in faster, opens wide and snaps it up.
-- Dash is a burst of fast tail beats; Chomp opens the mouth and snaps it shut.
-- Grab it by the tail and it thrashes; let go and it shoots off.
-- Boop the middle of the hammer with the finger and it wriggles and blushes.
-
-Tools: Hand, Finger, Comb.
-
-Controls:
-- Buttons: Feed, Dash, Scan, Chomp, Smooth fur, Reset, Pause.
-- Toggles: Circle, quarter speed, Mesh.
-- Sliders: Stuffing, Pile, Tail beat.
-- Three fabrics: Bronze, Lagoon, Sunset.
-- Readouts: mass, volume, beats per minute, fish eaten.
-- Phone layout with a stacked panel.
-```
-
-</details>

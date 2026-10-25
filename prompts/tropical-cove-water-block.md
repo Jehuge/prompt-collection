@@ -6,13 +6,44 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2109345073703862419) · [提示词帖](https://x.com/vib3coded/status/2109345365761696119) · 2026-10-12（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。原提示词没有给作品起名，文件名按内容命名。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。原提示词没有给作品起名，文件名按内容命名。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![水块里的热带海湾 Tropical Cove](../assets/tropical-cove-water-block.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a single-file interactive WebGL diorama (one index.html, no build step) with Three.js r160 loaded via an import map from cdn.jsdelivr.net, plus OrbitControls and BufferGeometryUtils from three/examples/jsm.
+
+SCENE
+A miniature tropical cove inside a 10×10 block of clear water with rounded edges (vertical corner radius ~0.6, top edge radius ~0.26), sitting on a thin sand-colored base slab, on a warm off-white background with a soft floor shadow (ShadowMaterial + blurred contact shadow).
+
+ISLAND (procedural, seeded, regenerable)
+- Heightfield terrain (~400×400 grid) clipped to the rounded block, with a "skirt" wall along the boundary so the cross-section is visible through the water.
+- Shape: a crescent of limestone cliffs built from an IQ-style 2D arc SDF (aperture ~75–100° each side, thick arms tapering toward the tips), domain-warped with fbm so the outline is organic. Opening faces the camera.
+- Near-vertical cliffs (~2 units tall) with slightly rounded rims; outside, the cliffs plunge straight into deep water (no shallow ledge); inside the cove a pale sand beach slopes gently into turquoise shallows.
+- Optional sea stack near one arm tip. Boulders at the arm tips and along the beach (displaced icospheres, instanced). Small dark rocks scattered on the seabed.
+- Rock shading in the fragment shader by world height: horizontal sedimentary strata (warped sine bands), darker vertical drip stains, cream limestone on top, darker brown near the waterline, a darker "wet" band just above the water, algae-darkened rock below the surface. Procedural bump via dFdx/dFdy. CPU-baked horizon ambient occlusion per vertex.
+- Vegetation: ~5k "cauliflower" canopy blobs (InstancedMesh of icospheres with vertex-noise displacement and fragment bump), clustered 2–5 per tree, olive-to-yellow-green palette, per-instance AO from neighbour occlusion, brighter tops. Bare cream rock patches on the plateau; a few vegetation clumps clinging to cliff faces.
+
+WATER (the key part — realistic, not jelly)
+- Render pipeline: (1) opaque scene → MSAA HalfFloat render target with a DepthTexture; (2) copy that to a second target, then draw the water mesh with a custom ShaderMaterial that does a manual depth test against the scene depth; (3) a final fullscreen pass with ACES tone mapping, sRGB output and a subtle tilt-shift blur (miniature look). Canvas is transparent so the CSS background shows through.
+- Water color from real thickness: reconstruct the view-space depth of what's behind each water pixel, compute the path length L, apply Beer–Lambert absorption exp(-absorb·L) toward a deep-blue scatter color derived from a user-picked water color. Shallow cove = turquoise, deep = blue, side walls get extra path length so they read as a translucent water volume.
+- Screen-space refraction offset by the surface normal (reject samples that land in front of the surface), Fresnel sky reflection, sharp sun glints from fine animated detail normals.
+- Ripples: GPU wave-equation simulation on a 256×256 HalfFloat ping-pong target (Evan Wallace style), fixed 60 Hz steps, a land mask texture so waves reflect off the shore and walls. Moving the mouse over the water injects capsule-shaped drops along the cursor path (strength by speed); a click/tap makes a splash. Ripple slope adds a light sky-colored highlight and faint foam trails.
+- Shore foam ONLY on gentle slopes: compute terrain slope from the land texture and suppress foam where slope is steep, otherwise a white outline appears where cliffs meet the water. Foam should be broken by noise and gently "breathe".
+- Procedural animated caustics on the seabed (emissive, fading with depth).
+- Tide control raises/lowers the whole water block (rim moves, sides stretch). Intro animation: water fills the block while the camera eases in.
+
+UI (editorial, minimal)
+Wordmark top-left, a large serif headline, small uppercase meta labels, a vertical caption on the right, a location label with generated name and coordinates, a floating pill dock (reset, "Tune the island", "New island", fullscreen), hints and an adaptive FPS readout in the footer. A glassy settings panel with water color, wave height, ripple strength, damping, tide level, clarity, caustics, sun azimuth, sun elevation, tilt-shift. Light and dark themes via CSS tokens, responsive down to 390 px (panel becomes a bottom sheet), prefers-reduced-motion respected, adaptive pixel ratio and a lighter mode for touch devices.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -44,37 +75,3 @@
 ### UI（编辑风格、极简）
 
 左上角文字标识，大号衬线标题，小号大写元信息标签，右侧竖排说明文字，一个带生成名称和坐标的地点标签，一个悬浮胶囊工具栏（reset、"Tune the island"、"New island"、全屏），页脚放提示和自适应 FPS 读数。一个玻璃质感的设置面板，包含水色、波高、涟漪强度、阻尼、潮位、清澈度、焦散、太阳方位角、太阳高度角、移轴。通过 CSS token 实现亮色和暗色主题，响应式适配到 390 px（面板变为底部抽屉），遵守 prefers-reduced-motion，自适应像素比，并为触屏设备提供更轻量的模式。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a single-file interactive WebGL diorama (one index.html, no build step) with Three.js r160 loaded via an import map from cdn.jsdelivr.net, plus OrbitControls and BufferGeometryUtils from three/examples/jsm.
-
-SCENE
-A miniature tropical cove inside a 10×10 block of clear water with rounded edges (vertical corner radius ~0.6, top edge radius ~0.26), sitting on a thin sand-colored base slab, on a warm off-white background with a soft floor shadow (ShadowMaterial + blurred contact shadow).
-
-ISLAND (procedural, seeded, regenerable)
-- Heightfield terrain (~400×400 grid) clipped to the rounded block, with a "skirt" wall along the boundary so the cross-section is visible through the water.
-- Shape: a crescent of limestone cliffs built from an IQ-style 2D arc SDF (aperture ~75–100° each side, thick arms tapering toward the tips), domain-warped with fbm so the outline is organic. Opening faces the camera.
-- Near-vertical cliffs (~2 units tall) with slightly rounded rims; outside, the cliffs plunge straight into deep water (no shallow ledge); inside the cove a pale sand beach slopes gently into turquoise shallows.
-- Optional sea stack near one arm tip. Boulders at the arm tips and along the beach (displaced icospheres, instanced). Small dark rocks scattered on the seabed.
-- Rock shading in the fragment shader by world height: horizontal sedimentary strata (warped sine bands), darker vertical drip stains, cream limestone on top, darker brown near the waterline, a darker "wet" band just above the water, algae-darkened rock below the surface. Procedural bump via dFdx/dFdy. CPU-baked horizon ambient occlusion per vertex.
-- Vegetation: ~5k "cauliflower" canopy blobs (InstancedMesh of icospheres with vertex-noise displacement and fragment bump), clustered 2–5 per tree, olive-to-yellow-green palette, per-instance AO from neighbour occlusion, brighter tops. Bare cream rock patches on the plateau; a few vegetation clumps clinging to cliff faces.
-
-WATER (the key part — realistic, not jelly)
-- Render pipeline: (1) opaque scene → MSAA HalfFloat render target with a DepthTexture; (2) copy that to a second target, then draw the water mesh with a custom ShaderMaterial that does a manual depth test against the scene depth; (3) a final fullscreen pass with ACES tone mapping, sRGB output and a subtle tilt-shift blur (miniature look). Canvas is transparent so the CSS background shows through.
-- Water color from real thickness: reconstruct the view-space depth of what's behind each water pixel, compute the path length L, apply Beer–Lambert absorption exp(-absorb·L) toward a deep-blue scatter color derived from a user-picked water color. Shallow cove = turquoise, deep = blue, side walls get extra path length so they read as a translucent water volume.
-- Screen-space refraction offset by the surface normal (reject samples that land in front of the surface), Fresnel sky reflection, sharp sun glints from fine animated detail normals.
-- Ripples: GPU wave-equation simulation on a 256×256 HalfFloat ping-pong target (Evan Wallace style), fixed 60 Hz steps, a land mask texture so waves reflect off the shore and walls. Moving the mouse over the water injects capsule-shaped drops along the cursor path (strength by speed); a click/tap makes a splash. Ripple slope adds a light sky-colored highlight and faint foam trails.
-- Shore foam ONLY on gentle slopes: compute terrain slope from the land texture and suppress foam where slope is steep, otherwise a white outline appears where cliffs meet the water. Foam should be broken by noise and gently "breathe".
-- Procedural animated caustics on the seabed (emissive, fading with depth).
-- Tide control raises/lowers the whole water block (rim moves, sides stretch). Intro animation: water fills the block while the camera eases in.
-
-UI (editorial, minimal)
-Wordmark top-left, a large serif headline, small uppercase meta labels, a vertical caption on the right, a location label with generated name and coordinates, a floating pill dock (reset, "Tune the island", "New island", fullscreen), hints and an adaptive FPS readout in the footer. A glassy settings panel with water color, wave height, ripple strength, damping, tide level, clarity, caustics, sun azimuth, sun elevation, tilt-shift. Light and dark themes via CSS tokens, responsive down to 390 px (panel becomes a bottom sheet), prefers-reduced-motion respected, adaptive pixel ratio and a lighter mode for touch devices.
-```
-
-</details>

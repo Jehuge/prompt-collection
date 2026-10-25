@@ -4,13 +4,60 @@
 - **技术栈**：Three.js r128（cdnjs）· WebGL · 单文件 HTML
 - **标签**：`threejs` `webgl` `shader` `水面模拟` `焦散` `海洋生物` `创意编程` `vibe-coding`
 
-> 说明：下方是中文翻译版提示词。页面本身的界面文字仍要求使用**英文**（例如按钮名称和计数文字 "4 rays · 5 jellies" 保持原样）。英文原文附在文末。
+> 说明：下方是中文翻译版提示词。页面本身的界面文字仍要求使用**英文**（例如按钮名称和计数文字 "4 rays · 5 jellies" 保持原样）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![浅海 Ocean Shallows](../assets/ocean-shallows.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a single-file Three.js r128 (cdnjs) WebGL page titled "Ocean Shallows": a top-down view of a tropical sea filling the whole screen, with a small curved beach in the top-left corner.
+
+Water:
+- GPU height-field ripple simulation with absorbing screen edges.
+- Refraction and moving caustics.
+- Long swell rolling toward the shore, plus fine sun glitter.
+- Depth-based color: pale turquoise near the beach, deep sapphire offshore.
+- On the beach, waves break, rush up the sand as foamy swash with lace foam, then drain back and leave glossy wet sand.
+- The shadow of a swaying palm (trunk and fronds) falls across the beach and the shallows.
+
+Seabed (baked):
+- Rippled sand and seagrass meadows.
+- Coral heads and boulders with contact shadows.
+- Coral rubble, starfish, shells and sea urchins.
+
+Creatures:
+- A frosted-glass dock holds five creature cards. Each thumbnail is rendered from the real 3D model: Manta, Spotted Eagle Ray, Blue-spotted Stingray, Moon Jelly, Sea Nettle.
+- Tap a card to throw the creature on an arc into the sea, with a splash, rings and droplets.
+- Drag a card to hold the creature above the water, then drop it anywhere.
+
+Rays:
+- Instanced flat two-sheet bodies whose wings bend along the span. Mantas and eagle rays flap; the stingray's disc undulates.
+- Each has a tail and its own pattern:
+  - Manta: black back with white shoulder patches, cephalic fins, white belly with dark spots.
+  - Eagle ray: dark back with white spots and rings, long whip tail.
+  - Stingray: tan with electric-blue spots, spiracles and a striped tail.
+- Rays bank in turns, cast shadows on the sand, flee from touches and leave wakes near the surface.
+- Mantas and eagle rays sometimes breach and flip in the air.
+- Stingrays rest on the sand and puff silt when startled.
+
+Jellyfish:
+- Pulsing bells (fast contraction, slow relaxation) push them along the bell axis.
+- Translucent fresnel shading.
+- They drift with ocean currents and get pulled by the whirlpool.
+- Moon jelly: four pink gonad horseshoes, radial canals and a fringe of tentacles.
+- Sea nettle: amber bell with rust stripes, long trailing tentacles and frilly cream oral arms. Draw these as camera-facing ribbons that stream behind its motion, hang straight down and drip when it is held in the air.
+
+Controls: Rain, Whirlpool (drag to move it), Calm, Clear sea, Sound (synthesized surf timed to the swash, plus splashes and plinks), Hide UI. Add keyboard shortcuts R / W / C / M / H.
+
+UI: English, Fraunces + Nunito Sans fonts, responsive mobile layout, a creature counter ("4 rays · 5 jellies"), a 48-creature cap and adaptive render quality.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -63,53 +110,3 @@ Rain（下雨）、Whirlpool（漩涡，可拖动改变位置）、Calm（平静
 ### 界面
 
 界面语言为英文，字体使用 Fraunces + Nunito Sans，移动端响应式布局，显示生物计数器（"4 rays · 5 jellies"），生物数量上限 48 个，并根据性能自适应渲染质量。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a single-file Three.js r128 (cdnjs) WebGL page titled "Ocean Shallows": a top-down view of a tropical sea filling the whole screen, with a small curved beach in the top-left corner.
-
-Water:
-- GPU height-field ripple simulation with absorbing screen edges.
-- Refraction and moving caustics.
-- Long swell rolling toward the shore, plus fine sun glitter.
-- Depth-based color: pale turquoise near the beach, deep sapphire offshore.
-- On the beach, waves break, rush up the sand as foamy swash with lace foam, then drain back and leave glossy wet sand.
-- The shadow of a swaying palm (trunk and fronds) falls across the beach and the shallows.
-
-Seabed (baked):
-- Rippled sand and seagrass meadows.
-- Coral heads and boulders with contact shadows.
-- Coral rubble, starfish, shells and sea urchins.
-
-Creatures:
-- A frosted-glass dock holds five creature cards. Each thumbnail is rendered from the real 3D model: Manta, Spotted Eagle Ray, Blue-spotted Stingray, Moon Jelly, Sea Nettle.
-- Tap a card to throw the creature on an arc into the sea, with a splash, rings and droplets.
-- Drag a card to hold the creature above the water, then drop it anywhere.
-
-Rays:
-- Instanced flat two-sheet bodies whose wings bend along the span. Mantas and eagle rays flap; the stingray's disc undulates.
-- Each has a tail and its own pattern:
-  - Manta: black back with white shoulder patches, cephalic fins, white belly with dark spots.
-  - Eagle ray: dark back with white spots and rings, long whip tail.
-  - Stingray: tan with electric-blue spots, spiracles and a striped tail.
-- Rays bank in turns, cast shadows on the sand, flee from touches and leave wakes near the surface.
-- Mantas and eagle rays sometimes breach and flip in the air.
-- Stingrays rest on the sand and puff silt when startled.
-
-Jellyfish:
-- Pulsing bells (fast contraction, slow relaxation) push them along the bell axis.
-- Translucent fresnel shading.
-- They drift with ocean currents and get pulled by the whirlpool.
-- Moon jelly: four pink gonad horseshoes, radial canals and a fringe of tentacles.
-- Sea nettle: amber bell with rust stripes, long trailing tentacles and frilly cream oral arms. Draw these as camera-facing ribbons that stream behind its motion, hang straight down and drip when it is held in the air.
-
-Controls: Rain, Whirlpool (drag to move it), Calm, Clear sea, Sound (synthesized surf timed to the swash, plus splashes and plinks), Hide UI. Add keyboard shortcuts R / W / C / M / H.
-
-UI: English, Fraunces + Nunito Sans fonts, responsive mobile layout, a creature counter ("4 rays · 5 jellies"), a 48-creature cap and adaptive render quality.
-```
-
-</details>

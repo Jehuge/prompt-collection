@@ -6,13 +6,34 @@
 - **测试模型**：未注明
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2112638127483343162) · [提示词帖](https://x.com/vib3coded/status/2112638899965001772) · 2026-10-20（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 公开分享的提示词（具体测试模型未注明）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 公开分享的提示词（具体测试模型未注明）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![西瓜果冻切割 Melon Jelly Cutters](../assets/melon-jelly-cutters.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a real-time WebGPU soft-body "jelly" study of a watermelon wedge that you can cut with a steel knife, in an editorial "Material Studies" page style (serif title "Melon Jelly.", muted paper backdrop, side panel, English UI, mobile-friendly). Geometry: a thick triangular watermelon wedge with a rounded green rind, a pale white layer, and translucent red flesh with dark seeds and a few air bubbles. Sim: CPU XPBD on a tetrahedral mesh, fixed 60 Hz step with 10 substeps. Each tet uses a co-rotational shape-matching constraint with finite compliance, which also flips inverted elements back out, plus a near-incompressible volume constraint so a stretched slice necks in. The rind is about 3× stiffer than the flesh. Damping acts only on relative velocity along edges. Floor contact uses Coulomb friction. Grabbing is a soft, reach-limited attachment to a patch of particles, and scroll or a second finger twists it.
+
+Two tools, Hand and Knife:
+- Knife: the user draws a stroke across the slice. Read on the surface, that stroke defines a vertical blade plane. Every piece is stored as a rounded convex outline in the slice's rest plane. For each piece the plane crosses, fit the piece's current pose with a best rotation, carry the plane back to rest space as a straight line, and split the outline along it.
+- The cut: prebuild both halves as fresh tet meshes on release. An animated steel knife lines up over the stroke, comes down, and first presses a groove into the jelly. When it breaks through, swap in the new pieces, which inherit the position and velocity of the flesh they came from, and the blade wedges the faces apart on its way to the board. Draw the blade behind the jelly surface so the buried part is seen refracted.
+- Pieces: every piece is its own soft body that can be grabbed, stretched and cut again, and pieces collide with each other instead of passing through.
+
+Render: a smooth surface mesh plus the seeds and bubbles, each vertex embedded in a tet by barycentric weights so they ride the wobble. WGSL passes:
+- floor, seeds and bubbles first;
+- back faces, to get the thickness each view ray crosses;
+- front faces with refraction by that thickness, Beer–Lambert absorption, milky scattering in the pale layer, a back-lit glow at thin edges, Fresnel reflections of a procedural studio, and GGX highlights;
+- a soft key shadow on the floor tinted by the jelly, plus contact AO from a top-down height map.
+
+Varieties: Crimson, Golden, Rosé. Controls: Hand/Knife tool toggle, firmness and internal damping sliders, "Give it a nudge", Reset, Pause, ¼ speed, Show mesh, plus mass/volume/kinetic readouts and an "Inside the experiment" notes drawer explaining the physics, cutting and rendering.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -42,27 +63,3 @@
 ### 品种与控制
 
 品种：Crimson、Golden、Rosé。控制：Hand / Knife 工具切换，firmness 和 internal damping 滑块，"Give it a nudge"、Reset、Pause、¼ speed、Show mesh，以及质量、体积、动能读数。一个 "Inside the experiment" 说明抽屉，解释物理、切割和渲染。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a real-time WebGPU soft-body "jelly" study of a watermelon wedge that you can cut with a steel knife, in an editorial "Material Studies" page style (serif title "Melon Jelly.", muted paper backdrop, side panel, English UI, mobile-friendly). Geometry: a thick triangular watermelon wedge with a rounded green rind, a pale white layer, and translucent red flesh with dark seeds and a few air bubbles. Sim: CPU XPBD on a tetrahedral mesh, fixed 60 Hz step with 10 substeps. Each tet uses a co-rotational shape-matching constraint with finite compliance, which also flips inverted elements back out, plus a near-incompressible volume constraint so a stretched slice necks in. The rind is about 3× stiffer than the flesh. Damping acts only on relative velocity along edges. Floor contact uses Coulomb friction. Grabbing is a soft, reach-limited attachment to a patch of particles, and scroll or a second finger twists it.
-
-Two tools, Hand and Knife:
-- Knife: the user draws a stroke across the slice. Read on the surface, that stroke defines a vertical blade plane. Every piece is stored as a rounded convex outline in the slice's rest plane. For each piece the plane crosses, fit the piece's current pose with a best rotation, carry the plane back to rest space as a straight line, and split the outline along it.
-- The cut: prebuild both halves as fresh tet meshes on release. An animated steel knife lines up over the stroke, comes down, and first presses a groove into the jelly. When it breaks through, swap in the new pieces, which inherit the position and velocity of the flesh they came from, and the blade wedges the faces apart on its way to the board. Draw the blade behind the jelly surface so the buried part is seen refracted.
-- Pieces: every piece is its own soft body that can be grabbed, stretched and cut again, and pieces collide with each other instead of passing through.
-
-Render: a smooth surface mesh plus the seeds and bubbles, each vertex embedded in a tet by barycentric weights so they ride the wobble. WGSL passes:
-- floor, seeds and bubbles first;
-- back faces, to get the thickness each view ray crosses;
-- front faces with refraction by that thickness, Beer–Lambert absorption, milky scattering in the pale layer, a back-lit glow at thin edges, Fresnel reflections of a procedural studio, and GGX highlights;
-- a soft key shadow on the floor tinted by the jelly, plus contact AO from a top-down height map.
-
-Varieties: Crimson, Golden, Rosé. Controls: Hand/Knife tool toggle, firmness and internal damping sliders, "Give it a nudge", Reset, Pause, ¼ speed, Show mesh, plus mass/volume/kinetic readouts and an "Inside the experiment" notes drawer explaining the physics, cutting and rendering.
-```
-
-</details>

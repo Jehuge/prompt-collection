@@ -5,15 +5,11 @@
 - **标签**：`motion` `blender` `cycles` `opus-5.5` `clawd` `neon` `loop` `prompt-pack` `0xwhrrari`
 - **来源**：[@0xwhrrari](https://x.com/0xwhrrari) · [原帖](https://x.com/0xwhrrari/status/2111804745853894843) · [PDF 回复](https://x.com/0xwhrrari/status/2111804749347475488) · [Google Drive](https://drive.google.com/file/d/1nZYifpY8AqiXFbcpBX1avbVLpj0nzHuZ/view) · [系列文章 Motion Engineering](https://x.com/i/article/2105626165704572928) · [系列帖](https://x.com/0xwhrrari/status/2105643919119696297) · PDF 2026-10-17
 
-> 说明：粉丝整理自 [@0xwhrrari](https://x.com/0xwhrrari)（rari）公开的 Clawd Motion Lab / Opus 5.5 Prompt Pack。下面的英文是从原 PDF 抽出的 copy-ready 提示词，只把排版换行拼回句子，没有改词。中文「译文」是简短说明，不是逐句翻译。Follow-up、逐帧时间轴和渲染步骤以同目录 PDF 为准。
+> 说明：粉丝整理自 [@0xwhrrari](https://x.com/0xwhrrari)（rari）公开的 Clawd Motion Lab / Opus 5.5 Prompt Pack。下面的英文是从原 PDF 抽出的 copy-ready 提示词，只把排版换行拼回句子，没有改词。优先使用英文原文；中文「译文」是简短说明（不是逐句翻译），附在英文提示词后面。Follow-up、逐帧时间轴和渲染步骤以同目录 PDF 为准。
 
 ## 效果
 
 ![clawd-neon-jump](clawd-neon-jump.jpg)
-
-## 译文
-
-体素吉祥物把一辆红色敞篷跑车开过霓虹隧道，冲进高楼峡谷，把像素墨镜翻下来，从坡道飞过断开的桥。空中只放慢距离、不改重力，时钟慢到 6%。落地砸在节拍上，火花溅开，下一截隧道就是第一帧。整段 14 秒无缝循环。
 
 ## 画面提示词（English）
 
@@ -65,6 +61,10 @@ SET: snowy mountain pass at dawn, an ice tunnel, a broken rope bridge over a gor
 SIGNS: your logo carved in a glacier wall, trail markers
 PALETTE: dawn FFC9A8, ice 9FD7F0, rock 3C3A45, snow F6F7FA, sun FF8E5C
 ```
+
+## 译文
+
+体素吉祥物把一辆红色敞篷跑车开过霓虹隧道，冲进高楼峡谷，把像素墨镜翻下来，从坡道飞过断开的桥。空中只放慢距离、不改重力，时钟慢到 6%。落地砸在节拍上，火花溅开，下一截隧道就是第一帧。整段 14 秒无缝循环。
 
 ## 原 PDF
 

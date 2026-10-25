@@ -5,15 +5,11 @@
 - **标签**：`motion` `blender` `html` `puppeteer` `opus-5.5` `clawd` `fl-studio` `music` `prompt-pack` `0xwhrrari`
 - **来源**：[@0xwhrrari](https://x.com/0xwhrrari) · [原帖](https://x.com/0xwhrrari/status/2112536860769800658) · [PDF 回复](https://x.com/0xwhrrari/status/2112536865803014584) · [Google Drive](https://drive.google.com/drive/folders/1VUrPlM7bmyJjB_ylJzp_9y90gQV6Zskf) · [系列文章 Motion Engineering](https://x.com/i/article/2105626165704572928) · [系列帖](https://x.com/0xwhrrari/status/2105643919119696297) · PDF 2026-10-20
 
-> 说明：粉丝整理自 [@0xwhrrari](https://x.com/0xwhrrari)（rari）公开的 Clawd Motion Lab / Opus 5.5 Prompt Pack。下面的英文是从原 PDF 抽出的 copy-ready 提示词，只把排版换行拼回句子，没有改词。中文「译文」是简短说明，不是逐句翻译。Follow-up、逐帧时间轴和渲染步骤以同目录 PDF 为准。
+> 说明：粉丝整理自 [@0xwhrrari](https://x.com/0xwhrrari)（rari）公开的 Clawd Motion Lab / Opus 5.5 Prompt Pack。下面的英文是从原 PDF 抽出的 copy-ready 提示词，只把排版换行拼回句子，没有改词。优先使用英文原文；中文「译文」是简短说明（不是逐句翻译），附在英文提示词后面。Follow-up、逐帧时间轴和渲染步骤以同目录 PDF 为准。
 
 ## 效果
 
 ![clawd-fl-studio](clawd-fl-studio.jpg)
-
-## 译文
-
-Clawd 站在 FL Studio 风格工程里的一段音频上，召出三个小号子代理。四个人靠落在真实控件上做一条 150 BPM 的 trap：钢琴卷帘里的旋律、通道机架上的鼓、808、滤波器推子。Drop 里他们跟着每一个音落地演奏。导出之后子代理合回 Clawd，File > New，他把刚导出的 clawd_beat.wav 拖进空播放列表，循环的开头就是这条采样。
 
 ## 画面提示词（English）
 
@@ -62,6 +58,10 @@ APP: a Logic Pro-style workspace: Tracks area with regions, Library, Step Sequen
 RESULT: a 122 BPM lo-fi house groove: chords, four-on-the-floor, a walking bass, a filtered drop
 SET: the same
 ```
+
+## 译文
+
+Clawd 站在 FL Studio 风格工程里的一段音频上，召出三个小号子代理。四个人靠落在真实控件上做一条 150 BPM 的 trap：钢琴卷帘里的旋律、通道机架上的鼓、808、滤波器推子。Drop 里他们跟着每一个音落地演奏。导出之后子代理合回 Clawd，File > New，他把刚导出的 clawd_beat.wav 拖进空播放列表，循环的开头就是这条采样。
 
 ## 原 PDF
 

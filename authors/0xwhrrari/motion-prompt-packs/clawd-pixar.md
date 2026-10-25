@@ -5,15 +5,11 @@
 - **标签**：`motion` `blender` `cycles` `opus-5.5` `clawd` `character-film` `prompt-pack` `0xwhrrari`
 - **来源**：[@0xwhrrari](https://x.com/0xwhrrari) · [原帖](https://x.com/0xwhrrari/status/2113254058815582614) · [PDF 回复](https://x.com/0xwhrrari/status/2113254062468563280) · [Google Drive](https://drive.google.com/file/d/1FBkYiVOV7268zeJ1vPuTsQ_WLTaw_Mvr/view) · [系列文章 Motion Engineering](https://x.com/i/article/2105626165704572928) · [系列帖](https://x.com/0xwhrrari/status/2105643919119696297) · PDF 2026-10-22
 
-> 说明：粉丝整理自 [@0xwhrrari](https://x.com/0xwhrrari)（rari）公开的 Clawd Motion Lab / Opus 5.5 Prompt Pack。下面的英文是从原 PDF 抽出的 copy-ready 提示词，只把排版换行拼回句子，没有改词。中文「译文」是简短说明，不是逐句翻译。Follow-up、逐帧时间轴和渲染步骤以同目录 PDF 为准。
+> 说明：粉丝整理自 [@0xwhrrari](https://x.com/0xwhrrari)（rari）公开的 Clawd Motion Lab / Opus 5.5 Prompt Pack。下面的英文是从原 PDF 抽出的 copy-ready 提示词，只把排版换行拼回句子，没有改词。优先使用英文原文；中文「译文」是简短说明（不是逐句翻译），附在英文提示词后面。Follow-up、逐帧时间轴和渲染步骤以同目录 PDF 为准。
 
 ## 效果
 
 ![clawd-pixar](clawd-pixar.jpg)
-
-## 译文
-
-片头先按你记得的样子演两秒：台灯从右边跳进来，抬头看字母 I。Clawd 从画面上方落下，正好踩灭灯罩背后的开关。灯灭，台灯用关节睡着，他转头看镜头，再沿着五个字母一拍一个跳，把 PIXAR 换成同样五个字母的 CLAWD。眼睛打出光柱，片尾卡写出 ANIMATION STUDIOS。台灯醒来，瞪他一眼，气冲冲跳走，淡出后循环回到第一帧。
 
 ## 画面提示词（English）
 
@@ -62,6 +58,10 @@ BAND: a famous film-studio intro: a night sky, clouds drifting past a tall golde
 RESULT: the searchlights catch Clawd climbing the title; every step he takes turns a letter terracotta until it reads his name
 SET: the same rules: the title in frame for every swap, one swap per beat
 ```
+
+## 译文
+
+片头先按你记得的样子演两秒：台灯从右边跳进来，抬头看字母 I。Clawd 从画面上方落下，正好踩灭灯罩背后的开关。灯灭，台灯用关节睡着，他转头看镜头，再沿着五个字母一拍一个跳，把 PIXAR 换成同样五个字母的 CLAWD。眼睛打出光柱，片尾卡写出 ANIMATION STUDIOS。台灯醒来，瞪他一眼，气冲冲跳走，淡出后循环回到第一帧。
 
 ## 原 PDF
 

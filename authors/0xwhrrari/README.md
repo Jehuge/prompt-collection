@@ -15,4 +15,4 @@
 | 霓虹跳跃 Neon Jump | [motion-prompt-packs/clawd-neon-jump.md](motion-prompt-packs/clawd-neon-jump.md) |
 | Clawd 做 FL Studio 打拍子 Cooks a Beat | [motion-prompt-packs/clawd-fl-studio.md](motion-prompt-packs/clawd-fl-studio.md) |
 
-每条 Markdown 里是从原 PDF 抽出的英文提示词和一条简短中文译文。原 PDF 与预览图放在同一目录。
+每条 Markdown 里优先放从原 PDF 抽出的英文提示词，简短中文译文附后。原 PDF 与预览图放在同一目录。

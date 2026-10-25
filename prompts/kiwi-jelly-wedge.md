@@ -6,13 +6,58 @@
 - **测试模型**：Claude Opus 5.5 vs Claude Fable 5.1
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2109932661204517203) · [提示词帖](https://x.com/vib3coded/status/2109932845774897347) · 2026-10-13（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs Claude Fable 5.1）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs Claude Fable 5.1）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![猕猴桃果冻楔块 Kiwi Jelly Wedge](../assets/kiwi-jelly-wedge.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build "Kiwi Jelly Wedge" — a single self-contained HTML file (inline JS/CSS, no libraries): a real-time WebGPU soft-body gummy kiwi wedge you can grab, stretch, lift and twist.
+Object
+One sixth of a thick kiwi slice: a pie-shaped wedge with 30° half-angle, radius ≈ 1.8 and thickness 0.56. Rounded corners (iq's exact pie SDF minus a rounding radius) and bevelled top/bottom edges.
+Regions, measured from the tip in rest space:a cream core at the tip with a slightly lobed edge;
+thin pale rays fanning out of the core every 2π/56, each with its own random brightness and length;
+a darker, glassier ring around the seeds (blushes red in the Ruby variety);
+bright juicy outer flesh with radial cell grain and a lighter band just under the skin;
+a thin brown fuzzy skin on the arc wall.
+
+Seeds:small flattened black teardrops, pointed end toward the core, in radial rows between the rays, at four depths;
+the face layers break the cut surfaces like real seeds; the others float inside and show through the jelly;
+wet glossy shading.
+
+A few small air bubbles in the outer flesh.
+Varieties: Green, Gold, Ruby.
+Physics (XPBD tetrahedral soft body)
+Mesh: 2D Delaunay of the rounded outline plus a hex lattice, extruded into prisms → tets.
+Co-rotational per-tet shape matching (warm-started quaternion) plus volume constraints.
+Stiffer skin and core tets; edge-velocity damping; floor contact with Coulomb friction.
+Soft patch grab with bounded reach; scroll or a second finger twists the held patch.
+Fixed 60 Hz step with 10 substeps; gentle settling.
+Seeds and bubbles are separate meshes embedded in the tets by barycentric weights, so they ride with the flesh.
+Rendering (WebGPU / WGSL)
+Procedural photo-studio cyclorama with softboxes. Soft PCSS key shadow tinted green, plus contact AO from a top-down height map.
+Seeds and bubbles are drawn in the scene pass. A back-face pass gives the view-ray thickness.
+Jelly:refraction of the scene, with per-tap Beer–Lambert absorption by material (flesh, glassy seed ring, milky core and rays, opaque skin);
+scattering, back-lit glow at thin edges, Fresnel studio reflections and GGX highlights;
+a velvet sheen on the fuzzy skin;
+sparse sugar glints in the flesh.
+
+Post: exposure, Khronos PBR Neutral tone mapping, sRGB, dither.
+UI (editorial "Material Studies / No. 028", English)
+Italic serif title "Kiwi / Jelly." with the caption "An emerald wedge. A halo of seeds. A gentle wobble."
+Status pill "WEBGPU · LIVE".
+Panel "The Specimen": variety chips (skin / core / flesh bands); Firmness ("trembling → set") and Internal damping ("lively → syrupy") sliders; Give it a nudge, Reset, Pause; ¼ speed and Show mesh.
+Readouts: Mass (g, 1 unit ≈ 1.6 cm at 1.3 g/cm³), Volume (% of rest), Kinetic (µJ).
+A collapsible "Inside the experiment" with notes on the method.
+Fallback "This kiwi needs WebGPU." Stacked mobile layout with no horizontal scroll.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -66,51 +111,3 @@
 - 读数：Mass（g，1 单位 ≈ 1.6 cm，密度 1.3 g/cm³）、Volume（静止体积的百分比）、Kinetic（µJ）。
 - 可折叠的 "Inside the experiment"，说明所用方法。
 - 降级页面 "This kiwi needs WebGPU."。移动端为堆叠布局，无横向滚动。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build "Kiwi Jelly Wedge" — a single self-contained HTML file (inline JS/CSS, no libraries): a real-time WebGPU soft-body gummy kiwi wedge you can grab, stretch, lift and twist.
-Object
-One sixth of a thick kiwi slice: a pie-shaped wedge with 30° half-angle, radius ≈ 1.8 and thickness 0.56. Rounded corners (iq's exact pie SDF minus a rounding radius) and bevelled top/bottom edges.
-Regions, measured from the tip in rest space:a cream core at the tip with a slightly lobed edge;
-thin pale rays fanning out of the core every 2π/56, each with its own random brightness and length;
-a darker, glassier ring around the seeds (blushes red in the Ruby variety);
-bright juicy outer flesh with radial cell grain and a lighter band just under the skin;
-a thin brown fuzzy skin on the arc wall.
-
-Seeds:small flattened black teardrops, pointed end toward the core, in radial rows between the rays, at four depths;
-the face layers break the cut surfaces like real seeds; the others float inside and show through the jelly;
-wet glossy shading.
-
-A few small air bubbles in the outer flesh.
-Varieties: Green, Gold, Ruby.
-Physics (XPBD tetrahedral soft body)
-Mesh: 2D Delaunay of the rounded outline plus a hex lattice, extruded into prisms → tets.
-Co-rotational per-tet shape matching (warm-started quaternion) plus volume constraints.
-Stiffer skin and core tets; edge-velocity damping; floor contact with Coulomb friction.
-Soft patch grab with bounded reach; scroll or a second finger twists the held patch.
-Fixed 60 Hz step with 10 substeps; gentle settling.
-Seeds and bubbles are separate meshes embedded in the tets by barycentric weights, so they ride with the flesh.
-Rendering (WebGPU / WGSL)
-Procedural photo-studio cyclorama with softboxes. Soft PCSS key shadow tinted green, plus contact AO from a top-down height map.
-Seeds and bubbles are drawn in the scene pass. A back-face pass gives the view-ray thickness.
-Jelly:refraction of the scene, with per-tap Beer–Lambert absorption by material (flesh, glassy seed ring, milky core and rays, opaque skin);
-scattering, back-lit glow at thin edges, Fresnel studio reflections and GGX highlights;
-a velvet sheen on the fuzzy skin;
-sparse sugar glints in the flesh.
-
-Post: exposure, Khronos PBR Neutral tone mapping, sRGB, dither.
-UI (editorial "Material Studies / No. 028", English)
-Italic serif title "Kiwi / Jelly." with the caption "An emerald wedge. A halo of seeds. A gentle wobble."
-Status pill "WEBGPU · LIVE".
-Panel "The Specimen": variety chips (skin / core / flesh bands); Firmness ("trembling → set") and Internal damping ("lively → syrupy") sliders; Give it a nudge, Reset, Pause; ¼ speed and Show mesh.
-Readouts: Mass (g, 1 unit ≈ 1.6 cm at 1.3 g/cm³), Volume (% of rest), Kinetic (µJ).
-A collapsible "Inside the experiment" with notes on the method.
-Fallback "This kiwi needs WebGPU." Stacked mobile layout with no horizontal scroll.
-```
-
-</details>

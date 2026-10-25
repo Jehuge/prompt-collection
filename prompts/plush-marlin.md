@@ -6,13 +6,27 @@
 - **测试模型**：ChatGPT-6 Astra vs Claude Opus 5.5
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2108850731750940711) · [提示词帖](https://x.com/vib3coded/status/2108852066655351202) · 2026-10-10（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 ChatGPT-6 Astra vs Claude Opus 5.5）。提示词里提到的「plush hammerhead / plush shark」是作者此前同系列的作品，源码未公开；没有原作时可让 AI 按文中描述从头搭建。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 ChatGPT-6 Astra vs Claude Opus 5.5）。提示词里提到的「plush hammerhead / plush shark」是作者此前同系列的作品，源码未公开；没有原作时可让 AI 按文中描述从头搭建。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![毛绒枪鱼 Plush Marlin](../assets/plush-marlin.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build a single-file WebGPU "material study" page called "Plush Marlin" in the same studio style as my plush hammerhead / plush shark: editorial layout, italic serif title "Plush / Marlin.", kicker "Material Studies / No. 030", live status chip, specimen panel (tools, fur palettes, sliders, action buttons), stats row (Mass, Volume, Beat, Fish eaten), collapsible "Inside the experiment" notes. UI in English, works on mobile.
+
+The toy: a plush blue marlin, normal and realistic in proportion (not a meme). One SDF body meshed with surface nets: a long fusiform body, deep behind the head and slender at the tail stock, laterally compressed; a long tapering felt bill (spear) from the upper jaw, slightly upturned; a tall sail-like first dorsal fin raked back from a high peak over the head and running low down the back; a small second dorsal and anal fin; long narrow scythe pectorals and thin pelvic fins; a tall crescent (lunate) tail with the notch scooped out; big glass eyes; a small mouth slit under the bill with a lower jaw that swings open on a hinge.
+
+Physics: XPBD soft body on a hex lattice (shape-matched cells + tet volume preservation), skinned to the mesh. It swims with a stiff travelling wave mostly in its back third, circles, banks into turns. Behaviours: Feed (a felt fish drops in; it hunts it down and snaps it up), Dash, Slash (quick side-to-side swipes of the bill, like a marlin stunning prey), Light up (its flank bars glow electric blue; they also flash when you touch its bill or when it eats). Grab it by the tail and it thrashes.
+
+Fur: real-time shell fur — cobalt back, silver belly panel below a seam, pale vertical bars on the flanks, dark spots on the sail, an embroidered gill-cover seam, bare felt bill. Tools: Hand, Finger, Comb. Sliders: Stuffing, Pile, Tail beat. Palettes: Blue, Black, Indigo. 60 fps.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -37,20 +51,3 @@
 ### 毛发
 
 实时壳层毛发——钴蓝色背部，接缝下方是银色腹部面板，体侧有浅色竖条纹，背鳍"帆"上有深色斑点，绣出来的鳃盖接缝，裸露的毛毡吻。工具：Hand、Finger、Comb。滑块：Stuffing、Pile、Tail beat。配色：Blue、Black、Indigo。60 fps。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build a single-file WebGPU "material study" page called "Plush Marlin" in the same studio style as my plush hammerhead / plush shark: editorial layout, italic serif title "Plush / Marlin.", kicker "Material Studies / No. 030", live status chip, specimen panel (tools, fur palettes, sliders, action buttons), stats row (Mass, Volume, Beat, Fish eaten), collapsible "Inside the experiment" notes. UI in English, works on mobile.
-
-The toy: a plush blue marlin, normal and realistic in proportion (not a meme). One SDF body meshed with surface nets: a long fusiform body, deep behind the head and slender at the tail stock, laterally compressed; a long tapering felt bill (spear) from the upper jaw, slightly upturned; a tall sail-like first dorsal fin raked back from a high peak over the head and running low down the back; a small second dorsal and anal fin; long narrow scythe pectorals and thin pelvic fins; a tall crescent (lunate) tail with the notch scooped out; big glass eyes; a small mouth slit under the bill with a lower jaw that swings open on a hinge.
-
-Physics: XPBD soft body on a hex lattice (shape-matched cells + tet volume preservation), skinned to the mesh. It swims with a stiff travelling wave mostly in its back third, circles, banks into turns. Behaviours: Feed (a felt fish drops in; it hunts it down and snaps it up), Dash, Slash (quick side-to-side swipes of the bill, like a marlin stunning prey), Light up (its flank bars glow electric blue; they also flash when you touch its bill or when it eats). Grab it by the tail and it thrashes.
-
-Fur: real-time shell fur — cobalt back, silver belly panel below a seam, pale vertical bars on the flanks, dark spots on the sail, an embroidered gill-cover seam, bare felt bill. Tools: Hand, Finger, Comb. Sliders: Stuffing, Pile, Tail beat. Palettes: Blue, Black, Indigo. 60 fps.
-```
-
-</details>

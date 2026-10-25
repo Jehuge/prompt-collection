@@ -6,13 +6,69 @@
 - **测试模型**：ChatGPT-6 Astra vs Claude Opus 5.5
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2111609680057270501) · [提示词帖](https://x.com/vib3coded/status/2111609863566413948) · 2026-10-18（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 ChatGPT-6 Astra vs Claude Opus 5.5）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 ChatGPT-6 Astra vs Claude Opus 5.5）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![花池 Bloom Pool](../assets/bloom-pool.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build “Bloom Pool” — a polished, calming interactive 3D flower pool for the browser. Deliver a self-contained HTML file with embedded assets, responsive desktop and mobile layouts, and a target of 60 fps.
+
+VISUAL DIRECTION
+A sunlit Mediterranean pool viewed from poolside perspective, not top-down. Clear turquoise water, warm ivory travertine paving, rounded bullnose coping, tiled underwater walls and floor, and a checkerboard tile band visible above the waterline. Soft palm-frond shadows cross the deck. Sunlight comes from the far-left background, illuminating the petals and scattering bright glints across the water.
+
+Use an elegant editorial interface: large serif “Bloom Pool” title, a short understated caption, generous whitespace, and a compact translucent bottom control dock. Keep the UI in English.
+
+CAMERA & RESPONSIVE LAYOUT
+Use a fixed perspective camera with approximately 53° downward pitch on landscape screens and 58° on portrait screens, with a 36–38° field of view. Fit the entire pool inside the available viewport on every resize, keeping its edges above the control dock. Make the pool wider on desktop and deeper on phones. Do not add orbit controls.
+
+WATER RENDERING
+Use Three.js/WebGL with custom shaders.
+Render the scene to an offscreen color-and-depth target, then composite the water using an inverse-view-projection ray intersection with the world-space water plane.
+
+Include:
+- World-space waves and expanding interaction ripples.
+- Depth-aware screen-space refraction of submerged petals and tiles.
+- Fresnel reflections of the sky, coping and tiled wall band.
+- Animated underwater caustics, sun glitter and subtle foam.
+- Soft flower shadows and local surface depressions beneath flowers.
+- A gentle whirlpool with a visible surface depression.
+
+Avoid duplicated or ghosted flowers at the waterline. Preserve correct occlusion around petals, coping and above-water walls. Pixels outside the pool should show the original scene directly.
+
+FLOWERS & PHYSICS
+Use detailed 3D hibiscus, bright hibiscus, lily and plumeria flowers. Petals should look delicate and softly backlit, not like flat sprites. Start with five flowers and allow up to 32.
+
+Flowers fall into the pool, create droplets and ripples, then float with buoyancy, damped bobbing, rocking and slow rotational drift. They interact with the pool boundaries and respond to currents, nearby disturbances and the whirlpool.
+
+INTERACTIONS
+- Tap a flower button to drop that species into the pool.
+- Spawn flowers from the highest altitude that remains visible on screen: large and close at first, then naturally smaller as they fall.
+- Touch mode: drag flowers across the surface; press and hold to push them underwater; release to let them spring back up.
+- Lift mode: pick up a flower, carry it above the water and release it to fall and splash.
+- Swirl mode: activate a gentle whirlpool that influences floating flowers.
+- Clear: remove the flowers with a graceful transition.
+- Touching empty water creates ripples.
+
+Use ray–plane intersections for water and elevated carrying positions. Pick flowers using projected bounds that account for camera pitch and apparent size. Mouse and touch must both work naturally.
+
+AUDIO & CONTROLS
+Add subtle procedural water ambience and responsive splash sounds through Web Audio. Start muted; enable audio only after a user gesture. Include a clear Sound toggle.
+
+The bottom dock contains four flower selectors, Touch, Lift, Swirl and Clear. Show the active interaction mode clearly. Keep mobile touch targets comfortable and prevent page scrolling during pool gestures.
+
+QUALITY
+Use properly licensed or original assets; retain required attribution. No analytics, advertisements or unnecessary remote dependencies.
+
+Verify desktop and phone layouts, including short landscape screens. Test flower spawning, surface dragging, sustained pressing, lifting and dropping, whirlpool forces, clearing and audio. Check for shader errors, broken assets, clipping and horizontal overflow.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -71,62 +127,3 @@
 使用有正当授权或原创的资源；保留所需的署名。不要分析统计、广告或不必要的远程依赖。
 
 验证桌面端和手机布局，包括高度较矮的横屏。测试花朵生成、水面拖动、持续按压、抬起和放下、漩涡力、清空和音频。检查着色器错误、损坏的资源、裁切问题和横向溢出。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build “Bloom Pool” — a polished, calming interactive 3D flower pool for the browser. Deliver a self-contained HTML file with embedded assets, responsive desktop and mobile layouts, and a target of 60 fps.
-
-VISUAL DIRECTION
-A sunlit Mediterranean pool viewed from poolside perspective, not top-down. Clear turquoise water, warm ivory travertine paving, rounded bullnose coping, tiled underwater walls and floor, and a checkerboard tile band visible above the waterline. Soft palm-frond shadows cross the deck. Sunlight comes from the far-left background, illuminating the petals and scattering bright glints across the water.
-
-Use an elegant editorial interface: large serif “Bloom Pool” title, a short understated caption, generous whitespace, and a compact translucent bottom control dock. Keep the UI in English.
-
-CAMERA & RESPONSIVE LAYOUT
-Use a fixed perspective camera with approximately 53° downward pitch on landscape screens and 58° on portrait screens, with a 36–38° field of view. Fit the entire pool inside the available viewport on every resize, keeping its edges above the control dock. Make the pool wider on desktop and deeper on phones. Do not add orbit controls.
-
-WATER RENDERING
-Use Three.js/WebGL with custom shaders.
-Render the scene to an offscreen color-and-depth target, then composite the water using an inverse-view-projection ray intersection with the world-space water plane.
-
-Include:
-- World-space waves and expanding interaction ripples.
-- Depth-aware screen-space refraction of submerged petals and tiles.
-- Fresnel reflections of the sky, coping and tiled wall band.
-- Animated underwater caustics, sun glitter and subtle foam.
-- Soft flower shadows and local surface depressions beneath flowers.
-- A gentle whirlpool with a visible surface depression.
-
-Avoid duplicated or ghosted flowers at the waterline. Preserve correct occlusion around petals, coping and above-water walls. Pixels outside the pool should show the original scene directly.
-
-FLOWERS & PHYSICS
-Use detailed 3D hibiscus, bright hibiscus, lily and plumeria flowers. Petals should look delicate and softly backlit, not like flat sprites. Start with five flowers and allow up to 32.
-
-Flowers fall into the pool, create droplets and ripples, then float with buoyancy, damped bobbing, rocking and slow rotational drift. They interact with the pool boundaries and respond to currents, nearby disturbances and the whirlpool.
-
-INTERACTIONS
-- Tap a flower button to drop that species into the pool.
-- Spawn flowers from the highest altitude that remains visible on screen: large and close at first, then naturally smaller as they fall.
-- Touch mode: drag flowers across the surface; press and hold to push them underwater; release to let them spring back up.
-- Lift mode: pick up a flower, carry it above the water and release it to fall and splash.
-- Swirl mode: activate a gentle whirlpool that influences floating flowers.
-- Clear: remove the flowers with a graceful transition.
-- Touching empty water creates ripples.
-
-Use ray–plane intersections for water and elevated carrying positions. Pick flowers using projected bounds that account for camera pitch and apparent size. Mouse and touch must both work naturally.
-
-AUDIO & CONTROLS
-Add subtle procedural water ambience and responsive splash sounds through Web Audio. Start muted; enable audio only after a user gesture. Include a clear Sound toggle.
-
-The bottom dock contains four flower selectors, Touch, Lift, Swirl and Clear. Show the active interaction mode clearly. Keep mobile touch targets comfortable and prevent page scrolling during pool gestures.
-
-QUALITY
-Use properly licensed or original assets; retain required attribution. No analytics, advertisements or unnecessary remote dependencies.
-
-Verify desktop and phone layouts, including short landscape screens. Test flower spawning, surface dragging, sustained pressing, lifting and dropping, whirlpool forces, clearing and audio. Check for shader errors, broken assets, clipping and horizontal overflow.
-```
-
-</details>

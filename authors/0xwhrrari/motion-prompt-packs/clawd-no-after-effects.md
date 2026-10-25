@@ -5,15 +5,11 @@
 - **标签**：`motion` `blender` `html` `puppeteer` `opus-5.5` `clawd` `after-effects-style` `prompt-pack` `0xwhrrari`
 - **来源**：[@0xwhrrari](https://x.com/0xwhrrari) · [原帖](https://x.com/0xwhrrari/status/2112166940081004693) · [PDF 回复](https://x.com/0xwhrrari/status/2112166943125872780) · [Google Drive](https://drive.google.com/file/d/1-VZJxR-VpR1rY4FyymcMDIq742fkQYLT/view) · [系列文章 Motion Engineering](https://x.com/i/article/2105626165704572928) · [系列帖](https://x.com/0xwhrrari/status/2105643919119696297) · PDF 2026-10-19
 
-> 说明：粉丝整理自 [@0xwhrrari](https://x.com/0xwhrrari)（rari）公开的 Clawd Motion Lab / Opus 5.5 Prompt Pack。下面的英文是从原 PDF 抽出的 copy-ready 提示词，只把排版换行拼回句子，没有改词。中文「译文」是简短说明，不是逐句翻译。Follow-up、逐帧时间轴和渲染步骤以同目录 PDF 为准。
+> 说明：粉丝整理自 [@0xwhrrari](https://x.com/0xwhrrari)（rari）公开的 Clawd Motion Lab / Opus 5.5 Prompt Pack。下面的英文是从原 PDF 抽出的 copy-ready 提示词，只把排版换行拼回句子，没有改词。优先使用英文原文；中文「译文」是简短说明（不是逐句翻译），附在英文提示词后面。Follow-up、逐帧时间轴和渲染步骤以同目录 PDF 为准。
 
 ## 效果
 
 ![clawd-no-after-effects](clawd-no-after-effects.jpg)
-
-## 译文
-
-Clawd 一开始是合成窗口里的一张扁平 PNG。他从屏幕上揭下来，变成 3D，靠跳上按钮做完整条动态图形：Type、Rectangle、Pen、Glow、四个关键帧，再骑着播放头把成片播完。然后按 Play，其他面板一块块断电掉下去，只留下他做的画面。
 
 ## 画面提示词（English）
 
@@ -61,6 +57,10 @@ APP: a Premiere-style editor: Source, Program, Project bin, an Effects panel sea
 RESULT: a cut-down trailer: three clips snapped together, a title, a warp transition
 SET: the same
 ```
+
+## 译文
+
+Clawd 一开始是合成窗口里的一张扁平 PNG。他从屏幕上揭下来，变成 3D，靠跳上按钮做完整条动态图形：Type、Rectangle、Pen、Glow、四个关键帧，再骑着播放头把成片播完。然后按 Play，其他面板一块块断电掉下去，只留下他做的画面。
 
 ## 原 PDF
 

@@ -6,13 +6,35 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2109015574177075610) · [提示词帖](https://x.com/vib3coded/status/2109016138030141473) · 2026-10-11（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![潮池果冻 Tidepool Jelly](../assets/tidepool-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Create “Tidepool Jelly” - an interactive 3D miniature coastal ecosystem where everything feels soft, squishy, and made of translucent jelly.
+Show an elevated, cutaway slice of coastline floating against a warm off-white background. Include layered sand and rock beneath the surface, shallow turquoise water, rocky tide pools, rounded pebbles, seashells, and small patches of coastal greenery. Use an orthographic camera with orbit and zoom controls.
+Make the water the star of the scene: convincing waves, spreading ripples, reflections, refraction, underwater caustics, and a wet shoreline. Animate a rising and falling tide that fills and drains the pools. Clicking or dragging through water should create localized ripples that fade naturally.
+Populate the pools with animated jelly sea creatures: tiny crabs, starfish, sea anemones, snails, mussels, shrimp, and small fish. Give each species distinct movement and behavior. Crabs scuttle around rocks, anemones sway with the current, snails crawl slowly, and fish swim in loose groups. Their bodies should gently wobble and deform as they move.
+Let users click a creature to focus the camera and reveal a compact species card. Allow gentle interactions that trigger a squishy reaction, followed by a smooth return to the original shape.
+Add a clean, minimal control panel with:
+Tide height and automatic tide cycle.
+Wave strength and water clarity.
+Jelly softness.
+Day and night lighting.
+Species visibility toggles.
+Pause, reset, and a randomize ecosystem button.
+At night, introduce subtle bioluminescence in the water and selected creatures.
+Use elegant editorial typography, generous whitespace, and restrained UI styling. Place the “Tidepool Jelly” title in the upper-left corner and controls on the right. The scene should dominate the screen.
+Build a fully working browser experience using Three.js and custom shaders where useful. Prioritize beautiful water, believable creature movement, tactile jelly materials, and smooth performance. All controls must work. Avoid static mockups, placeholder assets, and oversized interface elements.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -39,28 +61,3 @@
 使用优雅的编辑式字体排版、充足的留白和克制的 UI 样式。把 "Tidepool Jelly" 标题放在左上角，控件放在右侧。场景应占据屏幕主体。
 
 使用 Three.js 构建一个完全可用的浏览器体验，在需要的地方使用自定义着色器。优先保证漂亮的水、可信的生物运动、有触感的果冻材质和流畅的性能。所有控件都必须可用。避免静态样稿、占位资源和过大的界面元素。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Create “Tidepool Jelly” - an interactive 3D miniature coastal ecosystem where everything feels soft, squishy, and made of translucent jelly.
-Show an elevated, cutaway slice of coastline floating against a warm off-white background. Include layered sand and rock beneath the surface, shallow turquoise water, rocky tide pools, rounded pebbles, seashells, and small patches of coastal greenery. Use an orthographic camera with orbit and zoom controls.
-Make the water the star of the scene: convincing waves, spreading ripples, reflections, refraction, underwater caustics, and a wet shoreline. Animate a rising and falling tide that fills and drains the pools. Clicking or dragging through water should create localized ripples that fade naturally.
-Populate the pools with animated jelly sea creatures: tiny crabs, starfish, sea anemones, snails, mussels, shrimp, and small fish. Give each species distinct movement and behavior. Crabs scuttle around rocks, anemones sway with the current, snails crawl slowly, and fish swim in loose groups. Their bodies should gently wobble and deform as they move.
-Let users click a creature to focus the camera and reveal a compact species card. Allow gentle interactions that trigger a squishy reaction, followed by a smooth return to the original shape.
-Add a clean, minimal control panel with:
-Tide height and automatic tide cycle.
-Wave strength and water clarity.
-Jelly softness.
-Day and night lighting.
-Species visibility toggles.
-Pause, reset, and a randomize ecosystem button.
-At night, introduce subtle bioluminescence in the water and selected creatures.
-Use elegant editorial typography, generous whitespace, and restrained UI styling. Place the “Tidepool Jelly” title in the upper-left corner and controls on the right. The scene should dominate the screen.
-Build a fully working browser experience using Three.js and custom shaders where useful. Prioritize beautiful water, believable creature movement, tactile jelly materials, and smooth performance. All controls must work. Avoid static mockups, placeholder assets, and oversized interface elements.
-```
-
-</details>

@@ -6,13 +6,62 @@
 - **测试模型**：Claude Opus 5.5 vs ChatGPT-6 Astra
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2110329593441796383) · [提示词帖](https://x.com/vib3coded/status/2110329833653772346) · 2026-10-14（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Claude Opus 5.5 vs ChatGPT-6 Astra）。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![船闸果冻 Lock Jelly](../assets/lock-jelly.jpg)
+
+## 提示词（英文原文）
+
+```text
+Build "Lock Jelly." — a single self-contained HTML file (WebGPU + WGSL, no libraries, no network, works from file://), part of a "Material Studies" series of jelly dioramas. If WebGPU is missing or the adapter fails, show a clean fallback card instead of the scene.
+
+CONCEPT
+A square block of clear coloured jelly (about 5.2 × 5.2 units, ~2 units high) holding a little English canal scene. The canal runs along the FRONT edge of the block, so the block's front face cuts the water lengthways: you see the lock chamber in cross-section, the water inside it rising and falling between the gates, fish swimming, the boat's hull below the waterline. All cut faces show candy-coloured soil strata; under the pounds a blue-grey puddle-clay lining, under the chamber a brick invert on a concrete bed, under the fields brown earth and turf.
+
+LAYOUT (left to right along the front)
+- Upper pound on the left at the higher level, opening into a round winding hole (a bay for turning boats); near the lock it narrows between brick wing walls.
+- The lock chamber in the middle: brick walls with dressed-stone quoins and coping, a slimy band between the two water levels and weed below, an iron ladder, a gauge board, a stone cill under the top gate, recesses that the open gates fold into.
+- Below the bottom gate a short walled tail, then the lower pound bends away from the front face, runs under a humpback brick bridge into a basin with a willow-covered island, lily pads in its corners and a sunken bicycle on the bed.
+- The ground steps down from an upper terrace to a lower one along a grassy bank.
+- Behind the lock: stone setts around the chamber, bollards, a gravel towpath, a lane, the keeper's whitewashed cottage with a slate roof, green door, picket-fence garden full of flowers and washing flapping on a line, a gas lamp, a bench, a white windmill with turning lattice sails, oaks, willows, poplars, a hedge, sheep, reeds on the soft banks.
+
+WATER
+- Linear shallow-water waves on a staggered grid (~168²) with a little surface tension, so short ripples are springy like jelly; damping and firmness are adjustable.
+- Three separate bodies of water — upper pound, chamber, lower pound — each with its own rest level. Faces between bodies stay shut unless the gate between them is open and the levels are equal. The chamber's level is moved bodily when paddles are drawn (Torricelli-style flow), with boils, white water and a dimple at the intake.
+- Rendering: refraction of the scene behind, flavour-coloured absorption, sun caustics on the bed, soft light shafts, foam (wakes, paddle churn), a meniscus line on the cut faces. Split the surface mesh along the gate lines so the step in level at a shut gate is a clean wall hidden by the gate leaf, not a ramp.
+- The block itself can be tipped by dragging its side; the jelly shears and wobbles, the water sloshes, and it settles back.
+
+THE LOCK AND THE KEEPER
+- Two single-leaf timber gates (planks, rails, diagonal brace, iron straps, a walkway with a handrail), each with a white balance beam with black bands. Ground-paddle pedestals with toothed racks that rise when wound.
+- An articulated lock keeper (flat cap, navy jumper, cords, windlass in hand; torso, arms, thighs and shins as separate parts). He walks with a proper gait, plans his route around the bench, pedestals, bollards and any beam lying across his way (going round the beam's end), leans his back on a beam and walks it round backwards to swing a gate, winds the windlass with his arm circling the spindle, and sits on his bench between jobs. He sets off for the gate as the boat comes in.
+- The cycle: the boat lies in the full chamber → keeper shuts the top gate → winds up the bottom paddles → the chamber empties into the tail with white water → winds them down → opens the bottom gate → the boat leaves, runs the tail, swings round the bend, ducks under the bridge, goes round the island and comes back into the chamber bow first → shut bottom gate → round to the top paddles → chamber fills with boils → open the top gate → the boat goes up the pound, turns in the winding hole and comes back. Repeat forever. A gate may only open when the levels match.
+
+BOATS
+- A traditional narrowboat "Wobble": black lofted hull, a green cabin with red lining-out, brass portholes, a cratch board and cover at the bow, a chimney with brass bands (puffing smoke), a painted Buckby can, plank and pole on the roof, rope fenders, a headlamp, a brass swan-neck tiller and a steerer in a red jumper. It follows smooth filleted routes (check the stern never swings out through the block's face), slows near the gates, heaves, pitches and rolls on the local surface, and hands its displaced volume back to the water so it makes bow waves and wakes.
+- Three moored narrowboats in the basin in different liveries with flowerpots on the roofs and one ginger cat, tied to bank pins with stretchy mooring lines.
+
+LIFE
+- Roach, perch and bream as boids that stay in their own body of water (they can only move between pound and chamber while a gate is open), under the surface and hulls, off the bed, scattering from the boat and splashes.
+- Mallards (drakes, ducks) and a duck with four ducklings that follow exactly along her trail; a pair of mute swans in the basin. They paddle the surface, ride the chamber down and up, upend now and then, get out of the boat's way and come for bread.
+- A grey heron that wades in the shallows or stands on a moored boat's roof, stabs at fish (sometimes catching one), and flaps off somewhere quieter when the boat passes or someone toots.
+- Chimney smoke from the boat and the cottage.
+
+UI (editorial, like a print magazine)
+- Top-left: small caps eyebrow "MATERIAL STUDIES", a huge italic serif title "Lock / Jelly.", a short subtitle. Top-right: a status pill "WebGPU · Live / Paused / Unavailable".
+- Right: a frosted-glass control panel (a bottom sheet on mobile) with: buttons Hurry (speeds the keeper, paddles and boat), Toot (horn; also Space), Throw bread, Rubber duck (drops a yellow rubber duck that floats upright, can be picked up and thrown, rides the lock, is stopped by gates and shoved by boats); a liveliness meter; tallies Trips · Lockfuls · Fed; a status line "Wobble — Emptying the lock 62%" telling the story step by step; three flavours Greengage, Elderflower, Blackcurrant (change the water colour/absorption and strata); sliders Firmness, Wave damping, Paddle speed; Reset, Pause, Sound on/off, View.
+- Bottom-left: "How to play — Throw bread. Toot the horn. Hurry the keeper." with a small line of instructions.
+- Interaction: drag across the water to make waves, drag the block's side to tip it, pick up and throw rubber ducks, drag empty space to orbit, scroll/pinch to zoom; touch works.
+- Soft studio lighting on a warm paper backdrop with the block's tinted, caustic-flecked shadow; WebAudio sounds: the boat's horn, the gate thudding shut, a creak, the windlass ratchet, and the rush of water that swells with the flow.
+
+QUALITY
+Keep it smooth (fixed-step physics, cheap per frame), no console errors, no page scroll, works at phone width. Test it headlessly: a full round trip happens, levels go exactly from upper to lower and back, no gate opens across a step, the keeper never walks into the water or through obstacles, the boat never touches a gate leaf, and every button works.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -66,55 +115,3 @@
 ### 质量
 
 保持流畅（固定步长物理，每帧开销低），无控制台报错，页面不滚动，在手机宽度下可用。无头测试：完成一整个往返；水位精确地从上游降到下游再回升；没有闸门在有水位落差时打开；闸管员永远不会走进水里或穿过障碍物；船永远不会碰到闸门门叶；每个按钮都可用。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Build "Lock Jelly." — a single self-contained HTML file (WebGPU + WGSL, no libraries, no network, works from file://), part of a "Material Studies" series of jelly dioramas. If WebGPU is missing or the adapter fails, show a clean fallback card instead of the scene.
-
-CONCEPT
-A square block of clear coloured jelly (about 5.2 × 5.2 units, ~2 units high) holding a little English canal scene. The canal runs along the FRONT edge of the block, so the block's front face cuts the water lengthways: you see the lock chamber in cross-section, the water inside it rising and falling between the gates, fish swimming, the boat's hull below the waterline. All cut faces show candy-coloured soil strata; under the pounds a blue-grey puddle-clay lining, under the chamber a brick invert on a concrete bed, under the fields brown earth and turf.
-
-LAYOUT (left to right along the front)
-- Upper pound on the left at the higher level, opening into a round winding hole (a bay for turning boats); near the lock it narrows between brick wing walls.
-- The lock chamber in the middle: brick walls with dressed-stone quoins and coping, a slimy band between the two water levels and weed below, an iron ladder, a gauge board, a stone cill under the top gate, recesses that the open gates fold into.
-- Below the bottom gate a short walled tail, then the lower pound bends away from the front face, runs under a humpback brick bridge into a basin with a willow-covered island, lily pads in its corners and a sunken bicycle on the bed.
-- The ground steps down from an upper terrace to a lower one along a grassy bank.
-- Behind the lock: stone setts around the chamber, bollards, a gravel towpath, a lane, the keeper's whitewashed cottage with a slate roof, green door, picket-fence garden full of flowers and washing flapping on a line, a gas lamp, a bench, a white windmill with turning lattice sails, oaks, willows, poplars, a hedge, sheep, reeds on the soft banks.
-
-WATER
-- Linear shallow-water waves on a staggered grid (~168²) with a little surface tension, so short ripples are springy like jelly; damping and firmness are adjustable.
-- Three separate bodies of water — upper pound, chamber, lower pound — each with its own rest level. Faces between bodies stay shut unless the gate between them is open and the levels are equal. The chamber's level is moved bodily when paddles are drawn (Torricelli-style flow), with boils, white water and a dimple at the intake.
-- Rendering: refraction of the scene behind, flavour-coloured absorption, sun caustics on the bed, soft light shafts, foam (wakes, paddle churn), a meniscus line on the cut faces. Split the surface mesh along the gate lines so the step in level at a shut gate is a clean wall hidden by the gate leaf, not a ramp.
-- The block itself can be tipped by dragging its side; the jelly shears and wobbles, the water sloshes, and it settles back.
-
-THE LOCK AND THE KEEPER
-- Two single-leaf timber gates (planks, rails, diagonal brace, iron straps, a walkway with a handrail), each with a white balance beam with black bands. Ground-paddle pedestals with toothed racks that rise when wound.
-- An articulated lock keeper (flat cap, navy jumper, cords, windlass in hand; torso, arms, thighs and shins as separate parts). He walks with a proper gait, plans his route around the bench, pedestals, bollards and any beam lying across his way (going round the beam's end), leans his back on a beam and walks it round backwards to swing a gate, winds the windlass with his arm circling the spindle, and sits on his bench between jobs. He sets off for the gate as the boat comes in.
-- The cycle: the boat lies in the full chamber → keeper shuts the top gate → winds up the bottom paddles → the chamber empties into the tail with white water → winds them down → opens the bottom gate → the boat leaves, runs the tail, swings round the bend, ducks under the bridge, goes round the island and comes back into the chamber bow first → shut bottom gate → round to the top paddles → chamber fills with boils → open the top gate → the boat goes up the pound, turns in the winding hole and comes back. Repeat forever. A gate may only open when the levels match.
-
-BOATS
-- A traditional narrowboat "Wobble": black lofted hull, a green cabin with red lining-out, brass portholes, a cratch board and cover at the bow, a chimney with brass bands (puffing smoke), a painted Buckby can, plank and pole on the roof, rope fenders, a headlamp, a brass swan-neck tiller and a steerer in a red jumper. It follows smooth filleted routes (check the stern never swings out through the block's face), slows near the gates, heaves, pitches and rolls on the local surface, and hands its displaced volume back to the water so it makes bow waves and wakes.
-- Three moored narrowboats in the basin in different liveries with flowerpots on the roofs and one ginger cat, tied to bank pins with stretchy mooring lines.
-
-LIFE
-- Roach, perch and bream as boids that stay in their own body of water (they can only move between pound and chamber while a gate is open), under the surface and hulls, off the bed, scattering from the boat and splashes.
-- Mallards (drakes, ducks) and a duck with four ducklings that follow exactly along her trail; a pair of mute swans in the basin. They paddle the surface, ride the chamber down and up, upend now and then, get out of the boat's way and come for bread.
-- A grey heron that wades in the shallows or stands on a moored boat's roof, stabs at fish (sometimes catching one), and flaps off somewhere quieter when the boat passes or someone toots.
-- Chimney smoke from the boat and the cottage.
-
-UI (editorial, like a print magazine)
-- Top-left: small caps eyebrow "MATERIAL STUDIES", a huge italic serif title "Lock / Jelly.", a short subtitle. Top-right: a status pill "WebGPU · Live / Paused / Unavailable".
-- Right: a frosted-glass control panel (a bottom sheet on mobile) with: buttons Hurry (speeds the keeper, paddles and boat), Toot (horn; also Space), Throw bread, Rubber duck (drops a yellow rubber duck that floats upright, can be picked up and thrown, rides the lock, is stopped by gates and shoved by boats); a liveliness meter; tallies Trips · Lockfuls · Fed; a status line "Wobble — Emptying the lock 62%" telling the story step by step; three flavours Greengage, Elderflower, Blackcurrant (change the water colour/absorption and strata); sliders Firmness, Wave damping, Paddle speed; Reset, Pause, Sound on/off, View.
-- Bottom-left: "How to play — Throw bread. Toot the horn. Hurry the keeper." with a small line of instructions.
-- Interaction: drag across the water to make waves, drag the block's side to tip it, pick up and throw rubber ducks, drag empty space to orbit, scroll/pinch to zoom; touch works.
-- Soft studio lighting on a warm paper backdrop with the block's tinted, caustic-flecked shadow; WebAudio sounds: the boat's horn, the gate thudding shut, a creak, the windlass ratchet, and the rush of water that swells with the flow.
-
-QUALITY
-Keep it smooth (fixed-step physics, cheap per frame), no console errors, no page scroll, works at phone width. Test it headlessly: a full round trip happens, levels go exactly from upper to lower and back, no gate opens across a step, the keeper never walks into the water or through obstacles, the boat never touches a gate leaf, and every button works.
-```
-
-</details>

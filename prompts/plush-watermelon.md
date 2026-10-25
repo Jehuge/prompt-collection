@@ -6,13 +6,48 @@
 - **测试模型**：Gemini 4 Argon vs Claude Opus 5.5
 - **来源**：[@vib3coded](https://x.com/vib3coded) · [原帖](https://x.com/vib3coded/status/2111428909203866089) · [提示词帖](https://x.com/vib3coded/status/2111429205263007747) · 2026-10-17（北京时间）
 
-> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Gemini 4 Argon vs Claude Opus 5.5）。"Plush Penguin" 引擎来自作者的 Material Studies 系列（见本仓库 [毛绒企鹅 Plush Penguin](plush-penguin.md) 的提示词），引擎源码未公开，没有引擎时可让 AI 按同样的结构从头搭建。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。英文原文附在文末。
+> 说明：这是 [@vib3coded](https://x.com/vib3coded) 用来横向测试 AI 模型的提示词（同一提示词交给 Gemini 4 Argon vs Claude Opus 5.5）。"Plush Penguin" 引擎来自作者的 Material Studies 系列（见本仓库 [毛绒企鹅 Plush Penguin](plush-penguin.md) 的提示词），引擎源码未公开，没有引擎时可让 AI 按同样的结构从头搭建。界面上的按钮、标题、提示语等文字按原提示词要求保持英文（引号里的英文原样保留）。优先使用英文原文；中文翻译附在后面。
 
 ---
 
 ## 效果
 
 ![毛绒西瓜 Plush Watermelon](../assets/plush-watermelon.jpg)
+
+## 提示词（英文原文）
+
+```text
+Make "Plush Watermelon" (Material Studies No. 032) on the Plush Penguin WebGPU engine: XPBD soft-body lattice, shell fur, cloth limbs, posture-driven gait, Hand / Finger / Comb tools.
+
+Shape (one SDF):
+- A fat wedge cut from a sphere by two planes through one horizontal axis, about 76° apart.
+- The axis is the top edge, so each cut face is a semicircle.
+- The cut faces are slightly puffy and every seam is rounded.
+- It sits on a small flat patch of its round rind.
+
+Regions:
+- Flesh: long fluffy red minky.
+- Rind: a white band along the outer edge of both faces.
+- Skin: green, with dark jagged stripes running pole to pole around the wedge's axis.
+- Seeds: short-pile felt teardrops pointing in toward the axis, a few on the front face around the face, more on the back.
+
+Front face: two bead eyes, rosy cheeks, and an embroidered smile thread laid into a short-pile groove.
+
+Limbs: two brown felt legs stuck out in front, and two stubby felt cloth arms at the wedge's ends.
+
+Actions:
+- Toddle: walk on the legs.
+- Rock: seesaw forward and back on the rind with a synthesized giggle.
+- Wave: arm waves and hops with a toy squeak.
+- Topple: fall onto its back, then get back up.
+- A finger boop on the face makes it giggle and rock; it also rocks now and then when idle.
+
+Palettes: Classic, Yellow, Sorbet.
+Readouts: mass, volume, steps, rocks.
+Responsive layout with no horizontal overflow on phones.
+```
+
+---
 
 ## 提示词（中文）
 
@@ -49,41 +84,3 @@
 读数：mass、volume、steps、rocks。
 
 响应式布局，在手机上无横向溢出。
-
----
-
-<details>
-<summary>英文原文（English original）</summary>
-
-```text
-Make "Plush Watermelon" (Material Studies No. 032) on the Plush Penguin WebGPU engine: XPBD soft-body lattice, shell fur, cloth limbs, posture-driven gait, Hand / Finger / Comb tools.
-
-Shape (one SDF):
-- A fat wedge cut from a sphere by two planes through one horizontal axis, about 76° apart.
-- The axis is the top edge, so each cut face is a semicircle.
-- The cut faces are slightly puffy and every seam is rounded.
-- It sits on a small flat patch of its round rind.
-
-Regions:
-- Flesh: long fluffy red minky.
-- Rind: a white band along the outer edge of both faces.
-- Skin: green, with dark jagged stripes running pole to pole around the wedge's axis.
-- Seeds: short-pile felt teardrops pointing in toward the axis, a few on the front face around the face, more on the back.
-
-Front face: two bead eyes, rosy cheeks, and an embroidered smile thread laid into a short-pile groove.
-
-Limbs: two brown felt legs stuck out in front, and two stubby felt cloth arms at the wedge's ends.
-
-Actions:
-- Toddle: walk on the legs.
-- Rock: seesaw forward and back on the rind with a synthesized giggle.
-- Wave: arm waves and hops with a toy squeak.
-- Topple: fall onto its back, then get back up.
-- A finger boop on the face makes it giggle and rock; it also rocks now and then when idle.
-
-Palettes: Classic, Yellow, Sorbet.
-Readouts: mass, volume, steps, rocks.
-Responsive layout with no horizontal overflow on phones.
-```
-
-</details>
