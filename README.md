@@ -18,6 +18,10 @@
 
 | 名称 | 效果 | 类型 | 技术栈 | 文件 |
 | --- | --- | --- | --- | --- |
+| 发射果冻 Launch Jelly | ![launch-jelly](assets/launch-jelly.jpg) | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · 单文件 HTML | [prompts/launch-jelly.md](prompts/launch-jelly.md) |
+| 金库街 Vault Street | ![vault-street](assets/vault-street.jpg) | 交互网页 / 像素风场景 | three.js r160 · 像素后处理 · 单文件 HTML | [prompts/vault-street.md](prompts/vault-street.md) |
+| 风向袋机场 Windsock Field | ![windsock-field](assets/windsock-field.jpg) | 交互网页 / 像素风场景 | three.js r160 · 像素后处理 · 飞行物理 · 单文件 HTML | [prompts/windsock-field.md](prompts/windsock-field.md) |
+| 粉笔四方 Chalk Square | ![chalk-square](assets/chalk-square.jpg) | 交互网页 / 像素风场景 | three.js r160 · 像素后处理 · 球物理 · 单文件 HTML | [prompts/chalk-square.md](prompts/chalk-square.md) |
 | 离岸果冻 Offshore Jelly | ![offshore-jelly](assets/offshore-jelly.jpg) | 交互网页 / 果冻微缩场景 | WebGPU · WGSL · 浅水模拟 · 单文件 HTML | [prompts/offshore-jelly.md](prompts/offshore-jelly.md) |
 | 海滩二号 Beach Two | ![beach-two](assets/beach-two.jpg) | 交互网页 / 3D 海滩场景 | WebGL / 单页网页玩具 | [prompts/beach-two.md](prompts/beach-two.md) |
 | 像素冰场 Pixel Ice Rink | ![pixel-ice-rink](assets/pixel-ice-rink.jpg) | 交互网页 / 像素风场景 | WebGL · 单文件 HTML | [prompts/pixel-ice-rink.md](prompts/pixel-ice-rink.md) |
