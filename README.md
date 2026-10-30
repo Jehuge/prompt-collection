@@ -4,15 +4,15 @@
 
 ## 声明
 
-本仓库由粉丝整理，收集大神 [@vib3coded](https://x.com/vib3coded) 公开分享的 vibe coding / AI 测试提示词与效果展示，以及 [@0xwhrrari](https://x.com/0xwhrrari)（rari）公开分享的 Opus 5.5 motion 短片 Prompt Pack。
+本仓库由粉丝整理，收集大神 [@vib3coded](https://x.com/vib3coded) 公开分享的 vibe coding / AI 测试提示词与效果展示，[@0xwhrrari](https://x.com/0xwhrrari)（rari）公开分享的 Opus 5.5 motion 短片 Prompt Pack，以及 [@elvar_official](https://x.com/elvar_official)（Elvar）公开分享的可拆解机器 Anatomy 与 Kimi 3D Make 提示词。
 
 两位作者的作品都很多，分散在时间线上，一篇一篇找起来很费劲，所以整理成库，方便自己和大家学习、对照、复现。这里收录的提示词、效果图与 PDF，都尽量对应到原帖，方便溯源。
 
-提示词、效果图与 PDF 均来自公开帖子或作者附上的公开网盘链接，版权归原作者所有。本仓库为非官方粉丝合集，不营利、不声称代表 [@vib3coded](https://x.com/vib3coded) 或 [@0xwhrrari](https://x.com/0xwhrrari) 本人。
+提示词、效果图与 PDF 均来自公开帖子或作者附上的公开网盘链接，版权归原作者所有。本仓库为非官方粉丝合集，不营利、不声称代表 [@vib3coded](https://x.com/vib3coded)、[@0xwhrrari](https://x.com/0xwhrrari) 或 [@elvar_official](https://x.com/elvar_official) 本人。
 
 我们尊重原作者。若作者或权利人认为本仓库收录内容构成侵权，请联系我们，我们会尽快下架相关内容。
 
-作者主页：[@vib3coded](https://x.com/vib3coded) · [@0xwhrrari](https://x.com/0xwhrrari)
+作者主页：[@vib3coded](https://x.com/vib3coded) · [@0xwhrrari](https://x.com/0xwhrrari) · [@elvar_official](https://x.com/elvar_official)
 
 ## 索引
 
@@ -73,6 +73,8 @@
 | 珊瑚泻湖 Reef Lagoon | ![reef-lagoon](assets/reef-lagoon.jpg) | 交互网页 / 俯视海洋模拟 | Three.js r128 · WebGL · 单文件 HTML | [prompts/reef-lagoon.md](prompts/reef-lagoon.md) |
 | 春风站 Harukaze Station | ![harukaze-station](assets/harukaze-station.jpg) | 交互网页 / 低多边形微缩场景 | Three.js · MeshToonMaterial · OutlineEffect | [prompts/harukaze-station.md](prompts/harukaze-station.md) |
 | 牛油果果冻 Avocado Jelly | ![avocado-jelly](assets/avocado-jelly.jpg) | 交互网页 / 软体果冻 | WebGPU · WGSL · XPBD 四面体软体 · 刚体果核 | [prompts/avocado-jelly.md](prompts/avocado-jelly.md) |
+| Elvar 可拆解机器 Anatomy | ![elvar-anatomy](prompts/assets/elvar-anatomy/demo-drone.png) | 交互网页 / 可点击拆解机器 + 录屏出片全流程（10 条提示词，收集自 @elvar_official） | Claude Code · anatomy skill · 单文件 HTML · 无头 Chrome · ffmpeg | [prompts/elvar-anatomy.md](prompts/elvar-anatomy.md) |
+| Elvar 一句话出 3D 模型 | ![elvar-kimi](prompts/assets/elvar-anatomy/demo-sandworm.png) | 3D 模型生成 / 爆炸图 · 建筑内景 · 局部修改模板（收集自 @elvar_official） | Kimi K3.1 Pro · 3D Make | [prompts/elvar-kimi-3d-make.md](prompts/elvar-kimi-3d-make.md) |
 
 ## @0xwhrrari · Motion Prompt Packs
 
@@ -85,6 +87,7 @@
 | 霓虹跳跃 Neon Jump | ![clawd-neon-jump](authors/0xwhrrari/motion-prompt-packs/clawd-neon-jump.jpg) | motion / character film loop | Blender Cycles · Opus 5.5 · 14s 循环 · 30fps | [clawd-neon-jump.md](authors/0xwhrrari/motion-prompt-packs/clawd-neon-jump.md) |
 | Clawd 做 FL Studio 打拍子 Cooks a Beat | ![clawd-fl-studio](authors/0xwhrrari/motion-prompt-packs/clawd-fl-studio.jpg) | motion / music production UI film | HTML UI · Blender Cycles · Opus 5.5 · 32s · 30fps | [clawd-fl-studio.md](authors/0xwhrrari/motion-prompt-packs/clawd-fl-studio.md) |
 
+
 ## 使用方式
 
 1. 打开对应的提示词文件，优先复制「提示词（英文原文）」；需要中文时再复制后面的「提示词（中文）」。
@@ -94,5 +97,8 @@
 上面三步对应 [@vib3coded](https://x.com/vib3coded) 的交互网页提示词。
 
 [@0xwhrrari](https://x.com/0xwhrrari) 的 motion Prompt Pack 在 [`authors/0xwhrrari/motion-prompt-packs/`](authors/0xwhrrari/motion-prompt-packs/)：优先复制英文提示词（画面 / 声音），贴给跑着 Opus 5.5 的 Claude Code（需要提示词里写明的 Blender、Python 或 ffmpeg）；中文译文附后仅作说明。同目录 PDF 是原件。系列说明见 [Motion Engineering](https://x.com/i/article/2105626165704572928)。
+
+
+[@elvar_official](https://x.com/elvar_official) 的 Anatomy / 3D Make 条目在 [`prompts/elvar-anatomy.md`](prompts/elvar-anatomy.md) 与 [`prompts/elvar-kimi-3d-make.md`](prompts/elvar-kimi-3d-make.md)：英文原文在折叠区，中文翻译在正文；演示截图在同目录 assets。
 
 欢迎 Star，后续会持续更新更多提示词。
